@@ -1,16 +1,10 @@
 # movie_db
 
-A simple movie database
+A simple movie database implemented in Flutter using redux
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+![Screenshot_1628075829](https://user-images.githubusercontent.com/15521900/128172010-eeef4eb3-81a2-42eb-97fe-2476c24c7c98.png)
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot_1628075835](https://user-images.githubusercontent.com/15521900/128172016-9379144c-0345-4c0b-a872-a8a169ba5a74.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
