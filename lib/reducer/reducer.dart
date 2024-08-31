@@ -1,3 +1,4 @@
+import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
@@ -7,37 +8,36 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
     print(action);
     return state;
   },
-  TypedReducer<AppState, GetMoviesAction>(_getMovies),
-  TypedReducer<AppState, ReloadMoviesAction>(_clearMovies),
-  TypedReducer<AppState, GetMoviesActionSuccessful>(_getMoviesSuccessful),
-  TypedReducer<AppState, GetMoviesActionError>(_getMoviesError),
-  TypedReducer<AppState, SelectMovieAction>(_selectMovie),
+  TypedReducer<AppState, GetProductsAction>(_getProducts),
+  TypedReducer<AppState, GetProductsActionSuccessful>(_getProductsSuccessful),
+  TypedReducer<AppState, ReloadProductsAction>(_clearProducts),
+  TypedReducer<AppState, SelectProductEntrySuccessful>(_selectProductEntry),
+  TypedReducer<AppState, ErrorAction>(_getError),
 ]);
 
-AppState _getMovies(AppState state, GetMoviesAction action) {
+AppState _getProducts(AppState state, GetProductsAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder.isLoading = true;
   });
 }
 
-AppState _clearMovies(AppState state, ReloadMoviesAction action) {
+AppState _clearProducts(AppState state, ReloadProductsAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
-      ..movies.clear()
+      ..products.clear()
       ..isLoading = true;
   });
 }
 
-AppState _getMoviesSuccessful(AppState state, GetMoviesActionSuccessful action) {
+AppState _getProductsSuccessful(AppState state, GetProductsActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
-      ..movies.addAll(action.movies)
-      ..isLoading = false
-      ..currentPage = state.currentPage + 1;
+      ..products.addAll(action.products)
+      ..isLoading = false;
   });
 }
 
-AppState _getMoviesError(AppState state, GetMoviesActionError action) {
+AppState _getError(AppState state, ErrorAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..isLoading = false
@@ -45,8 +45,8 @@ AppState _getMoviesError(AppState state, GetMoviesActionError action) {
   });
 }
 
-AppState _selectMovie(AppState state, SelectMovieAction action) {
+AppState _selectProductEntry(AppState state, SelectProductEntrySuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.selectedMovieId = action.id;
+    builder.selectedProductsEntryId = action.entry.id;
   });
 }

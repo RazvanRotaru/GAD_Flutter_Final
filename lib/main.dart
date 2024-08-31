@@ -6,9 +6,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
 import 'actions/index.dart';
-import 'data/movie_api.dart';
 import 'data/product_api.dart';
-import 'epics/movie_epic.dart';
 import 'epics/product_epic.dart';
 import 'models/index.dart';
 import 'presentation/details_page.dart';
@@ -16,8 +14,7 @@ import 'presentation/home_page.dart';
 import 'reducer/reducer.dart';
 
 void main() {
-  // final MovieEpics movieEpic = MovieEpics(api: MovieApi());
-  const String uri = r'D:\.data\dummy_data';
+  const String uri = 'data/dummy_data.xlsx';
   final ProductEpics productEpics = ProductEpics(api: ProductApi(uri: uri));
 
   final Store<AppState> store = Store<AppState>(

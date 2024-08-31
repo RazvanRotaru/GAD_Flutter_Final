@@ -9,11 +9,11 @@ abstract class Product implements Built<Product, ProductBuilder> {
 
   Product._();
 
-  int get id;
+  // int get id;
 
-  @BuiltValueField(wireName: 'short_name')
-  String get shortName;
-
+  // @BuiltValueField(wireName: 'short_name')
+  // String get shortName;
+  //
   String get name;
 
   @BuiltValueField(wireName: 'bar_code')
@@ -21,9 +21,9 @@ abstract class Product implements Built<Product, ProductBuilder> {
 
   num get price;
 
-  BuiltList<String> get categories;
-
-  String get summary;
+  // BuiltList<String> get categories;
+  //
+  // String get summary;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 

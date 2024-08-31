@@ -9,3 +9,4 @@ part 'index.g.dart';
 part 'app_state.dart';
 part 'movie.dart';
 part 'product.dart';
+part 'product_entry.dart';

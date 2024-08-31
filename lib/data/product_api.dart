@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:excel/excel.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_db/models/index.dart';
 
@@ -12,7 +12,8 @@ class ProductApi {
 
   Future<List<Product>> getProducts() async {
     // Load the Excel file as a byte array
-    final Uint8List bytes = await File.fromUri(Uri.parse(uri)).readAsBytes();
+    final ByteData bundle = await rootBundle.load(uri);
+    final Uint8List bytes = bundle.buffer.asUint8List();
     final Excel excel = Excel.decodeBytes(bytes);
 
     // Get the first sheet

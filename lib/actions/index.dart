@@ -7,7 +7,6 @@ import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/models/index.dart';
 
 part 'index.freezed.dart';
-part 'get_movies.dart';
-part 'select_movie.dart';
-part 'reload_movies.dart';
+part 'reload_products.dart';
 part 'get_product_details.dart';
+part 'select_product_entry.dart';
