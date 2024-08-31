@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/data/product_api.dart';
@@ -12,12 +13,13 @@ class ProductEpics {
 
   Epic<AppState> get epics {
     return combineEpics<AppState>(<Epic<AppState>>[
-      TypedEpic<AppState, GetProductsActionStart>(_getMovies),
+      TypedEpic<AppState, GetProductsActionStart>(_getProducts),
+      TypedEpic<AppState, CreateReceptionActionStart>(_createReception),
       // TypedEpic<AppState, ReloadProducts>(_reloadMovies),
     ]);
   }
 
-  Stream<AppAction> _getMovies(Stream<GetProductsActionStart> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getProducts(Stream<GetProductsActionStart> actions, EpicStore<AppState> store) {
     return actions
         .asyncMap((GetProductsActionStart action) => _productApi.getProducts())
         .map((List<Product> products) => GetProductsAction.successful(products: products))
@@ -41,4 +43,15 @@ class ProductEpics {
   //     ),
   //   );
   // }
+
+  Stream<AppAction> _createReception(Stream<CreateReceptionActionStart> actions, EpicStore<AppState> store) {
+    return actions
+        .asyncMap((CreateReceptionActionStart action) => UniqueKey().toString())
+        .map((String id) => CreateReceptionAction.successful(receptionId: id))
+        .onErrorReturnWith(
+      (Object error, StackTrace stackTrace) {
+        return CreateReceptionAction.error(error: error, stackTrace: stackTrace);
+      },
+    );
+  }
 }

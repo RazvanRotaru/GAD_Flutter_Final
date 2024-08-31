@@ -10,6 +10,8 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   },
   TypedReducer<AppState, GetProductsAction>(_getProducts),
   TypedReducer<AppState, GetProductsActionSuccessful>(_getProductsSuccessful),
+  TypedReducer<AppState, CreateReceptionAction>(_createReception),
+  TypedReducer<AppState, CreateReceptionActionSuccessful>(_createReceptionSuccessful),
   TypedReducer<AppState, ReloadProductsAction>(_clearProducts),
   TypedReducer<AppState, SelectProductEntrySuccessful>(_selectProductEntry),
   TypedReducer<AppState, ErrorAction>(_getError),
@@ -48,5 +50,27 @@ AppState _getError(AppState state, ErrorAction action) {
 AppState _selectProductEntry(AppState state, SelectProductEntrySuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder.selectedProductsEntryId = action.entry.id;
+  });
+}
+
+AppState _createReception(AppState state, CreateReceptionAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.isLoading = true;
+  });
+}
+
+AppState _createReceptionSuccessful(AppState state, CreateReceptionActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..ongoingReception.id = action.receptionId
+      ..ongoingReception.entries.add(ProductEntry((b) {
+        b.quantity = 3;
+        b.id= "1000";
+        b.product
+          ..barCode = "1"
+          ..name = "Dsafa"
+          ..price = 2;
+      }))
+      ..isLoading = false;
   });
 }

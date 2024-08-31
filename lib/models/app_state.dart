@@ -13,6 +13,10 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   BuiltList<Product> get products;
 
+  BuiltMap<String, ReceptionRecord>? get receptions;
+
+  Reception? get ongoingReception;
+
   bool get isLoading;
 
   String? get errMessage;

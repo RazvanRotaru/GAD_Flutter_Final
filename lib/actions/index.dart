@@ -10,3 +10,5 @@ part 'index.freezed.dart';
 part 'reload_products.dart';
 part 'get_product_details.dart';
 part 'select_product_entry.dart';
+part 'get_product_by_barcode.dart';
+part 'create_reception.dart';

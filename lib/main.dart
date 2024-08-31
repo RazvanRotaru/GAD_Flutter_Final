@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_db/presentation/product_windget.dart';
+import 'package:movie_db/presentation/home_page.dart';
+import 'package:movie_db/presentation/product_card.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
@@ -9,8 +10,7 @@ import 'actions/index.dart';
 import 'data/product_api.dart';
 import 'epics/product_epic.dart';
 import 'models/index.dart';
-import 'presentation/details_page.dart';
-import 'presentation/home_page.dart';
+import 'presentation/new_reception_page.dart';
 import 'reducer/reducer.dart';
 
 void main() {
@@ -41,11 +41,11 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-        home: const ProductWidget(),
+        home: const HomePage(),
         theme: ThemeData.dark(),
         routes: <String, WidgetBuilder>{
-          '/movie_details': (BuildContext context) {
-            return const MovieDetailsPage();
+          '/new_reception': (BuildContext context) {
+            return const NewReceptionPage();
           },
         },
       ),
