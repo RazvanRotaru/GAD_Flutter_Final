@@ -52,7 +52,7 @@ AppState _getError(AppState state, ErrorAction action) {
 
 AppState _selectProductEntry(AppState state, SelectProductEntrySuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.selectedProductsEntryId = action.entry.id;
+    // TODO: Use index builder.selectedProductsEntryId = action.entry.id;
   });
 }
 

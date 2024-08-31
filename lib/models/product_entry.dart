@@ -13,8 +13,6 @@ abstract class ProductEntry implements Built<ProductEntry, ProductEntryBuilder> 
 
   num get quantity;
 
-  String get id;
-
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 
   static Serializer<ProductEntry> get serializer => _$productEntrySerializer;

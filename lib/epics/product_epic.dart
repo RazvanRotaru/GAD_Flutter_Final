@@ -67,7 +67,6 @@ class ProductEpics {
       return ProductEntry((ProductEntryBuilder b) {
         b
           ..quantity = num.tryParse(action.quantity)
-          ..id = UniqueKey().toString()
           ..product.price = num.tryParse(action.price)
           ..product.barCode = action.barcode
           ..product.name = action.name;
