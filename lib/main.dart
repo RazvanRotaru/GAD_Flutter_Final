@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:movie_db/presentation/add_entry_page.dart';
 import 'package:movie_db/presentation/home_page.dart';
-import 'package:movie_db/presentation/product_card.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
@@ -47,6 +46,9 @@ class MyApp extends StatelessWidget {
           '/new_reception': (BuildContext context) {
             return const NewReceptionPage();
           },
+          '/add_entry': (BuildContext context) {
+            return const AddEntryPage();
+          }
         },
       ),
     );

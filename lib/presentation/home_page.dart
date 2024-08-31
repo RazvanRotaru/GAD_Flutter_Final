@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
-import 'package:movie_db/container/error_container.dart';
 import 'package:movie_db/container/loading_container.dart';
-import 'package:movie_db/container/movies_container.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
 
@@ -62,7 +60,8 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Center(
           child: Column(
-            children: [OutlinedButton(onPressed: _createNewReception, child: const Text(CreateNewReception))],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[OutlinedButton(onPressed: _createNewReception, child: const Text(CreateNewReception))],
           ),
         ));
   }

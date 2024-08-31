@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_db/presentation/product_card.dart';
+import 'package:movie_db/presentation/product_widget.dart';
 
 import '../models/index.dart';
 
@@ -10,15 +10,19 @@ class ProductEntryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        ProductCard(product: entry.product),
-        const VerticalDivider(),
-        Text(
-          entry.quantity.toString(),
-          style: const TextStyle(fontSize: 20),
-        )
-      ],
+    return Center(
+      child: Card(
+        child: Row(
+          children: <Widget>[
+            ProductWidget(product: entry.product),
+            VerticalDivider(),
+            Text(
+              entry.quantity.toString(),
+              style: TextStyle(fontSize: 20),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

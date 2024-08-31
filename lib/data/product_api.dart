@@ -1,7 +1,4 @@
-import 'dart:typed_data';
-
 import 'package:excel/excel.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_db/models/index.dart';
 

@@ -14,6 +14,9 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, CreateReceptionActionSuccessful>(_createReceptionSuccessful),
   TypedReducer<AppState, ReloadProductsAction>(_clearProducts),
   TypedReducer<AppState, SelectProductEntrySuccessful>(_selectProductEntry),
+  
+  TypedReducer<AppState, CreateNewEntryActionSuccessful>(_appendEntryToReception),
+  
   TypedReducer<AppState, ErrorAction>(_getError),
 ]);
 
@@ -55,7 +58,9 @@ AppState _selectProductEntry(AppState state, SelectProductEntrySuccessful action
 
 AppState _createReception(AppState state, CreateReceptionAction action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.isLoading = true;
+    builder
+      ..ongoingReception = null
+      ..isLoading = true;
   });
 }
 
@@ -63,14 +68,44 @@ AppState _createReceptionSuccessful(AppState state, CreateReceptionActionSuccess
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..ongoingReception.id = action.receptionId
-      ..ongoingReception.entries.add(ProductEntry((b) {
-        b.quantity = 3;
-        b.id= "1000";
-        b.product
-          ..barCode = "1"
-          ..name = "Dsafa"
-          ..price = 2;
-      }))
+      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
+      //   b.quantity = 3;
+      //   b.id = '1000';
+      //   b.product
+      //     ..barCode = '1'
+      //     ..name = "Dsafa"
+      //     ..price = 2;
+      // }))
+      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
+      //   b.quantity = 3;
+      //   b.id = '1000';
+      //   b.product
+      //     ..barCode = '1'
+      //     ..name = "dfgagag"
+      //     ..price = 2;
+      // }))
+      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
+      //   b.quantity = 3;
+      //   b.id = '1000';
+      //   b.product
+      //     ..barCode = '1'
+      //     ..name = "Dsaewqrqwrqwwetfa"
+      //     ..price = 2;
+      // }))
+      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
+      //   b.quantity = 3;
+      //   b.id = '1000';
+      //   b.product
+      //     ..barCode = '1'
+      //     ..name = "WWWWWWWWWDsaxxxxxxzsfa"
+      //     ..price = 2;
+      // }))
       ..isLoading = false;
+  });
+}
+
+AppState _appendEntryToReception(AppState state, CreateNewEntryActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.ongoingReception.entries.add(action.entry);
   });
 }

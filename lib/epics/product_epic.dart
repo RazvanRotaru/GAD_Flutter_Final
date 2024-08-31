@@ -15,16 +15,19 @@ class ProductEpics {
     return combineEpics<AppState>(<Epic<AppState>>[
       TypedEpic<AppState, GetProductsActionStart>(_getProducts),
       TypedEpic<AppState, CreateReceptionActionStart>(_createReception),
+      TypedEpic<AppState, CreateNewEntryActionStart>(_createEntry)
       // TypedEpic<AppState, ReloadProducts>(_reloadMovies),
     ]);
   }
 
-  Stream<AppAction> _getProducts(Stream<GetProductsActionStart> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getProducts(Stream<GetProductsActionStart> actions,
+      EpicStore<AppState> store) {
     return actions
         .asyncMap((GetProductsActionStart action) => _productApi.getProducts())
-        .map((List<Product> products) => GetProductsAction.successful(products: products))
+        .map((List<Product> products) =>
+        GetProductsAction.successful(products: products))
         .onErrorReturnWith(
-      (Object error, StackTrace stackTrace) {
+          (Object error, StackTrace stackTrace) {
         return GetProductsAction.error(error: error, stackTrace: stackTrace);
       },
     );
@@ -44,14 +47,38 @@ class ProductEpics {
   //   );
   // }
 
-  Stream<AppAction> _createReception(Stream<CreateReceptionActionStart> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _createReception(Stream<CreateReceptionActionStart> actions,
+      EpicStore<AppState> store) {
     return actions
         .asyncMap((CreateReceptionActionStart action) => UniqueKey().toString())
         .map((String id) => CreateReceptionAction.successful(receptionId: id))
         .onErrorReturnWith(
-      (Object error, StackTrace stackTrace) {
-        return CreateReceptionAction.error(error: error, stackTrace: stackTrace);
+          (Object error, StackTrace stackTrace) {
+        return CreateReceptionAction.error(
+            error: error, stackTrace: stackTrace);
       },
     );
+  }
+
+  Stream<AppAction> _createEntry(Stream<CreateNewEntryActionStart> actions,
+      EpicStore<AppState> store) {
+    return actions
+        .asyncMap((CreateNewEntryActionStart action) {
+      return ProductEntry((ProductEntryBuilder b) {
+        b
+          ..quantity = num.tryParse(action.quantity)
+          ..id = UniqueKey().toString()
+          ..product.price = num.tryParse(action.price)
+          ..product.barCode = action.barcode
+          ..product.name = action.name;
+      });
+    })
+        .map((ProductEntry entry) =>
+        CreateNewEntryAction.successful(entry: entry))
+        .onErrorReturnWith(
+            (Object error, StackTrace stackTrace) {
+          return CreateNewEntryAction.error(
+              error: error, stackTrace: stackTrace);
+        });
   }
 }

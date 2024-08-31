@@ -2142,3 +2142,593 @@ abstract class CreateReceptionActionError
   _$$CreateReceptionActionErrorImplCopyWith<_$CreateReceptionActionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$CreateNewEntryAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String barcode, String quantity, String price)
+        $default, {
+    required TResult Function(ProductEntry entry) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult? Function(ProductEntry entry)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult Function(ProductEntry entry)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value) $default, {
+    required TResult Function(CreateNewEntryActionSuccessful value) successful,
+    required TResult Function(CreateNewEntryActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateNewEntryActionStart value)? $default, {
+    TResult? Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult? Function(CreateNewEntryActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value)? $default, {
+    TResult Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult Function(CreateNewEntryActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CreateNewEntryActionCopyWith<$Res> {
+  factory $CreateNewEntryActionCopyWith(CreateNewEntryAction value,
+          $Res Function(CreateNewEntryAction) then) =
+      _$CreateNewEntryActionCopyWithImpl<$Res, CreateNewEntryAction>;
+}
+
+/// @nodoc
+class _$CreateNewEntryActionCopyWithImpl<$Res,
+        $Val extends CreateNewEntryAction>
+    implements $CreateNewEntryActionCopyWith<$Res> {
+  _$CreateNewEntryActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$CreateNewEntryActionStartImplCopyWith<$Res> {
+  factory _$$CreateNewEntryActionStartImplCopyWith(
+          _$CreateNewEntryActionStartImpl value,
+          $Res Function(_$CreateNewEntryActionStartImpl) then) =
+      __$$CreateNewEntryActionStartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name, String barcode, String quantity, String price});
+}
+
+/// @nodoc
+class __$$CreateNewEntryActionStartImplCopyWithImpl<$Res>
+    extends _$CreateNewEntryActionCopyWithImpl<$Res,
+        _$CreateNewEntryActionStartImpl>
+    implements _$$CreateNewEntryActionStartImplCopyWith<$Res> {
+  __$$CreateNewEntryActionStartImplCopyWithImpl(
+      _$CreateNewEntryActionStartImpl _value,
+      $Res Function(_$CreateNewEntryActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? barcode = null,
+    Object? quantity = null,
+    Object? price = null,
+  }) {
+    return _then(_$CreateNewEntryActionStartImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == barcode
+          ? _value.barcode
+          : barcode // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateNewEntryActionStartImpl implements CreateNewEntryActionStart {
+  const _$CreateNewEntryActionStartImpl(
+      this.name, this.barcode, this.quantity, this.price);
+
+  @override
+  final String name;
+  @override
+  final String barcode;
+  @override
+  final String quantity;
+  @override
+  final String price;
+
+  @override
+  String toString() {
+    return 'CreateNewEntryAction(name: $name, barcode: $barcode, quantity: $quantity, price: $price)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNewEntryActionStartImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.barcode, barcode) || other.barcode == barcode) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.price, price) || other.price == price));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, barcode, quantity, price);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateNewEntryActionStartImplCopyWith<_$CreateNewEntryActionStartImpl>
+      get copyWith => __$$CreateNewEntryActionStartImplCopyWithImpl<
+          _$CreateNewEntryActionStartImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String barcode, String quantity, String price)
+        $default, {
+    required TResult Function(ProductEntry entry) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default(name, barcode, quantity, price);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult? Function(ProductEntry entry)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call(name, barcode, quantity, price);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult Function(ProductEntry entry)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(name, barcode, quantity, price);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value) $default, {
+    required TResult Function(CreateNewEntryActionSuccessful value) successful,
+    required TResult Function(CreateNewEntryActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateNewEntryActionStart value)? $default, {
+    TResult? Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult? Function(CreateNewEntryActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value)? $default, {
+    TResult Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult Function(CreateNewEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateNewEntryActionStart implements CreateNewEntryAction {
+  const factory CreateNewEntryActionStart(
+      final String name,
+      final String barcode,
+      final String quantity,
+      final String price) = _$CreateNewEntryActionStartImpl;
+
+  String get name;
+  String get barcode;
+  String get quantity;
+  String get price;
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateNewEntryActionStartImplCopyWith<_$CreateNewEntryActionStartImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateNewEntryActionSuccessfulImplCopyWith<$Res> {
+  factory _$$CreateNewEntryActionSuccessfulImplCopyWith(
+          _$CreateNewEntryActionSuccessfulImpl value,
+          $Res Function(_$CreateNewEntryActionSuccessfulImpl) then) =
+      __$$CreateNewEntryActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProductEntry entry});
+}
+
+/// @nodoc
+class __$$CreateNewEntryActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$CreateNewEntryActionCopyWithImpl<$Res,
+        _$CreateNewEntryActionSuccessfulImpl>
+    implements _$$CreateNewEntryActionSuccessfulImplCopyWith<$Res> {
+  __$$CreateNewEntryActionSuccessfulImplCopyWithImpl(
+      _$CreateNewEntryActionSuccessfulImpl _value,
+      $Res Function(_$CreateNewEntryActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+  }) {
+    return _then(_$CreateNewEntryActionSuccessfulImpl(
+      entry: null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as ProductEntry,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateNewEntryActionSuccessfulImpl
+    implements CreateNewEntryActionSuccessful {
+  const _$CreateNewEntryActionSuccessfulImpl({required this.entry});
+
+  @override
+  final ProductEntry entry;
+
+  @override
+  String toString() {
+    return 'CreateNewEntryAction.successful(entry: $entry)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNewEntryActionSuccessfulImpl &&
+            (identical(other.entry, entry) || other.entry == entry));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entry);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateNewEntryActionSuccessfulImplCopyWith<
+          _$CreateNewEntryActionSuccessfulImpl>
+      get copyWith => __$$CreateNewEntryActionSuccessfulImplCopyWithImpl<
+          _$CreateNewEntryActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String barcode, String quantity, String price)
+        $default, {
+    required TResult Function(ProductEntry entry) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult? Function(ProductEntry entry)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult Function(ProductEntry entry)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(entry);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value) $default, {
+    required TResult Function(CreateNewEntryActionSuccessful value) successful,
+    required TResult Function(CreateNewEntryActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateNewEntryActionStart value)? $default, {
+    TResult? Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult? Function(CreateNewEntryActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value)? $default, {
+    TResult Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult Function(CreateNewEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateNewEntryActionSuccessful implements CreateNewEntryAction {
+  const factory CreateNewEntryActionSuccessful(
+          {required final ProductEntry entry}) =
+      _$CreateNewEntryActionSuccessfulImpl;
+
+  ProductEntry get entry;
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateNewEntryActionSuccessfulImplCopyWith<
+          _$CreateNewEntryActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateNewEntryActionErrorImplCopyWith<$Res> {
+  factory _$$CreateNewEntryActionErrorImplCopyWith(
+          _$CreateNewEntryActionErrorImpl value,
+          $Res Function(_$CreateNewEntryActionErrorImpl) then) =
+      __$$CreateNewEntryActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$CreateNewEntryActionErrorImplCopyWithImpl<$Res>
+    extends _$CreateNewEntryActionCopyWithImpl<$Res,
+        _$CreateNewEntryActionErrorImpl>
+    implements _$$CreateNewEntryActionErrorImplCopyWith<$Res> {
+  __$$CreateNewEntryActionErrorImplCopyWithImpl(
+      _$CreateNewEntryActionErrorImpl _value,
+      $Res Function(_$CreateNewEntryActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$CreateNewEntryActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateNewEntryActionErrorImpl implements CreateNewEntryActionError {
+  const _$CreateNewEntryActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'CreateNewEntryAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateNewEntryActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateNewEntryActionErrorImplCopyWith<_$CreateNewEntryActionErrorImpl>
+      get copyWith => __$$CreateNewEntryActionErrorImplCopyWithImpl<
+          _$CreateNewEntryActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String barcode, String quantity, String price)
+        $default, {
+    required TResult Function(ProductEntry entry) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult? Function(ProductEntry entry)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String name, String barcode, String quantity, String price)?
+        $default, {
+    TResult Function(ProductEntry entry)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value) $default, {
+    required TResult Function(CreateNewEntryActionSuccessful value) successful,
+    required TResult Function(CreateNewEntryActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateNewEntryActionStart value)? $default, {
+    TResult? Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult? Function(CreateNewEntryActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateNewEntryActionStart value)? $default, {
+    TResult Function(CreateNewEntryActionSuccessful value)? successful,
+    TResult Function(CreateNewEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateNewEntryActionError
+    implements CreateNewEntryAction, ErrorAction {
+  const factory CreateNewEntryActionError(
+      {required final Object error,
+      required final StackTrace stackTrace}) = _$CreateNewEntryActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of CreateNewEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateNewEntryActionErrorImplCopyWith<_$CreateNewEntryActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
