@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/product_entry_container.dart';
@@ -44,18 +47,27 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
                 return ErrorWidget(errMessage);
               }
 
-              return ListView.builder(
-                  itemCount: entries.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      // TODO: onTap: () => _selectEntry(index),
-                      child: ProductEntryCard(entry: entries[index]),
-                    );
-                  });
+              return BarcodeKeyboardListener(
+                bufferDuration: const Duration(milliseconds: 200),
+                onBarcodeScanned: _onBarcodeScanned,
+                child: ListView.builder(
+                    itemCount: entries.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        // TODO: onTap: () => _selectEntry(index),
+                        child: ProductEntryCard(entry: entries[index]),
+                      );
+                    }),
+              );
             },
           );
         },
       );
     }));
+  }
+
+  void _onBarcodeScanned(String barcode) {
+    print("barcode scanned");
+    print(barcode);
   }
 }
