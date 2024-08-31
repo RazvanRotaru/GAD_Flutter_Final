@@ -8,3 +8,4 @@ import 'package:movie_db/models/serializers.dart';
 part 'index.g.dart';
 part 'app_state.dart';
 part 'movie.dart';
+part 'product.dart';

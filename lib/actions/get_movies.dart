@@ -8,7 +8,7 @@ class GetMoviesAction with _$GetMoviesAction implements AppAction {
     required List<Movie> movies,
   }) = GetMoviesActionSuccessful;
 
-  @Implements(ErrorAction)
+  @Implements.fromString('ErrorAction')
   const factory GetMoviesAction.error({
     required Object error,
     required StackTrace stackTrace,

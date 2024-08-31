@@ -10,3 +10,4 @@ part 'index.freezed.dart';
 part 'get_movies.dart';
 part 'select_movie.dart';
 part 'reload_movies.dart';
+part 'get_product_details.dart';

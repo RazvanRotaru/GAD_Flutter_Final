@@ -1,7 +1,9 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of actions;
+part of 'index.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,32 +12,7 @@ part of actions;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GetMoviesActionTearOff {
-  const _$GetMoviesActionTearOff();
-
-  GetMoviesActionStart call() {
-    return const GetMoviesActionStart();
-  }
-
-  GetMoviesActionSuccessful successful({required List<Movie> movies}) {
-    return GetMoviesActionSuccessful(
-      movies: movies,
-    );
-  }
-
-  GetMoviesActionError error({required Object error, required StackTrace stackTrace}) {
-    return GetMoviesActionError(
-      error: error,
-      stackTrace: stackTrace,
-    );
-  }
-}
-
-/// @nodoc
-const $GetMoviesAction = _$GetMoviesActionTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GetMoviesAction {
@@ -44,6 +21,13 @@ mixin _$GetMoviesAction {
     TResult Function() $default, {
     required TResult Function(List<Movie> movies) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Movie> movies)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +46,13 @@ mixin _$GetMoviesAction {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetMoviesActionStart value)? $default, {
+    TResult? Function(GetMoviesActionSuccessful value)? successful,
+    TResult? Function(GetMoviesActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(GetMoviesActionStart value)? $default, {
     TResult Function(GetMoviesActionSuccessful value)? successful,
@@ -73,39 +64,48 @@ mixin _$GetMoviesAction {
 
 /// @nodoc
 abstract class $GetMoviesActionCopyWith<$Res> {
-  factory $GetMoviesActionCopyWith(GetMoviesAction value, $Res Function(GetMoviesAction) then) =
-      _$GetMoviesActionCopyWithImpl<$Res>;
+  factory $GetMoviesActionCopyWith(
+          GetMoviesAction value, $Res Function(GetMoviesAction) then) =
+      _$GetMoviesActionCopyWithImpl<$Res, GetMoviesAction>;
 }
 
 /// @nodoc
-class _$GetMoviesActionCopyWithImpl<$Res> implements $GetMoviesActionCopyWith<$Res> {
+class _$GetMoviesActionCopyWithImpl<$Res, $Val extends GetMoviesAction>
+    implements $GetMoviesActionCopyWith<$Res> {
   _$GetMoviesActionCopyWithImpl(this._value, this._then);
 
-  final GetMoviesAction _value;
   // ignore: unused_field
-  final $Res Function(GetMoviesAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class $GetMoviesActionStartCopyWith<$Res> {
-  factory $GetMoviesActionStartCopyWith(GetMoviesActionStart value, $Res Function(GetMoviesActionStart) then) =
-      _$GetMoviesActionStartCopyWithImpl<$Res>;
+abstract class _$$GetMoviesActionStartImplCopyWith<$Res> {
+  factory _$$GetMoviesActionStartImplCopyWith(_$GetMoviesActionStartImpl value,
+          $Res Function(_$GetMoviesActionStartImpl) then) =
+      __$$GetMoviesActionStartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetMoviesActionStartCopyWithImpl<$Res> extends _$GetMoviesActionCopyWithImpl<$Res>
-    implements $GetMoviesActionStartCopyWith<$Res> {
-  _$GetMoviesActionStartCopyWithImpl(GetMoviesActionStart _value, $Res Function(GetMoviesActionStart) _then)
-      : super(_value, (v) => _then(v as GetMoviesActionStart));
+class __$$GetMoviesActionStartImplCopyWithImpl<$Res>
+    extends _$GetMoviesActionCopyWithImpl<$Res, _$GetMoviesActionStartImpl>
+    implements _$$GetMoviesActionStartImplCopyWith<$Res> {
+  __$$GetMoviesActionStartImplCopyWithImpl(_$GetMoviesActionStartImpl _value,
+      $Res Function(_$GetMoviesActionStartImpl) _then)
+      : super(_value, _then);
 
-  @override
-  GetMoviesActionStart get _value => super._value as GetMoviesActionStart;
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$GetMoviesActionStart implements GetMoviesActionStart {
-  const _$GetMoviesActionStart();
+class _$GetMoviesActionStartImpl implements GetMoviesActionStart {
+  const _$GetMoviesActionStartImpl();
 
   @override
   String toString() {
@@ -113,8 +113,10 @@ class _$GetMoviesActionStart implements GetMoviesActionStart {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetMoviesActionStart);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetMoviesActionStartImpl);
   }
 
   @override
@@ -128,6 +130,16 @@ class _$GetMoviesActionStart implements GetMoviesActionStart {
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Movie> movies)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
   }
 
   @override
@@ -156,6 +168,16 @@ class _$GetMoviesActionStart implements GetMoviesActionStart {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetMoviesActionStart value)? $default, {
+    TResult? Function(GetMoviesActionSuccessful value)? successful,
+    TResult? Function(GetMoviesActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(GetMoviesActionStart value)? $default, {
     TResult Function(GetMoviesActionSuccessful value)? successful,
@@ -170,34 +192,38 @@ class _$GetMoviesActionStart implements GetMoviesActionStart {
 }
 
 abstract class GetMoviesActionStart implements GetMoviesAction {
-  const factory GetMoviesActionStart() = _$GetMoviesActionStart;
+  const factory GetMoviesActionStart() = _$GetMoviesActionStartImpl;
 }
 
 /// @nodoc
-abstract class $GetMoviesActionSuccessfulCopyWith<$Res> {
-  factory $GetMoviesActionSuccessfulCopyWith(
-          GetMoviesActionSuccessful value, $Res Function(GetMoviesActionSuccessful) then) =
-      _$GetMoviesActionSuccessfulCopyWithImpl<$Res>;
+abstract class _$$GetMoviesActionSuccessfulImplCopyWith<$Res> {
+  factory _$$GetMoviesActionSuccessfulImplCopyWith(
+          _$GetMoviesActionSuccessfulImpl value,
+          $Res Function(_$GetMoviesActionSuccessfulImpl) then) =
+      __$$GetMoviesActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Movie> movies});
 }
 
 /// @nodoc
-class _$GetMoviesActionSuccessfulCopyWithImpl<$Res> extends _$GetMoviesActionCopyWithImpl<$Res>
-    implements $GetMoviesActionSuccessfulCopyWith<$Res> {
-  _$GetMoviesActionSuccessfulCopyWithImpl(
-      GetMoviesActionSuccessful _value, $Res Function(GetMoviesActionSuccessful) _then)
-      : super(_value, (v) => _then(v as GetMoviesActionSuccessful));
+class __$$GetMoviesActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$GetMoviesActionCopyWithImpl<$Res, _$GetMoviesActionSuccessfulImpl>
+    implements _$$GetMoviesActionSuccessfulImplCopyWith<$Res> {
+  __$$GetMoviesActionSuccessfulImplCopyWithImpl(
+      _$GetMoviesActionSuccessfulImpl _value,
+      $Res Function(_$GetMoviesActionSuccessfulImpl) _then)
+      : super(_value, _then);
 
-  @override
-  GetMoviesActionSuccessful get _value => super._value as GetMoviesActionSuccessful;
-
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? movies = freezed,
+    Object? movies = null,
   }) {
-    return _then(GetMoviesActionSuccessful(
-      movies: movies == freezed
-          ? _value.movies
+    return _then(_$GetMoviesActionSuccessfulImpl(
+      movies: null == movies
+          ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
     ));
@@ -206,11 +232,17 @@ class _$GetMoviesActionSuccessfulCopyWithImpl<$Res> extends _$GetMoviesActionCop
 
 /// @nodoc
 
-class _$GetMoviesActionSuccessful implements GetMoviesActionSuccessful {
-  const _$GetMoviesActionSuccessful({required this.movies});
+class _$GetMoviesActionSuccessfulImpl implements GetMoviesActionSuccessful {
+  const _$GetMoviesActionSuccessfulImpl({required final List<Movie> movies})
+      : _movies = movies;
 
+  final List<Movie> _movies;
   @override
-  final List<Movie> movies;
+  List<Movie> get movies {
+    if (_movies is EqualUnmodifiableListView) return _movies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_movies);
+  }
 
   @override
   String toString() {
@@ -218,19 +250,25 @@ class _$GetMoviesActionSuccessful implements GetMoviesActionSuccessful {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is GetMoviesActionSuccessful &&
-            (identical(other.movies, movies) || const DeepCollectionEquality().equals(other.movies, movies)));
+        (other.runtimeType == runtimeType &&
+            other is _$GetMoviesActionSuccessfulImpl &&
+            const DeepCollectionEquality().equals(other._movies, _movies));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(movies);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_movies));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  $GetMoviesActionSuccessfulCopyWith<GetMoviesActionSuccessful> get copyWith =>
-      _$GetMoviesActionSuccessfulCopyWithImpl<GetMoviesActionSuccessful>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GetMoviesActionSuccessfulImplCopyWith<_$GetMoviesActionSuccessfulImpl>
+      get copyWith => __$$GetMoviesActionSuccessfulImplCopyWithImpl<
+          _$GetMoviesActionSuccessfulImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -240,6 +278,16 @@ class _$GetMoviesActionSuccessful implements GetMoviesActionSuccessful {
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return successful(movies);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Movie> movies)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(movies);
   }
 
   @override
@@ -268,6 +316,16 @@ class _$GetMoviesActionSuccessful implements GetMoviesActionSuccessful {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetMoviesActionStart value)? $default, {
+    TResult? Function(GetMoviesActionSuccessful value)? successful,
+    TResult? Function(GetMoviesActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(GetMoviesActionStart value)? $default, {
     TResult Function(GetMoviesActionSuccessful value)? successful,
@@ -282,40 +340,46 @@ class _$GetMoviesActionSuccessful implements GetMoviesActionSuccessful {
 }
 
 abstract class GetMoviesActionSuccessful implements GetMoviesAction {
-  const factory GetMoviesActionSuccessful({required List<Movie> movies}) = _$GetMoviesActionSuccessful;
+  const factory GetMoviesActionSuccessful({required final List<Movie> movies}) =
+      _$GetMoviesActionSuccessfulImpl;
 
-  List<Movie> get movies => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $GetMoviesActionSuccessfulCopyWith<GetMoviesActionSuccessful> get copyWith => throw _privateConstructorUsedError;
+  List<Movie> get movies;
+
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetMoviesActionSuccessfulImplCopyWith<_$GetMoviesActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetMoviesActionErrorCopyWith<$Res> {
-  factory $GetMoviesActionErrorCopyWith(GetMoviesActionError value, $Res Function(GetMoviesActionError) then) =
-      _$GetMoviesActionErrorCopyWithImpl<$Res>;
+abstract class _$$GetMoviesActionErrorImplCopyWith<$Res> {
+  factory _$$GetMoviesActionErrorImplCopyWith(_$GetMoviesActionErrorImpl value,
+          $Res Function(_$GetMoviesActionErrorImpl) then) =
+      __$$GetMoviesActionErrorImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({Object error, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$GetMoviesActionErrorCopyWithImpl<$Res> extends _$GetMoviesActionCopyWithImpl<$Res>
-    implements $GetMoviesActionErrorCopyWith<$Res> {
-  _$GetMoviesActionErrorCopyWithImpl(GetMoviesActionError _value, $Res Function(GetMoviesActionError) _then)
-      : super(_value, (v) => _then(v as GetMoviesActionError));
+class __$$GetMoviesActionErrorImplCopyWithImpl<$Res>
+    extends _$GetMoviesActionCopyWithImpl<$Res, _$GetMoviesActionErrorImpl>
+    implements _$$GetMoviesActionErrorImplCopyWith<$Res> {
+  __$$GetMoviesActionErrorImplCopyWithImpl(_$GetMoviesActionErrorImpl _value,
+      $Res Function(_$GetMoviesActionErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  GetMoviesActionError get _value => super._value as GetMoviesActionError;
-
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
-    Object? stackTrace = freezed,
+    Object? error = null,
+    Object? stackTrace = null,
   }) {
-    return _then(GetMoviesActionError(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+    return _then(_$GetMoviesActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace,
@@ -325,9 +389,9 @@ class _$GetMoviesActionErrorCopyWithImpl<$Res> extends _$GetMoviesActionCopyWith
 
 /// @nodoc
 
-@Implements(ErrorAction)
-class _$GetMoviesActionError implements GetMoviesActionError {
-  const _$GetMoviesActionError({required this.error, required this.stackTrace});
+class _$GetMoviesActionErrorImpl implements GetMoviesActionError {
+  const _$GetMoviesActionErrorImpl(
+      {required this.error, required this.stackTrace});
 
   @override
   final Object error;
@@ -340,24 +404,28 @@ class _$GetMoviesActionError implements GetMoviesActionError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is GetMoviesActionError &&
-            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$GetMoviesActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
-                const DeepCollectionEquality().equals(other.stackTrace, stackTrace)));
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(error) ^
-      const DeepCollectionEquality().hash(stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  $GetMoviesActionErrorCopyWith<GetMoviesActionError> get copyWith =>
-      _$GetMoviesActionErrorCopyWithImpl<GetMoviesActionError>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GetMoviesActionErrorImplCopyWith<_$GetMoviesActionErrorImpl>
+      get copyWith =>
+          __$$GetMoviesActionErrorImplCopyWithImpl<_$GetMoviesActionErrorImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -367,6 +435,16 @@ class _$GetMoviesActionError implements GetMoviesActionError {
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Movie> movies)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
   }
 
   @override
@@ -395,6 +473,16 @@ class _$GetMoviesActionError implements GetMoviesActionError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetMoviesActionStart value)? $default, {
+    TResult? Function(GetMoviesActionSuccessful value)? successful,
+    TResult? Function(GetMoviesActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(GetMoviesActionStart value)? $default, {
     TResult Function(GetMoviesActionSuccessful value)? successful,
@@ -409,87 +497,94 @@ class _$GetMoviesActionError implements GetMoviesActionError {
 }
 
 abstract class GetMoviesActionError implements GetMoviesAction, ErrorAction {
-  const factory GetMoviesActionError({required Object error, required StackTrace stackTrace}) = _$GetMoviesActionError;
+  const factory GetMoviesActionError(
+      {required final Object error,
+      required final StackTrace stackTrace}) = _$GetMoviesActionErrorImpl;
 
-  Object get error => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $GetMoviesActionErrorCopyWith<GetMoviesActionError> get copyWith => throw _privateConstructorUsedError;
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of GetMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetMoviesActionErrorImplCopyWith<_$GetMoviesActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$SelectMovieActionTearOff {
-  const _$SelectMovieActionTearOff();
-
-  SelectMovieAction$ call({required int id}) {
-    return SelectMovieAction$(
-      id: id,
-    );
-  }
-}
-
-/// @nodoc
-const $SelectMovieAction = _$SelectMovieActionTearOff();
 
 /// @nodoc
 mixin _$SelectMovieAction {
   int get id => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $SelectMovieActionCopyWith<SelectMovieAction> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of SelectMovieAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SelectMovieActionCopyWith<SelectMovieAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SelectMovieActionCopyWith<$Res> {
-  factory $SelectMovieActionCopyWith(SelectMovieAction value, $Res Function(SelectMovieAction) then) =
-      _$SelectMovieActionCopyWithImpl<$Res>;
+  factory $SelectMovieActionCopyWith(
+          SelectMovieAction value, $Res Function(SelectMovieAction) then) =
+      _$SelectMovieActionCopyWithImpl<$Res, SelectMovieAction>;
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class _$SelectMovieActionCopyWithImpl<$Res> implements $SelectMovieActionCopyWith<$Res> {
+class _$SelectMovieActionCopyWithImpl<$Res, $Val extends SelectMovieAction>
+    implements $SelectMovieActionCopyWith<$Res> {
   _$SelectMovieActionCopyWithImpl(this._value, this._then);
 
-  final SelectMovieAction _value;
   // ignore: unused_field
-  final $Res Function(SelectMovieAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of SelectMovieAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class $SelectMovieAction$CopyWith<$Res> implements $SelectMovieActionCopyWith<$Res> {
-  factory $SelectMovieAction$CopyWith(SelectMovieAction$ value, $Res Function(SelectMovieAction$) then) =
-      _$SelectMovieAction$CopyWithImpl<$Res>;
+abstract class _$$SelectMovieAction$ImplCopyWith<$Res>
+    implements $SelectMovieActionCopyWith<$Res> {
+  factory _$$SelectMovieAction$ImplCopyWith(_$SelectMovieAction$Impl value,
+          $Res Function(_$SelectMovieAction$Impl) then) =
+      __$$SelectMovieAction$ImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class _$SelectMovieAction$CopyWithImpl<$Res> extends _$SelectMovieActionCopyWithImpl<$Res>
-    implements $SelectMovieAction$CopyWith<$Res> {
-  _$SelectMovieAction$CopyWithImpl(SelectMovieAction$ _value, $Res Function(SelectMovieAction$) _then)
-      : super(_value, (v) => _then(v as SelectMovieAction$));
+class __$$SelectMovieAction$ImplCopyWithImpl<$Res>
+    extends _$SelectMovieActionCopyWithImpl<$Res, _$SelectMovieAction$Impl>
+    implements _$$SelectMovieAction$ImplCopyWith<$Res> {
+  __$$SelectMovieAction$ImplCopyWithImpl(_$SelectMovieAction$Impl _value,
+      $Res Function(_$SelectMovieAction$Impl) _then)
+      : super(_value, _then);
 
-  @override
-  SelectMovieAction$ get _value => super._value as SelectMovieAction$;
-
+  /// Create a copy of SelectMovieAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
-    return _then(SelectMovieAction$(
-      id: id == freezed
+    return _then(_$SelectMovieAction$Impl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -499,8 +594,8 @@ class _$SelectMovieAction$CopyWithImpl<$Res> extends _$SelectMovieActionCopyWith
 
 /// @nodoc
 
-class _$SelectMovieAction$ implements SelectMovieAction$ {
-  const _$SelectMovieAction$({required this.id});
+class _$SelectMovieAction$Impl implements SelectMovieAction$ {
+  const _$SelectMovieAction$Impl({required this.id});
 
   @override
   final int id;
@@ -511,81 +606,88 @@ class _$SelectMovieAction$ implements SelectMovieAction$ {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other is SelectMovieAction$ &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _$SelectMovieAction$Impl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+  int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectMovieAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  $SelectMovieAction$CopyWith<SelectMovieAction$> get copyWith =>
-      _$SelectMovieAction$CopyWithImpl<SelectMovieAction$>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SelectMovieAction$ImplCopyWith<_$SelectMovieAction$Impl> get copyWith =>
+      __$$SelectMovieAction$ImplCopyWithImpl<_$SelectMovieAction$Impl>(
+          this, _$identity);
 }
 
 abstract class SelectMovieAction$ implements SelectMovieAction {
-  const factory SelectMovieAction$({required int id}) = _$SelectMovieAction$;
+  const factory SelectMovieAction$({required final int id}) =
+      _$SelectMovieAction$Impl;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
+
+  /// Create a copy of SelectMovieAction
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  $SelectMovieAction$CopyWith<SelectMovieAction$> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectMovieAction$ImplCopyWith<_$SelectMovieAction$Impl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ReloadMoviesActionTearOff {
-  const _$ReloadMoviesActionTearOff();
-
-  ReloadMoviesAction$ call() {
-    return ReloadMoviesAction$();
-  }
-}
-
-/// @nodoc
-const $ReloadMoviesAction = _$ReloadMoviesActionTearOff();
 
 /// @nodoc
 mixin _$ReloadMoviesAction {}
 
 /// @nodoc
 abstract class $ReloadMoviesActionCopyWith<$Res> {
-  factory $ReloadMoviesActionCopyWith(ReloadMoviesAction value, $Res Function(ReloadMoviesAction) then) =
-      _$ReloadMoviesActionCopyWithImpl<$Res>;
+  factory $ReloadMoviesActionCopyWith(
+          ReloadMoviesAction value, $Res Function(ReloadMoviesAction) then) =
+      _$ReloadMoviesActionCopyWithImpl<$Res, ReloadMoviesAction>;
 }
 
 /// @nodoc
-class _$ReloadMoviesActionCopyWithImpl<$Res> implements $ReloadMoviesActionCopyWith<$Res> {
+class _$ReloadMoviesActionCopyWithImpl<$Res, $Val extends ReloadMoviesAction>
+    implements $ReloadMoviesActionCopyWith<$Res> {
   _$ReloadMoviesActionCopyWithImpl(this._value, this._then);
 
-  final ReloadMoviesAction _value;
   // ignore: unused_field
-  final $Res Function(ReloadMoviesAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ReloadMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class $ReloadMoviesAction$CopyWith<$Res> {
-  factory $ReloadMoviesAction$CopyWith(ReloadMoviesAction$ value, $Res Function(ReloadMoviesAction$) then) =
-      _$ReloadMoviesAction$CopyWithImpl<$Res>;
+abstract class _$$ReloadMoviesAction$ImplCopyWith<$Res> {
+  factory _$$ReloadMoviesAction$ImplCopyWith(_$ReloadMoviesAction$Impl value,
+          $Res Function(_$ReloadMoviesAction$Impl) then) =
+      __$$ReloadMoviesAction$ImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReloadMoviesAction$CopyWithImpl<$Res> extends _$ReloadMoviesActionCopyWithImpl<$Res>
-    implements $ReloadMoviesAction$CopyWith<$Res> {
-  _$ReloadMoviesAction$CopyWithImpl(ReloadMoviesAction$ _value, $Res Function(ReloadMoviesAction$) _then)
-      : super(_value, (v) => _then(v as ReloadMoviesAction$));
+class __$$ReloadMoviesAction$ImplCopyWithImpl<$Res>
+    extends _$ReloadMoviesActionCopyWithImpl<$Res, _$ReloadMoviesAction$Impl>
+    implements _$$ReloadMoviesAction$ImplCopyWith<$Res> {
+  __$$ReloadMoviesAction$ImplCopyWithImpl(_$ReloadMoviesAction$Impl _value,
+      $Res Function(_$ReloadMoviesAction$Impl) _then)
+      : super(_value, _then);
 
-  @override
-  ReloadMoviesAction$ get _value => super._value as ReloadMoviesAction$;
+  /// Create a copy of ReloadMoviesAction
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ReloadMoviesAction$ extends ReloadMoviesAction$ {
-  _$ReloadMoviesAction$() : super._();
+class _$ReloadMoviesAction$Impl extends ReloadMoviesAction$ {
+  _$ReloadMoviesAction$Impl() : super._();
 
   @override
   String toString() {
@@ -593,8 +695,10 @@ class _$ReloadMoviesAction$ extends ReloadMoviesAction$ {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ReloadMoviesAction$);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReloadMoviesAction$Impl);
   }
 
   @override
@@ -602,6 +706,510 @@ class _$ReloadMoviesAction$ extends ReloadMoviesAction$ {
 }
 
 abstract class ReloadMoviesAction$ extends ReloadMoviesAction {
-  factory ReloadMoviesAction$() = _$ReloadMoviesAction$;
+  factory ReloadMoviesAction$() = _$ReloadMoviesAction$Impl;
   ReloadMoviesAction$._() : super._();
+}
+
+/// @nodoc
+mixin _$GetProductsAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value) $default, {
+    required TResult Function(GetProductsActionSuccessful value) successful,
+    required TResult Function(GetProductsActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetProductsActionStart value)? $default, {
+    TResult? Function(GetProductsActionSuccessful value)? successful,
+    TResult? Function(GetProductsActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value)? $default, {
+    TResult Function(GetProductsActionSuccessful value)? successful,
+    TResult Function(GetProductsActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetProductsActionCopyWith<$Res> {
+  factory $GetProductsActionCopyWith(
+          GetProductsAction value, $Res Function(GetProductsAction) then) =
+      _$GetProductsActionCopyWithImpl<$Res, GetProductsAction>;
+}
+
+/// @nodoc
+class _$GetProductsActionCopyWithImpl<$Res, $Val extends GetProductsAction>
+    implements $GetProductsActionCopyWith<$Res> {
+  _$GetProductsActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$GetProductsActionStartImplCopyWith<$Res> {
+  factory _$$GetProductsActionStartImplCopyWith(
+          _$GetProductsActionStartImpl value,
+          $Res Function(_$GetProductsActionStartImpl) then) =
+      __$$GetProductsActionStartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetProductsActionStartImplCopyWithImpl<$Res>
+    extends _$GetProductsActionCopyWithImpl<$Res, _$GetProductsActionStartImpl>
+    implements _$$GetProductsActionStartImplCopyWith<$Res> {
+  __$$GetProductsActionStartImplCopyWithImpl(
+      _$GetProductsActionStartImpl _value,
+      $Res Function(_$GetProductsActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetProductsActionStartImpl implements GetProductsActionStart {
+  const _$GetProductsActionStartImpl();
+
+  @override
+  String toString() {
+    return 'GetProductsAction()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductsActionStartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value) $default, {
+    required TResult Function(GetProductsActionSuccessful value) successful,
+    required TResult Function(GetProductsActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetProductsActionStart value)? $default, {
+    TResult? Function(GetProductsActionSuccessful value)? successful,
+    TResult? Function(GetProductsActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value)? $default, {
+    TResult Function(GetProductsActionSuccessful value)? successful,
+    TResult Function(GetProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetProductsActionStart implements GetProductsAction {
+  const factory GetProductsActionStart() = _$GetProductsActionStartImpl;
+}
+
+/// @nodoc
+abstract class _$$GetProductsActionSuccessfulImplCopyWith<$Res> {
+  factory _$$GetProductsActionSuccessfulImplCopyWith(
+          _$GetProductsActionSuccessfulImpl value,
+          $Res Function(_$GetProductsActionSuccessfulImpl) then) =
+      __$$GetProductsActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products});
+}
+
+/// @nodoc
+class __$$GetProductsActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$GetProductsActionCopyWithImpl<$Res,
+        _$GetProductsActionSuccessfulImpl>
+    implements _$$GetProductsActionSuccessfulImplCopyWith<$Res> {
+  __$$GetProductsActionSuccessfulImplCopyWithImpl(
+      _$GetProductsActionSuccessfulImpl _value,
+      $Res Function(_$GetProductsActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+  }) {
+    return _then(_$GetProductsActionSuccessfulImpl(
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetProductsActionSuccessfulImpl implements GetProductsActionSuccessful {
+  const _$GetProductsActionSuccessfulImpl(
+      {required final List<Product> products})
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  String toString() {
+    return 'GetProductsAction.successful(products: $products)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductsActionSuccessfulImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProductsActionSuccessfulImplCopyWith<_$GetProductsActionSuccessfulImpl>
+      get copyWith => __$$GetProductsActionSuccessfulImplCopyWithImpl<
+          _$GetProductsActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(products);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value) $default, {
+    required TResult Function(GetProductsActionSuccessful value) successful,
+    required TResult Function(GetProductsActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetProductsActionStart value)? $default, {
+    TResult? Function(GetProductsActionSuccessful value)? successful,
+    TResult? Function(GetProductsActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value)? $default, {
+    TResult Function(GetProductsActionSuccessful value)? successful,
+    TResult Function(GetProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetProductsActionSuccessful implements GetProductsAction {
+  const factory GetProductsActionSuccessful(
+          {required final List<Product> products}) =
+      _$GetProductsActionSuccessfulImpl;
+
+  List<Product> get products;
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetProductsActionSuccessfulImplCopyWith<_$GetProductsActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetProductsActionErrorImplCopyWith<$Res> {
+  factory _$$GetProductsActionErrorImplCopyWith(
+          _$GetProductsActionErrorImpl value,
+          $Res Function(_$GetProductsActionErrorImpl) then) =
+      __$$GetProductsActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$GetProductsActionErrorImplCopyWithImpl<$Res>
+    extends _$GetProductsActionCopyWithImpl<$Res, _$GetProductsActionErrorImpl>
+    implements _$$GetProductsActionErrorImplCopyWith<$Res> {
+  __$$GetProductsActionErrorImplCopyWithImpl(
+      _$GetProductsActionErrorImpl _value,
+      $Res Function(_$GetProductsActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$GetProductsActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetProductsActionErrorImpl implements GetProductsActionError {
+  const _$GetProductsActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'GetProductsAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductsActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProductsActionErrorImplCopyWith<_$GetProductsActionErrorImpl>
+      get copyWith => __$$GetProductsActionErrorImplCopyWithImpl<
+          _$GetProductsActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value) $default, {
+    required TResult Function(GetProductsActionSuccessful value) successful,
+    required TResult Function(GetProductsActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(GetProductsActionStart value)? $default, {
+    TResult? Function(GetProductsActionSuccessful value)? successful,
+    TResult? Function(GetProductsActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(GetProductsActionStart value)? $default, {
+    TResult Function(GetProductsActionSuccessful value)? successful,
+    TResult Function(GetProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetProductsActionError
+    implements GetProductsAction, ErrorAction {
+  const factory GetProductsActionError(
+      {required final Object error,
+      required final StackTrace stackTrace}) = _$GetProductsActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of GetProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetProductsActionErrorImplCopyWith<_$GetProductsActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

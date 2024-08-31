@@ -1,6 +1,6 @@
-class AppAction {}
+abstract class AppAction {}
 
-class ErrorAction implements AppAction {
+abstract class ErrorAction implements AppAction {
   ErrorAction(this.error, this.stackTrace);
 
   final Object error;

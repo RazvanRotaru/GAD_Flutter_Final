@@ -1,29 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:movie_db/presentation/product_windget.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
 import 'actions/index.dart';
 import 'data/movie_api.dart';
+import 'data/product_api.dart';
 import 'epics/movie_epic.dart';
+import 'epics/product_epic.dart';
 import 'models/index.dart';
 import 'presentation/details_page.dart';
 import 'presentation/home_page.dart';
 import 'reducer/reducer.dart';
 
 void main() {
-  final MovieEpics movieEpic = MovieEpics(api: MovieApi());
+  // final MovieEpics movieEpic = MovieEpics(api: MovieApi());
+  const String uri = r'D:\.data\dummy_data';
+  final ProductEpics productEpics = ProductEpics(api: ProductApi(uri: uri));
 
   final Store<AppState> store = Store<AppState>(
     reducer,
     initialState: AppState(),
     middleware: <Middleware<AppState>>[
-      EpicMiddleware<AppState>(movieEpic.epics),
+      EpicMiddleware<AppState>(productEpics.epics),
     ],
   );
 
-  store.dispatch(const GetMoviesAction());
+  store.dispatch(const GetProductsAction());
   runApp(MyApp(
     store: store,
   ));
@@ -39,7 +44,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-        home: const HomePage(),
+        home: const ProductWidget(),
         theme: ThemeData.dark(),
         routes: <String, WidgetBuilder>{
           '/movie_details': (BuildContext context) {
