@@ -14,7 +14,9 @@ import 'reducer/reducer.dart';
 
 void main() {
   const String uri = 'data/dummy_data.xlsx';
-  final ProductEpics productEpics = ProductEpics(api: ProductApi(uri: uri));
+  const String deploymentId = 'AKfycbzYTo5Z99CnWgvwxi_OyC4Uq6-hWlBetaHJuUhEKc16X97AJATt9-Ty_jOPKURLo2TF';
+  const String dbSheetID = '1y3A4fjTF4U7m-KboDTxdF8JqCyCpSvGNYnauCs8a2cc';
+  final ProductEpics productEpics = ProductEpics(api: ProductApi(uri: uri, deploymentId: deploymentId, sheetId: dbSheetID));
 
   final Store<AppState> store = Store<AppState>(
     reducer,

@@ -231,13 +231,20 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'bar_code',
-      serializers.serialize(object.barCode,
-          specifiedType: const FullType(String)),
-      'price',
-      serializers.serialize(object.price, specifiedType: const FullType(num)),
     ];
-
+    Object? value;
+    value = object.barcode;
+    if (value != null) {
+      result
+        ..add('bar_code')
+        ..add(serializers.serialize(value, specifiedType: const FullType(num)));
+    }
+    value = object.price;
+    if (value != null) {
+      result
+        ..add('price')
+        ..add(serializers.serialize(value, specifiedType: const FullType(num)));
+    }
     return result;
   }
 
@@ -257,12 +264,12 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
               specifiedType: const FullType(String))! as String;
           break;
         case 'bar_code':
-          result.barCode = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+          result.barcode = serializers.deserialize(value,
+              specifiedType: const FullType(num)) as num?;
           break;
         case 'price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(num))! as num;
+              specifiedType: const FullType(num)) as num?;
           break;
       }
     }
@@ -335,6 +342,15 @@ class _$ReceptionSerializer implements StructuredSerializer<Reception> {
               const FullType(BuiltList, const [const FullType(ProductEntry)])),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'creatorName',
+      serializers.serialize(object.creatorName,
+          specifiedType: const FullType(String)),
+      'linkedInvoice',
+      serializers.serialize(object.linkedInvoice,
+          specifiedType: const FullType(String)),
+      'company',
+      serializers.serialize(object.company,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -359,6 +375,18 @@ class _$ReceptionSerializer implements StructuredSerializer<Reception> {
           break;
         case 'id':
           result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'creatorName':
+          result.creatorName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'linkedInvoice':
+          result.linkedInvoice = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'company':
+          result.company = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -425,6 +453,8 @@ class _$AppState extends AppState {
   @override
   final Reception? ongoingReception;
   @override
+  final ProductEntry? newProductEntry;
+  @override
   final bool isLoading;
   @override
   final String? errMessage;
@@ -438,6 +468,7 @@ class _$AppState extends AppState {
       {required this.products,
       this.receptions,
       this.ongoingReception,
+      this.newProductEntry,
       required this.isLoading,
       this.errMessage,
       this.selectedProductsEntryId})
@@ -460,6 +491,7 @@ class _$AppState extends AppState {
         products == other.products &&
         receptions == other.receptions &&
         ongoingReception == other.ongoingReception &&
+        newProductEntry == other.newProductEntry &&
         isLoading == other.isLoading &&
         errMessage == other.errMessage &&
         selectedProductsEntryId == other.selectedProductsEntryId;
@@ -471,6 +503,7 @@ class _$AppState extends AppState {
     _$hash = $jc(_$hash, products.hashCode);
     _$hash = $jc(_$hash, receptions.hashCode);
     _$hash = $jc(_$hash, ongoingReception.hashCode);
+    _$hash = $jc(_$hash, newProductEntry.hashCode);
     _$hash = $jc(_$hash, isLoading.hashCode);
     _$hash = $jc(_$hash, errMessage.hashCode);
     _$hash = $jc(_$hash, selectedProductsEntryId.hashCode);
@@ -484,6 +517,7 @@ class _$AppState extends AppState {
           ..add('products', products)
           ..add('receptions', receptions)
           ..add('ongoingReception', ongoingReception)
+          ..add('newProductEntry', newProductEntry)
           ..add('isLoading', isLoading)
           ..add('errMessage', errMessage)
           ..add('selectedProductsEntryId', selectedProductsEntryId))
@@ -511,6 +545,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set ongoingReception(ReceptionBuilder? ongoingReception) =>
       _$this._ongoingReception = ongoingReception;
 
+  ProductEntryBuilder? _newProductEntry;
+  ProductEntryBuilder get newProductEntry =>
+      _$this._newProductEntry ??= new ProductEntryBuilder();
+  set newProductEntry(ProductEntryBuilder? newProductEntry) =>
+      _$this._newProductEntry = newProductEntry;
+
   bool? _isLoading;
   bool? get isLoading => _$this._isLoading;
   set isLoading(bool? isLoading) => _$this._isLoading = isLoading;
@@ -532,6 +572,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _products = $v.products.toBuilder();
       _receptions = $v.receptions?.toBuilder();
       _ongoingReception = $v.ongoingReception?.toBuilder();
+      _newProductEntry = $v.newProductEntry?.toBuilder();
       _isLoading = $v.isLoading;
       _errMessage = $v.errMessage;
       _selectedProductsEntryId = $v.selectedProductsEntryId;
@@ -562,6 +603,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               products: products.build(),
               receptions: _receptions?.build(),
               ongoingReception: _ongoingReception?.build(),
+              newProductEntry: _newProductEntry?.build(),
               isLoading: BuiltValueNullFieldError.checkNotNull(
                   isLoading, r'AppState', 'isLoading'),
               errMessage: errMessage,
@@ -575,6 +617,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         _receptions?.build();
         _$failedField = 'ongoingReception';
         _ongoingReception?.build();
+        _$failedField = 'newProductEntry';
+        _newProductEntry?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'AppState', _$failedField, e.toString());
@@ -1031,18 +1075,15 @@ class _$Product extends Product {
   @override
   final String name;
   @override
-  final String barCode;
+  final num? barcode;
   @override
-  final num price;
+  final num? price;
 
   factory _$Product([void Function(ProductBuilder)? updates]) =>
       (new ProductBuilder()..update(updates))._build();
 
-  _$Product._({required this.name, required this.barCode, required this.price})
-      : super._() {
+  _$Product._({required this.name, this.barcode, this.price}) : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'Product', 'name');
-    BuiltValueNullFieldError.checkNotNull(barCode, r'Product', 'barCode');
-    BuiltValueNullFieldError.checkNotNull(price, r'Product', 'price');
   }
 
   @override
@@ -1057,7 +1098,7 @@ class _$Product extends Product {
     if (identical(other, this)) return true;
     return other is Product &&
         name == other.name &&
-        barCode == other.barCode &&
+        barcode == other.barcode &&
         price == other.price;
   }
 
@@ -1065,7 +1106,7 @@ class _$Product extends Product {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, barCode.hashCode);
+    _$hash = $jc(_$hash, barcode.hashCode);
     _$hash = $jc(_$hash, price.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1075,7 +1116,7 @@ class _$Product extends Product {
   String toString() {
     return (newBuiltValueToStringHelper(r'Product')
           ..add('name', name)
-          ..add('barCode', barCode)
+          ..add('barcode', barcode)
           ..add('price', price))
         .toString();
   }
@@ -1088,9 +1129,9 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _barCode;
-  String? get barCode => _$this._barCode;
-  set barCode(String? barCode) => _$this._barCode = barCode;
+  num? _barcode;
+  num? get barcode => _$this._barcode;
+  set barcode(num? barcode) => _$this._barcode = barcode;
 
   num? _price;
   num? get price => _$this._price;
@@ -1102,7 +1143,7 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
-      _barCode = $v.barCode;
+      _barcode = $v.barcode;
       _price = $v.price;
       _$v = null;
     }
@@ -1128,10 +1169,8 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
         new _$Product._(
             name:
                 BuiltValueNullFieldError.checkNotNull(name, r'Product', 'name'),
-            barCode: BuiltValueNullFieldError.checkNotNull(
-                barCode, r'Product', 'barCode'),
-            price: BuiltValueNullFieldError.checkNotNull(
-                price, r'Product', 'price'));
+            barcode: barcode,
+            price: price);
     replace(_$result);
     return _$result;
   }
@@ -1253,13 +1292,30 @@ class _$Reception extends Reception {
   final BuiltList<ProductEntry> entries;
   @override
   final String id;
+  @override
+  final String creatorName;
+  @override
+  final String linkedInvoice;
+  @override
+  final String company;
 
   factory _$Reception([void Function(ReceptionBuilder)? updates]) =>
       (new ReceptionBuilder()..update(updates))._build();
 
-  _$Reception._({required this.entries, required this.id}) : super._() {
+  _$Reception._(
+      {required this.entries,
+      required this.id,
+      required this.creatorName,
+      required this.linkedInvoice,
+      required this.company})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(entries, r'Reception', 'entries');
     BuiltValueNullFieldError.checkNotNull(id, r'Reception', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        creatorName, r'Reception', 'creatorName');
+    BuiltValueNullFieldError.checkNotNull(
+        linkedInvoice, r'Reception', 'linkedInvoice');
+    BuiltValueNullFieldError.checkNotNull(company, r'Reception', 'company');
   }
 
   @override
@@ -1272,7 +1328,12 @@ class _$Reception extends Reception {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Reception && entries == other.entries && id == other.id;
+    return other is Reception &&
+        entries == other.entries &&
+        id == other.id &&
+        creatorName == other.creatorName &&
+        linkedInvoice == other.linkedInvoice &&
+        company == other.company;
   }
 
   @override
@@ -1280,6 +1341,9 @@ class _$Reception extends Reception {
     var _$hash = 0;
     _$hash = $jc(_$hash, entries.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, creatorName.hashCode);
+    _$hash = $jc(_$hash, linkedInvoice.hashCode);
+    _$hash = $jc(_$hash, company.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1288,7 +1352,10 @@ class _$Reception extends Reception {
   String toString() {
     return (newBuiltValueToStringHelper(r'Reception')
           ..add('entries', entries)
-          ..add('id', id))
+          ..add('id', id)
+          ..add('creatorName', creatorName)
+          ..add('linkedInvoice', linkedInvoice)
+          ..add('company', company))
         .toString();
   }
 }
@@ -1305,6 +1372,19 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
+  String? _creatorName;
+  String? get creatorName => _$this._creatorName;
+  set creatorName(String? creatorName) => _$this._creatorName = creatorName;
+
+  String? _linkedInvoice;
+  String? get linkedInvoice => _$this._linkedInvoice;
+  set linkedInvoice(String? linkedInvoice) =>
+      _$this._linkedInvoice = linkedInvoice;
+
+  String? _company;
+  String? get company => _$this._company;
+  set company(String? company) => _$this._company = company;
+
   ReceptionBuilder();
 
   ReceptionBuilder get _$this {
@@ -1312,6 +1392,9 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
     if ($v != null) {
       _entries = $v.entries.toBuilder();
       _id = $v.id;
+      _creatorName = $v.creatorName;
+      _linkedInvoice = $v.linkedInvoice;
+      _company = $v.company;
       _$v = null;
     }
     return this;
@@ -1337,8 +1420,13 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
       _$result = _$v ??
           new _$Reception._(
               entries: entries.build(),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'Reception', 'id'));
+              id: BuiltValueNullFieldError.checkNotNull(id, r'Reception', 'id'),
+              creatorName: BuiltValueNullFieldError.checkNotNull(
+                  creatorName, r'Reception', 'creatorName'),
+              linkedInvoice: BuiltValueNullFieldError.checkNotNull(
+                  linkedInvoice, r'Reception', 'linkedInvoice'),
+              company: BuiltValueNullFieldError.checkNotNull(
+                  company, r'Reception', 'company'));
     } catch (_) {
       late String _$failedField;
       try {

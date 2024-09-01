@@ -52,6 +52,9 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: LoadingContainer(
           builder: (BuildContext context, bool isLoading) {
+            if (isLoading) {
+              return const Placeholder();
+            }
             return FloatingActionButton(
               onPressed: _refresh,
               child: const Icon(Icons.refresh),

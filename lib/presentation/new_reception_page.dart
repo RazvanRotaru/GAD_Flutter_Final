@@ -1,15 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/product_entry_container.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:movie_db/presentation/product_entry_card.dart';
-import 'package:redux/redux.dart';
 
-import '../container/error_container.dart';
 
 class NewReceptionPage extends StatefulWidget {
   const NewReceptionPage({super.key});
@@ -34,19 +29,14 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
           );
         },
       ),
-      body: ProductEntryContainer(builder: (BuildContext context, List<ProductEntry> entries) {
-      return LoadingContainer(
-        builder: (BuildContext context, bool isLoading) {
-          if (isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          // return ;
-          return ErrorContainer(
-            builder: (BuildContext context, String? errMessage) {
-              if (errMessage != null) {
-                return ErrorWidget(errMessage);
+      body: ProductEntryContainer(
+        builder: (BuildContext context, List<ProductEntry> entries) {
+          return LoadingContainer(
+            builder: (BuildContext context, bool isLoading) {
+              if (isLoading) {
+                return const Center(child: CircularProgressIndicator());
               }
-
+              // return ;
               return BarcodeKeyboardListener(
                 bufferDuration: const Duration(milliseconds: 200),
                 onBarcodeScanned: _onBarcodeScanned,
@@ -62,8 +52,8 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
             },
           );
         },
-      );
-    }));
+      ),
+    );
   }
 
   void _onBarcodeScanned(String barcode) {

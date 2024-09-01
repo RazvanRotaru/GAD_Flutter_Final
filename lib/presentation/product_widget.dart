@@ -21,7 +21,7 @@ class ProductWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(
-                  product.barCode,
+                  product.barcode.toString(),
                   style: const TextStyle(color: Colors.grey, fontSize: 8),
                 ),
                 const VerticalDivider(),

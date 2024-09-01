@@ -15,7 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ReloadProductsAction {}
+mixin _$ReloadProductsAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value) $default, {
+    required TResult Function(ReloadProductsActionSuccessful value) successful,
+    required TResult Function(ReloadProductsActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ReloadProductsActionStart value)? $default, {
+    TResult? Function(ReloadProductsActionSuccessful value)? successful,
+    TResult? Function(ReloadProductsActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value)? $default, {
+    TResult Function(ReloadProductsActionSuccessful value)? successful,
+    TResult Function(ReloadProductsActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $ReloadProductsActionCopyWith<$Res> {
@@ -40,20 +85,21 @@ class _$ReloadProductsActionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ReloadProductsAction$ImplCopyWith<$Res> {
-  factory _$$ReloadProductsAction$ImplCopyWith(
-          _$ReloadProductsAction$Impl value,
-          $Res Function(_$ReloadProductsAction$Impl) then) =
-      __$$ReloadProductsAction$ImplCopyWithImpl<$Res>;
+abstract class _$$ReloadProductsActionStartImplCopyWith<$Res> {
+  factory _$$ReloadProductsActionStartImplCopyWith(
+          _$ReloadProductsActionStartImpl value,
+          $Res Function(_$ReloadProductsActionStartImpl) then) =
+      __$$ReloadProductsActionStartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ReloadProductsAction$ImplCopyWithImpl<$Res>
+class __$$ReloadProductsActionStartImplCopyWithImpl<$Res>
     extends _$ReloadProductsActionCopyWithImpl<$Res,
-        _$ReloadProductsAction$Impl>
-    implements _$$ReloadProductsAction$ImplCopyWith<$Res> {
-  __$$ReloadProductsAction$ImplCopyWithImpl(_$ReloadProductsAction$Impl _value,
-      $Res Function(_$ReloadProductsAction$Impl) _then)
+        _$ReloadProductsActionStartImpl>
+    implements _$$ReloadProductsActionStartImplCopyWith<$Res> {
+  __$$ReloadProductsActionStartImplCopyWithImpl(
+      _$ReloadProductsActionStartImpl _value,
+      $Res Function(_$ReloadProductsActionStartImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ReloadProductsAction
@@ -62,8 +108,8 @@ class __$$ReloadProductsAction$ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReloadProductsAction$Impl extends ReloadProductsAction$ {
-  _$ReloadProductsAction$Impl() : super._();
+class _$ReloadProductsActionStartImpl implements ReloadProductsActionStart {
+  const _$ReloadProductsActionStartImpl();
 
   @override
   String toString() {
@@ -74,16 +120,408 @@ class _$ReloadProductsAction$Impl extends ReloadProductsAction$ {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReloadProductsAction$Impl);
+            other is _$ReloadProductsActionStartImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value) $default, {
+    required TResult Function(ReloadProductsActionSuccessful value) successful,
+    required TResult Function(ReloadProductsActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ReloadProductsActionStart value)? $default, {
+    TResult? Function(ReloadProductsActionSuccessful value)? successful,
+    TResult? Function(ReloadProductsActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value)? $default, {
+    TResult Function(ReloadProductsActionSuccessful value)? successful,
+    TResult Function(ReloadProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class ReloadProductsAction$ extends ReloadProductsAction {
-  factory ReloadProductsAction$() = _$ReloadProductsAction$Impl;
-  ReloadProductsAction$._() : super._();
+abstract class ReloadProductsActionStart implements ReloadProductsAction {
+  const factory ReloadProductsActionStart() = _$ReloadProductsActionStartImpl;
+}
+
+/// @nodoc
+abstract class _$$ReloadProductsActionSuccessfulImplCopyWith<$Res> {
+  factory _$$ReloadProductsActionSuccessfulImplCopyWith(
+          _$ReloadProductsActionSuccessfulImpl value,
+          $Res Function(_$ReloadProductsActionSuccessfulImpl) then) =
+      __$$ReloadProductsActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products});
+}
+
+/// @nodoc
+class __$$ReloadProductsActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$ReloadProductsActionCopyWithImpl<$Res,
+        _$ReloadProductsActionSuccessfulImpl>
+    implements _$$ReloadProductsActionSuccessfulImplCopyWith<$Res> {
+  __$$ReloadProductsActionSuccessfulImplCopyWithImpl(
+      _$ReloadProductsActionSuccessfulImpl _value,
+      $Res Function(_$ReloadProductsActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+  }) {
+    return _then(_$ReloadProductsActionSuccessfulImpl(
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReloadProductsActionSuccessfulImpl
+    implements ReloadProductsActionSuccessful {
+  const _$ReloadProductsActionSuccessfulImpl(
+      {required final List<Product> products})
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  String toString() {
+    return 'ReloadProductsAction.successful(products: $products)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReloadProductsActionSuccessfulImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReloadProductsActionSuccessfulImplCopyWith<
+          _$ReloadProductsActionSuccessfulImpl>
+      get copyWith => __$$ReloadProductsActionSuccessfulImplCopyWithImpl<
+          _$ReloadProductsActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(products);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value) $default, {
+    required TResult Function(ReloadProductsActionSuccessful value) successful,
+    required TResult Function(ReloadProductsActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ReloadProductsActionStart value)? $default, {
+    TResult? Function(ReloadProductsActionSuccessful value)? successful,
+    TResult? Function(ReloadProductsActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value)? $default, {
+    TResult Function(ReloadProductsActionSuccessful value)? successful,
+    TResult Function(ReloadProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReloadProductsActionSuccessful implements ReloadProductsAction {
+  const factory ReloadProductsActionSuccessful(
+          {required final List<Product> products}) =
+      _$ReloadProductsActionSuccessfulImpl;
+
+  List<Product> get products;
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReloadProductsActionSuccessfulImplCopyWith<
+          _$ReloadProductsActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReloadProductsActionErrorImplCopyWith<$Res> {
+  factory _$$ReloadProductsActionErrorImplCopyWith(
+          _$ReloadProductsActionErrorImpl value,
+          $Res Function(_$ReloadProductsActionErrorImpl) then) =
+      __$$ReloadProductsActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$ReloadProductsActionErrorImplCopyWithImpl<$Res>
+    extends _$ReloadProductsActionCopyWithImpl<$Res,
+        _$ReloadProductsActionErrorImpl>
+    implements _$$ReloadProductsActionErrorImplCopyWith<$Res> {
+  __$$ReloadProductsActionErrorImplCopyWithImpl(
+      _$ReloadProductsActionErrorImpl _value,
+      $Res Function(_$ReloadProductsActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$ReloadProductsActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReloadProductsActionErrorImpl implements ReloadProductsActionError {
+  const _$ReloadProductsActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'ReloadProductsAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReloadProductsActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReloadProductsActionErrorImplCopyWith<_$ReloadProductsActionErrorImpl>
+      get copyWith => __$$ReloadProductsActionErrorImplCopyWithImpl<
+          _$ReloadProductsActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value) $default, {
+    required TResult Function(ReloadProductsActionSuccessful value) successful,
+    required TResult Function(ReloadProductsActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ReloadProductsActionStart value)? $default, {
+    TResult? Function(ReloadProductsActionSuccessful value)? successful,
+    TResult? Function(ReloadProductsActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ReloadProductsActionStart value)? $default, {
+    TResult Function(ReloadProductsActionSuccessful value)? successful,
+    TResult Function(ReloadProductsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReloadProductsActionError
+    implements ReloadProductsAction, ErrorAction {
+  const factory ReloadProductsActionError(
+      {required final Object error,
+      required final StackTrace stackTrace}) = _$ReloadProductsActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of ReloadProductsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReloadProductsActionErrorImplCopyWith<_$ReloadProductsActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1094,22 +1532,22 @@ abstract class SelectProductEntryError
 mixin _$GetProductByBarcodeAction {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String barcode) $default, {
-    required TResult Function(Product? product) successful,
+    TResult Function(num barcode) $default, {
+    required TResult Function(Product product) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String barcode)? $default, {
-    TResult? Function(Product? product)? successful,
+    TResult? Function(num barcode)? $default, {
+    TResult? Function(Product product)? successful,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String barcode)? $default, {
-    TResult Function(Product? product)? successful,
+    TResult Function(num barcode)? $default, {
+    TResult Function(Product product)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) =>
@@ -1168,7 +1606,7 @@ abstract class _$$GetProductByBarcodeActionStartImplCopyWith<$Res> {
           $Res Function(_$GetProductByBarcodeActionStartImpl) then) =
       __$$GetProductByBarcodeActionStartImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String barcode});
+  $Res call({num barcode});
 }
 
 /// @nodoc
@@ -1192,7 +1630,7 @@ class __$$GetProductByBarcodeActionStartImplCopyWithImpl<$Res>
       null == barcode
           ? _value.barcode
           : barcode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as num,
     ));
   }
 }
@@ -1204,7 +1642,7 @@ class _$GetProductByBarcodeActionStartImpl
   const _$GetProductByBarcodeActionStartImpl(this.barcode);
 
   @override
-  final String barcode;
+  final num barcode;
 
   @override
   String toString() {
@@ -1235,8 +1673,8 @@ class _$GetProductByBarcodeActionStartImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String barcode) $default, {
-    required TResult Function(Product? product) successful,
+    TResult Function(num barcode) $default, {
+    required TResult Function(Product product) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return $default(barcode);
@@ -1245,8 +1683,8 @@ class _$GetProductByBarcodeActionStartImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String barcode)? $default, {
-    TResult? Function(Product? product)? successful,
+    TResult? Function(num barcode)? $default, {
+    TResult? Function(Product product)? successful,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) {
     return $default?.call(barcode);
@@ -1255,8 +1693,8 @@ class _$GetProductByBarcodeActionStartImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String barcode)? $default, {
-    TResult Function(Product? product)? successful,
+    TResult Function(num barcode)? $default, {
+    TResult Function(Product product)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -1304,10 +1742,10 @@ class _$GetProductByBarcodeActionStartImpl
 
 abstract class GetProductByBarcodeActionStart
     implements GetProductByBarcodeAction {
-  const factory GetProductByBarcodeActionStart(final String barcode) =
+  const factory GetProductByBarcodeActionStart(final num barcode) =
       _$GetProductByBarcodeActionStartImpl;
 
-  String get barcode;
+  num get barcode;
 
   /// Create a copy of GetProductByBarcodeAction
   /// with the given fields replaced by the non-null parameter values.
@@ -1324,7 +1762,7 @@ abstract class _$$GetProductByBarcodeActionSuccessfulImplCopyWith<$Res> {
           $Res Function(_$GetProductByBarcodeActionSuccessfulImpl) then) =
       __$$GetProductByBarcodeActionSuccessfulImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product? product});
+  $Res call({Product product});
 }
 
 /// @nodoc
@@ -1342,13 +1780,13 @@ class __$$GetProductByBarcodeActionSuccessfulImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? product = freezed,
+    Object? product = null,
   }) {
     return _then(_$GetProductByBarcodeActionSuccessfulImpl(
-      product: freezed == product
+      product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+              as Product,
     ));
   }
 }
@@ -1357,10 +1795,10 @@ class __$$GetProductByBarcodeActionSuccessfulImplCopyWithImpl<$Res>
 
 class _$GetProductByBarcodeActionSuccessfulImpl
     implements GetProductByBarcodeActionSuccessful {
-  const _$GetProductByBarcodeActionSuccessfulImpl({this.product});
+  const _$GetProductByBarcodeActionSuccessfulImpl({required this.product});
 
   @override
-  final Product? product;
+  final Product product;
 
   @override
   String toString() {
@@ -1391,8 +1829,8 @@ class _$GetProductByBarcodeActionSuccessfulImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String barcode) $default, {
-    required TResult Function(Product? product) successful,
+    TResult Function(num barcode) $default, {
+    required TResult Function(Product product) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return successful(product);
@@ -1401,8 +1839,8 @@ class _$GetProductByBarcodeActionSuccessfulImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String barcode)? $default, {
-    TResult? Function(Product? product)? successful,
+    TResult? Function(num barcode)? $default, {
+    TResult? Function(Product product)? successful,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) {
     return successful?.call(product);
@@ -1411,8 +1849,8 @@ class _$GetProductByBarcodeActionSuccessfulImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String barcode)? $default, {
-    TResult Function(Product? product)? successful,
+    TResult Function(num barcode)? $default, {
+    TResult Function(Product product)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -1460,10 +1898,11 @@ class _$GetProductByBarcodeActionSuccessfulImpl
 
 abstract class GetProductByBarcodeActionSuccessful
     implements GetProductByBarcodeAction {
-  const factory GetProductByBarcodeActionSuccessful({final Product? product}) =
+  const factory GetProductByBarcodeActionSuccessful(
+          {required final Product product}) =
       _$GetProductByBarcodeActionSuccessfulImpl;
 
-  Product? get product;
+  Product get product;
 
   /// Create a copy of GetProductByBarcodeAction
   /// with the given fields replaced by the non-null parameter values.
@@ -1555,8 +1994,8 @@ class _$GetProductByBarcodeActionErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String barcode) $default, {
-    required TResult Function(Product? product) successful,
+    TResult Function(num barcode) $default, {
+    required TResult Function(Product product) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return error(this.error, stackTrace);
@@ -1565,8 +2004,8 @@ class _$GetProductByBarcodeActionErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String barcode)? $default, {
-    TResult? Function(Product? product)? successful,
+    TResult? Function(num barcode)? $default, {
+    TResult? Function(Product product)? successful,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) {
     return error?.call(this.error, stackTrace);
@@ -1575,8 +2014,8 @@ class _$GetProductByBarcodeActionErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String barcode)? $default, {
-    TResult Function(Product? product)? successful,
+    TResult Function(num barcode)? $default, {
+    TResult Function(Product product)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -2140,6 +2579,519 @@ abstract class CreateReceptionActionError
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateReceptionActionErrorImplCopyWith<_$CreateReceptionActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$FinalizeReceptionAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Reception reception) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Reception reception)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Reception reception)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value) $default, {
+    required TResult Function(FinalizeReceptionActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeReceptionActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeReceptionActionStart value)? $default, {
+    TResult? Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult? Function(FinalizeReceptionActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value)? $default, {
+    TResult Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult Function(FinalizeReceptionActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FinalizeReceptionActionCopyWith<$Res> {
+  factory $FinalizeReceptionActionCopyWith(FinalizeReceptionAction value,
+          $Res Function(FinalizeReceptionAction) then) =
+      _$FinalizeReceptionActionCopyWithImpl<$Res, FinalizeReceptionAction>;
+}
+
+/// @nodoc
+class _$FinalizeReceptionActionCopyWithImpl<$Res,
+        $Val extends FinalizeReceptionAction>
+    implements $FinalizeReceptionActionCopyWith<$Res> {
+  _$FinalizeReceptionActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$FinalizeReceptionActionStartImplCopyWith<$Res> {
+  factory _$$FinalizeReceptionActionStartImplCopyWith(
+          _$FinalizeReceptionActionStartImpl value,
+          $Res Function(_$FinalizeReceptionActionStartImpl) then) =
+      __$$FinalizeReceptionActionStartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FinalizeReceptionActionStartImplCopyWithImpl<$Res>
+    extends _$FinalizeReceptionActionCopyWithImpl<$Res,
+        _$FinalizeReceptionActionStartImpl>
+    implements _$$FinalizeReceptionActionStartImplCopyWith<$Res> {
+  __$$FinalizeReceptionActionStartImplCopyWithImpl(
+      _$FinalizeReceptionActionStartImpl _value,
+      $Res Function(_$FinalizeReceptionActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FinalizeReceptionActionStartImpl
+    implements FinalizeReceptionActionStart {
+  const _$FinalizeReceptionActionStartImpl();
+
+  @override
+  String toString() {
+    return 'FinalizeReceptionAction()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeReceptionActionStartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Reception reception) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Reception reception)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Reception reception)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value) $default, {
+    required TResult Function(FinalizeReceptionActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeReceptionActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeReceptionActionStart value)? $default, {
+    TResult? Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult? Function(FinalizeReceptionActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value)? $default, {
+    TResult Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult Function(FinalizeReceptionActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeReceptionActionStart implements FinalizeReceptionAction {
+  const factory FinalizeReceptionActionStart() =
+      _$FinalizeReceptionActionStartImpl;
+}
+
+/// @nodoc
+abstract class _$$FinalizeReceptionActionSuccessfulImplCopyWith<$Res> {
+  factory _$$FinalizeReceptionActionSuccessfulImplCopyWith(
+          _$FinalizeReceptionActionSuccessfulImpl value,
+          $Res Function(_$FinalizeReceptionActionSuccessfulImpl) then) =
+      __$$FinalizeReceptionActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Reception reception});
+}
+
+/// @nodoc
+class __$$FinalizeReceptionActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$FinalizeReceptionActionCopyWithImpl<$Res,
+        _$FinalizeReceptionActionSuccessfulImpl>
+    implements _$$FinalizeReceptionActionSuccessfulImplCopyWith<$Res> {
+  __$$FinalizeReceptionActionSuccessfulImplCopyWithImpl(
+      _$FinalizeReceptionActionSuccessfulImpl _value,
+      $Res Function(_$FinalizeReceptionActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reception = null,
+  }) {
+    return _then(_$FinalizeReceptionActionSuccessfulImpl(
+      reception: null == reception
+          ? _value.reception
+          : reception // ignore: cast_nullable_to_non_nullable
+              as Reception,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FinalizeReceptionActionSuccessfulImpl
+    implements FinalizeReceptionActionSuccessful {
+  const _$FinalizeReceptionActionSuccessfulImpl({required this.reception});
+
+  @override
+  final Reception reception;
+
+  @override
+  String toString() {
+    return 'FinalizeReceptionAction.successful(reception: $reception)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeReceptionActionSuccessfulImpl &&
+            (identical(other.reception, reception) ||
+                other.reception == reception));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reception);
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinalizeReceptionActionSuccessfulImplCopyWith<
+          _$FinalizeReceptionActionSuccessfulImpl>
+      get copyWith => __$$FinalizeReceptionActionSuccessfulImplCopyWithImpl<
+          _$FinalizeReceptionActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Reception reception) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(reception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Reception reception)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(reception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Reception reception)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(reception);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value) $default, {
+    required TResult Function(FinalizeReceptionActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeReceptionActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeReceptionActionStart value)? $default, {
+    TResult? Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult? Function(FinalizeReceptionActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value)? $default, {
+    TResult Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult Function(FinalizeReceptionActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeReceptionActionSuccessful
+    implements FinalizeReceptionAction {
+  const factory FinalizeReceptionActionSuccessful(
+          {required final Reception reception}) =
+      _$FinalizeReceptionActionSuccessfulImpl;
+
+  Reception get reception;
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinalizeReceptionActionSuccessfulImplCopyWith<
+          _$FinalizeReceptionActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FinalizeReceptionActionErrorImplCopyWith<$Res> {
+  factory _$$FinalizeReceptionActionErrorImplCopyWith(
+          _$FinalizeReceptionActionErrorImpl value,
+          $Res Function(_$FinalizeReceptionActionErrorImpl) then) =
+      __$$FinalizeReceptionActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$FinalizeReceptionActionErrorImplCopyWithImpl<$Res>
+    extends _$FinalizeReceptionActionCopyWithImpl<$Res,
+        _$FinalizeReceptionActionErrorImpl>
+    implements _$$FinalizeReceptionActionErrorImplCopyWith<$Res> {
+  __$$FinalizeReceptionActionErrorImplCopyWithImpl(
+      _$FinalizeReceptionActionErrorImpl _value,
+      $Res Function(_$FinalizeReceptionActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$FinalizeReceptionActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FinalizeReceptionActionErrorImpl
+    implements FinalizeReceptionActionError {
+  const _$FinalizeReceptionActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'FinalizeReceptionAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeReceptionActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinalizeReceptionActionErrorImplCopyWith<
+          _$FinalizeReceptionActionErrorImpl>
+      get copyWith => __$$FinalizeReceptionActionErrorImplCopyWithImpl<
+          _$FinalizeReceptionActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Reception reception) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Reception reception)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Reception reception)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value) $default, {
+    required TResult Function(FinalizeReceptionActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeReceptionActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeReceptionActionStart value)? $default, {
+    TResult? Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult? Function(FinalizeReceptionActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeReceptionActionStart value)? $default, {
+    TResult Function(FinalizeReceptionActionSuccessful value)? successful,
+    TResult Function(FinalizeReceptionActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeReceptionActionError
+    implements FinalizeReceptionAction, ErrorAction {
+  const factory FinalizeReceptionActionError(
+          {required final Object error, required final StackTrace stackTrace}) =
+      _$FinalizeReceptionActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of FinalizeReceptionAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinalizeReceptionActionErrorImplCopyWith<
+          _$FinalizeReceptionActionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

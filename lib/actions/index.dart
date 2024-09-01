@@ -12,4 +12,5 @@ part 'get_product_details.dart';
 part 'select_product_entry.dart';
 part 'get_product_by_barcode.dart';
 part 'create_reception.dart';
+part 'finalize_reception.dart';
 part 'create_new_entry.dart';

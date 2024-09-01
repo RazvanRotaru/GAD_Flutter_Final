@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:movie_db/container/loading_container.dart';
 
 class InputBoxWidget extends StatelessWidget {
   const InputBoxWidget(
       {super.key,
       required this.title,
       required this.hint,
-      required this.onSubmitted,
-      required this.validate});
+      required this.validate,
+      this.controller,
+      this.keyboardType,
+      this.onSubmit});
 
   final String title;
   final String hint;
-  final Function(String) onSubmitted;
   final Function(String?) validate;
+  final Function(String)? onSubmit;
+
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +36,20 @@ class InputBoxWidget extends StatelessWidget {
                 style: const TextStyle(fontSize: 10, color: Colors.green),
               ),
             ),
-            SizedBox(
-              width: 250,
-              child: TextFormField(
-                validator: (String? s) => validate(s),
-                onChanged: onSubmitted,
-              ),
-            )
+            LoadingContainer(builder: (BuildContext context, bool isLoading) {
+              if (isLoading) {
+                return const CircularProgressIndicator();
+              }
+              return SizedBox(
+                width: 250,
+                child: TextFormField(
+                  keyboardType: keyboardType,
+                  controller: controller,
+                  validator: (String? s) => validate(s),
+                  onFieldSubmitted: onSubmit,
+                ),
+              );
+            })
           ],
         ),
       ),

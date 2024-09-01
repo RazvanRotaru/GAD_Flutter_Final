@@ -17,9 +17,9 @@ abstract class Product implements Built<Product, ProductBuilder> {
   String get name;
 
   @BuiltValueField(wireName: 'bar_code')
-  String get barCode;
+  num? get barcode;
 
-  num get price;
+  num? get price;
 
   // BuiltList<String> get categories;
   //

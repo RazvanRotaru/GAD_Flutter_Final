@@ -2,9 +2,15 @@ part of actions;
 
 @freezed
 class ReloadProductsAction with _$ReloadProductsAction implements AppAction {
-  factory ReloadProductsAction() = ReloadProductsAction$;
+  const factory ReloadProductsAction() = ReloadProductsActionStart;
 
-  ReloadProductsAction._();
+  const factory ReloadProductsAction.successful({
+    required List<Product> products,
+  }) = ReloadProductsActionSuccessful;
 
-  int get randomPage => Random().nextInt(100) + 1;
+  @Implements.fromString('ErrorAction')
+  const factory ReloadProductsAction.error({
+    required Object error,
+    required StackTrace stackTrace,
+  }) = ReloadProductsActionError;
 }

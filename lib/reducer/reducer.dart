@@ -10,19 +10,28 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   },
   TypedReducer<AppState, GetProductsAction>(_getProducts),
   TypedReducer<AppState, GetProductsActionSuccessful>(_getProductsSuccessful),
+  TypedReducer<AppState, GetProductByBarcodeAction>(_getProductByBarcode),
+  TypedReducer<AppState, GetProductByBarcodeActionSuccessful>(_getProductByBarcodeSuccessful),
   TypedReducer<AppState, CreateReceptionAction>(_createReception),
   TypedReducer<AppState, CreateReceptionActionSuccessful>(_createReceptionSuccessful),
   TypedReducer<AppState, ReloadProductsAction>(_clearProducts),
+  TypedReducer<AppState, ReloadProductsActionSuccessful>(_replaceProducts),
   TypedReducer<AppState, SelectProductEntrySuccessful>(_selectProductEntry),
-  
   TypedReducer<AppState, CreateNewEntryActionSuccessful>(_appendEntryToReception),
-  
   TypedReducer<AppState, ErrorAction>(_getError),
 ]);
 
 AppState _getProducts(AppState state, GetProductsAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder.isLoading = true;
+  });
+}
+
+AppState _getProductsSuccessful(AppState state, GetProductsActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..products.addAll(action.products)
+      ..isLoading = false;
   });
 }
 
@@ -34,10 +43,27 @@ AppState _clearProducts(AppState state, ReloadProductsAction action) {
   });
 }
 
-AppState _getProductsSuccessful(AppState state, GetProductsActionSuccessful action) {
+AppState _replaceProducts(AppState state, ReloadProductsActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..products.addAll(action.products)
+      ..isLoading = false;
+  });
+}
+
+AppState _getProductByBarcode(AppState state, GetProductByBarcodeAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.isLoading = true;
+  });
+}
+
+AppState _getProductByBarcodeSuccessful(AppState state, GetProductByBarcodeActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..newProductEntry.quantity = state.newProductEntry?.quantity ?? 0
+      ..newProductEntry.product.name = action.product.name
+      ..newProductEntry.product.barcode = action.product.barcode
+      ..newProductEntry.product.price = action.product.price
       ..isLoading = false;
   });
 }
@@ -68,44 +94,17 @@ AppState _createReceptionSuccessful(AppState state, CreateReceptionActionSuccess
   return state.rebuild((AppStateBuilder builder) {
     builder
       ..ongoingReception.id = action.receptionId
-      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
-      //   b.quantity = 3;
-      //   b.id = '1000';
-      //   b.product
-      //     ..barCode = '1'
-      //     ..name = "Dsafa"
-      //     ..price = 2;
-      // }))
-      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
-      //   b.quantity = 3;
-      //   b.id = '1000';
-      //   b.product
-      //     ..barCode = '1'
-      //     ..name = "dfgagag"
-      //     ..price = 2;
-      // }))
-      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
-      //   b.quantity = 3;
-      //   b.id = '1000';
-      //   b.product
-      //     ..barCode = '1'
-      //     ..name = "Dsaewqrqwrqwwetfa"
-      //     ..price = 2;
-      // }))
-      // ..ongoingReception.entries.add(ProductEntry((ProductEntryBuilder b) {
-      //   b.quantity = 3;
-      //   b.id = '1000';
-      //   b.product
-      //     ..barCode = '1'
-      //     ..name = "WWWWWWWWWDsaxxxxxxzsfa"
-      //     ..price = 2;
-      // }))
+      ..ongoingReception.company = "TODO"
+      ..ongoingReception.creatorName = "TODO"
+      ..ongoingReception.linkedInvoice = "TODO"
       ..isLoading = false;
   });
 }
 
 AppState _appendEntryToReception(AppState state, CreateNewEntryActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.ongoingReception.entries.add(action.entry);
+    builder
+      ..newProductEntry = null
+      ..ongoingReception.entries.add(action.entry);
   });
 }

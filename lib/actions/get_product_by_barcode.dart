@@ -2,10 +2,10 @@ part of actions;
 
 @freezed
 class GetProductByBarcodeAction with _$GetProductByBarcodeAction implements AppAction {
-  const factory GetProductByBarcodeAction(String barcode) = GetProductByBarcodeActionStart;
+  const factory GetProductByBarcodeAction(num barcode) = GetProductByBarcodeActionStart;
 
   const factory GetProductByBarcodeAction.successful({
-    Product? product,
+    required Product product,
   }) = GetProductByBarcodeActionSuccessful;
 
   @Implements.fromString('ErrorAction')
