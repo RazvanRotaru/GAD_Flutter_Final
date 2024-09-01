@@ -39,6 +39,11 @@ dependencies:
   excel: ^4.0.6
   file_picker: ^8.1.2
   flutter_barcode_listener: ^0.1.4
+  path_provider: ^2.1.4
+  csv: ^6.0.0
+  date_format: ^2.0.9
+  intl: ^0.19.0
+  flutter_email_sender: ^6.0.3
 
 dev_dependencies:
   flutter_test:
