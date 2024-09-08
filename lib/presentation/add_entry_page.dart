@@ -3,6 +3,8 @@ import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/presentation/input_box_widget.dart';
+import 'package:movie_db/presentation/submittable_form.dart';
+import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
 
 import '../container/new_entry_container.dart';
@@ -16,7 +18,6 @@ class AddEntryPage extends StatefulWidget {
 }
 
 class _AddEntryPageState extends State<AddEntryPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _barcodeController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
@@ -24,77 +25,69 @@ class _AddEntryPageState extends State<AddEntryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BarcodeKeyboardListener(
-      onBarcodeScanned: (String barcode) {
-        setState(() {
-          _barcodeController.text = barcode;
-        });
-      },
-      child: NewEntryContainer(
-        builder: (BuildContext context, ProductEntry? entry) {
-          if (entry != null) {
-            _barcodeController.text = entry.product.barcode.toString();
-            _nameController.text = entry.product.name.toString();
-            _priceController.text = entry.product.price.toString();
+    return Scaffold(
+      body: BarcodeKeyboardListener(
+        onBarcodeScanned: (String barcode) {
+          if (barcode.isEmpty) {
+            return;
           }
 
-          return SizedBox(
-            width: 100,
-            child: Center(
+          setState(() {
+            _barcodeController.text = barcode;
+          });
+        },
+        child: NewEntryContainer(
+          builder: (BuildContext context, ProductEntry? entry) {
+            if (entry != null) {
+              _barcodeController.text = entry.product.barcode.toString();
+              _nameController.text = entry.product.name.toString();
+              _priceController.text = entry.product.price.toString();
+            }
+      
+            return Center(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          InputBoxWidget(
-                            title: 'Denumire',
-                            hint: 'Scrieti denumirea produsului',
-                            validate: (String? s) => _validateNotEmpty(s),
-                            controller: _nameController,
-                          ),
-                          InputBoxWidget(
-                            title: 'Cod de bare',
-                            hint: 'Scanati codul de bare al produsului',
-                            validate: (String? s) => _validateNotEmpty(s),
-                            onSubmit: _onBarcodeSubmitted,
-                            controller: _barcodeController,
-                            keyboardType: TextInputType.none,
-                          ),
-                          InputBoxWidget(
-                            title: 'Cantitate',
-                            hint: 'Scrieti cantitatea produsului',
-                            validate: (String? s) => _validateIsNumber(s),
-                            controller: _quantityController,
-                            keyboardType: TextInputType.none,
-                          ),
-                          InputBoxWidget(
-                            title: 'Pret',
-                            hint: 'Scrieti pretul produsului',
-                            validate: (String? s) => _validateIsNumber(s),
-                            controller: _priceController,
-                            keyboardType: TextInputType.none,
-                          ),
-                        ],
-                      ),
+                child: SubmittableForm(
+                  // TODO: title: _nameController.text.isNotEmpty ? _nameController.text : DefaultNewProductName,
+                  title: 'Intrare noua',
+                  submitText: 'Salveaza detalii',
+                  onSubmit: _createNewEntry,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <InputBoxWidget>[
+                    InputBoxWidget(
+                      title: 'Denumire',
+                      hint: 'Scrieti denumirea produsului',
+                      validate: (String? s) => _validateNotEmpty(s),
+                      controller: _nameController,
                     ),
-                    MaterialButton(
-                      child: Text('Salveaza detalii'),
-                      color: Colors.green,
-                      onPressed: _createNewEntry,
-                    )
+                    InputBoxWidget(
+                      title: 'Cod de bare',
+                      hint: 'Scanati codul de bare al produsului',
+                      validate: (String? s) => _validateNotEmpty(s),
+                      onSubmit: _onBarcodeSubmitted,
+                      controller: _barcodeController,
+                      keyboardType: TextInputType.none,
+                    ),
+                    InputBoxWidget(
+                      title: 'Cantitate',
+                      hint: 'Scrieti cantitatea produsului',
+                      validate: (String? s) => _validateIsNumber(s),
+                      controller: _quantityController,
+                      keyboardType: TextInputType.none,
+                    ),
+                    InputBoxWidget(
+                      title: 'Pret',
+                      hint: 'Scrieti pretul produsului',
+                      validate: (String? s) => _validateIsNumber(s),
+                      controller: _priceController,
+                      keyboardType: TextInputType.none,
+                    ),
                   ],
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -125,12 +118,8 @@ class _AddEntryPageState extends State<AddEntryPage> {
   }
 
   void _createNewEntry() {
-    if (_formKey.currentState!.validate()) {
-      final Store<AppState> store = StoreProvider.of<AppState>(context);
-      store.dispatch(CreateNewEntryAction(
-          _nameController.text, _barcodeController.text, _quantityController.text, _priceController.text));
-      Navigator.pop(context);
-    }
+    final Store<AppState> store = StoreProvider.of<AppState>(context);
+    store.dispatch(CreateNewEntryAction(_nameController.text, _barcodeController.text, _quantityController.text, _priceController.text));
   }
 
   void _onBarcodeSubmitted(String barcode) {

@@ -28,6 +28,9 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
 
   void _onBarcodeScanned(String barcode) {
     _debouncer.run(() {
+      if (barcode.isEmpty) {
+        return;
+      }
       final Store<AppState> store = StoreProvider.of<AppState>(context);
       print('barcode scanned: $barcode');
       store.dispatch(GetProductByBarcodeAction(num.parse(barcode)));

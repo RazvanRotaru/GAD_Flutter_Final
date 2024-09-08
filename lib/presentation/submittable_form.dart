@@ -9,7 +9,7 @@ class SubmittableForm extends StatefulWidget {
       required this.children,
       this.subtitle,
       this.width,
-      this.height = 400,
+      this.height = 500,
       this.submitText,
       this.onSubmit,
       this.mainAxisAlignment = MainAxisAlignment.start});
@@ -79,11 +79,13 @@ class _SubmittableFormState extends State<SubmittableForm> {
               ),
               Form(
                 key: _formKey,
-                child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: widget.mainAxisAlignment,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: widget.children),
+                child: Expanded(
+                  flex: 5,
+                  child: ListView(
+                    controller: ScrollController(),
+                    children: widget.children,
+                  ),
+                ),
               ),
               Expanded(
                 child: Align(

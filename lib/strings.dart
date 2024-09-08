@@ -4,6 +4,7 @@ const String DefaultEmailSubject = 'Receptie factura';
 const String DefaultEmailBody = '';
 const String DefaultEmailToAddress = 'razvanrtr@Outlook.com';
 const String DefaultSubmitText = 'Submit';
+const String DefaultNewProductName = 'Produs nou';
 const String EmptyFieldErrorMessage = 'Acest camp este obligatoriu';
 
 mixin Routes {

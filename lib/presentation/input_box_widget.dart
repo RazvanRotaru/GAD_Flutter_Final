@@ -3,13 +3,7 @@ import 'package:movie_db/container/loading_container.dart';
 
 class InputBoxWidget extends StatelessWidget {
   const InputBoxWidget(
-      {super.key,
-      required this.title,
-      required this.hint,
-      required this.validate,
-      this.controller,
-      this.keyboardType,
-      this.onSubmit});
+      {super.key, required this.title, required this.hint, required this.validate, this.controller, this.keyboardType, this.onSubmit});
 
   final String title;
   final String hint;
@@ -23,8 +17,9 @@ class InputBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 14.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -33,20 +28,30 @@ class InputBoxWidget extends StatelessWidget {
               child: Text(
                 softWrap: true,
                 title,
-                style: const TextStyle(fontSize: 12, color: Colors.green),
+                style: const TextStyle(fontSize: 14, color: Colors.green, fontWeight: FontWeight.w300),
               ),
             ),
             LoadingContainer(builder: (BuildContext context, bool isLoading) {
               if (isLoading) {
-                return const CircularProgressIndicator();
+                return const Center(child: CircularProgressIndicator());
               }
               return SizedBox(
+                height: 30,
                 width: 250,
-                child: TextFormField(
-                  keyboardType: keyboardType,
-                  controller: controller,
-                  validator: (String? s) => validate(s),
-                  onFieldSubmitted: onSubmit,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: TextFormField(
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintStyle: const TextStyle(fontStyle: FontStyle.italic, color: Colors.grey, fontSize: 14), hintText: hint),
+                    keyboardType: keyboardType,
+                    controller: controller,
+                    validator: (String? s) => validate(s),
+                    onFieldSubmitted: onSubmit,
+                  ),
                 ),
               );
             })

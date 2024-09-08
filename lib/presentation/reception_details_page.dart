@@ -45,7 +45,6 @@ class _ReceptionDetailsPageState extends State<ReceptionDetailsPage> {
         child: SubmittableForm(
           title: 'Receptie noua',
           subtitle: 'Completati datele receptiei',
-          height: 500,
           children: <InputBoxWidget>[
             InputBoxWidget(
               title: 'Nume partener',

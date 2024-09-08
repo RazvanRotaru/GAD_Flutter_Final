@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
 import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/data/product_api.dart';
@@ -67,7 +68,10 @@ class ProductEpics {
               ..product.name = action.name;
           });
         })
-        .map((ProductEntry entry) => CreateNewEntryAction.successful(entry: entry))
+        .map((ProductEntry entry) {
+          NavigatorHolder.navigatorKey.currentState?.pop();
+          return CreateNewEntryAction.successful(entry: entry);
+        })
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
           return CreateNewEntryAction.error(error: error, stackTrace: stackTrace);
         });

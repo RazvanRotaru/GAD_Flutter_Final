@@ -9,24 +9,52 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100.0,
+      width: 150.0,
       child: Center(
         child: Column(
           children: <Widget>[
-            Text(
-              product.name,
-              style: const TextStyle(fontSize: 15),
+            Expanded(
+              flex: 3,
+              child: Text(
+                product.name,
+                softWrap: true,
+                style: const TextStyle(fontSize: 18),
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Text(
-                  product.barcode.toString(),
-                  style: const TextStyle(color: Colors.grey, fontSize: 8),
+            Expanded(
+              flex: 2,
+              child: Align(
+                alignment: AlignmentDirectional.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4,
+                      child: Center(
+                        child: Text(
+                          product.barcode.toString(),
+                          style: const TextStyle(color: Colors.grey, fontSize: 8),
+                        ),
+                      ),
+                    ),
+                    const VerticalDivider(
+                      thickness: 2,
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Center(
+                        child: Text(
+                          product.price.toString(),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const VerticalDivider(),
-                Text(product.price.toString(), style: const TextStyle(fontSize: 10)),
-              ],
+              ),
             )
           ],
         ),
