@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/data/product_api.dart';
+import 'package:movie_db/data/reception_api.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
@@ -16,13 +17,13 @@ class ProductEpics {
       TypedEpic<AppState, GetProductsActionStart>(_getProducts),
       TypedEpic<AppState, GetProductByBarcodeActionStart>(_getProductByBarcode),
       TypedEpic<AppState, ReloadProductsActionStart>(_overrideLocalData),
-      TypedEpic<AppState, CreateReceptionActionStart>(_createReception),
-      TypedEpic<AppState, CreateNewEntryActionStart>(_createEntry)
+      TypedEpic<AppState, CreateNewEntryActionStart>(_createEntry),
     ]);
   }
 
   Stream<AppAction> _getProducts(Stream<GetProductsActionStart> actions, EpicStore<AppState> store) {
     return actions
+        .debounceTime(const Duration(seconds: 5))
         .asyncMap((GetProductsActionStart action) => _productApi.getProducts())
         .map((List<Product> products) => GetProductsAction.successful(products: products))
         .onErrorReturnWith(
@@ -48,23 +49,11 @@ class ProductEpics {
 
   Stream<AppAction> _getProductByBarcode(Stream<GetProductByBarcodeActionStart> actions, EpicStore<AppState> store) {
     return actions
-        .asyncMap((GetProductByBarcodeActionStart action) =>
-            store.state.products.firstWhere((Product p) => p.barcode == action.barcode))
+        .asyncMap((GetProductByBarcodeActionStart action) => store.state.products.firstWhere((Product p) => p.barcode == action.barcode))
         .map((Product product) => GetProductByBarcodeAction.successful(product: product))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       return GetProductByBarcodeAction.error(error: error, stackTrace: stackTrace);
     });
-  }
-
-  Stream<AppAction> _createReception(Stream<CreateReceptionActionStart> actions, EpicStore<AppState> store) {
-    return actions
-        .asyncMap((CreateReceptionActionStart action) => UniqueKey().toString())
-        .map((String id) => CreateReceptionAction.successful(receptionId: id))
-        .onErrorReturnWith(
-      (Object error, StackTrace stackTrace) {
-        return CreateReceptionAction.error(error: error, stackTrace: stackTrace);
-      },
-    );
   }
 
   Stream<AppAction> _createEntry(Stream<CreateNewEntryActionStart> actions, EpicStore<AppState> store) {

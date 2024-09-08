@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/presentation/input_box_widget.dart';
@@ -23,71 +24,78 @@ class _AddEntryPageState extends State<AddEntryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return NewEntryContainer(
-      builder: (BuildContext context, ProductEntry? entry) {
-        if (entry != null) {
-          _barcodeController.text = entry.product.barcode.toString();
-          _nameController.text = entry.product.name.toString();
-          _priceController.text = entry.product.price.toString();
-        }
+    return BarcodeKeyboardListener(
+      onBarcodeScanned: (String barcode) {
+        setState(() {
+          _barcodeController.text = barcode;
+        });
+      },
+      child: NewEntryContainer(
+        builder: (BuildContext context, ProductEntry? entry) {
+          if (entry != null) {
+            _barcodeController.text = entry.product.barcode.toString();
+            _nameController.text = entry.product.name.toString();
+            _priceController.text = entry.product.price.toString();
+          }
 
-        return SizedBox(
-          width: 100,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        InputBoxWidget(
-                          title: 'Denumire',
-                          hint: 'Scrieti denumirea produsului',
-                          validate: (String? s) => _validateNotEmpty(s),
-                          controller: _nameController,
-                        ),
-                        InputBoxWidget(
-                          title: 'Cod de bare',
-                          hint: 'Scanati codul de bare al produsului',
-                          validate: (String? s) => _validateNotEmpty(s),
-                          onSubmit: _onBarcodeSubmitted,
-                          controller: _barcodeController,
-                          keyboardType: TextInputType.none,
-                        ),
-                        InputBoxWidget(
-                          title: 'Cantitate',
-                          hint: 'Scrieti cantitatea produsului',
-                          validate: (String? s) => _validateIsNumber(s),
-                          controller: _quantityController,
-                          keyboardType: TextInputType.none,
-                        ),
-                        InputBoxWidget(
-                          title: 'Pret',
-                          hint: 'Scrieti pretul produsului',
-                          validate: (String? s) => _validateIsNumber(s),
-                          controller: _priceController,
-                          keyboardType: TextInputType.none,
-                        ),
-                      ],
+          return SizedBox(
+            width: 100,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          InputBoxWidget(
+                            title: 'Denumire',
+                            hint: 'Scrieti denumirea produsului',
+                            validate: (String? s) => _validateNotEmpty(s),
+                            controller: _nameController,
+                          ),
+                          InputBoxWidget(
+                            title: 'Cod de bare',
+                            hint: 'Scanati codul de bare al produsului',
+                            validate: (String? s) => _validateNotEmpty(s),
+                            onSubmit: _onBarcodeSubmitted,
+                            controller: _barcodeController,
+                            keyboardType: TextInputType.none,
+                          ),
+                          InputBoxWidget(
+                            title: 'Cantitate',
+                            hint: 'Scrieti cantitatea produsului',
+                            validate: (String? s) => _validateIsNumber(s),
+                            controller: _quantityController,
+                            keyboardType: TextInputType.none,
+                          ),
+                          InputBoxWidget(
+                            title: 'Pret',
+                            hint: 'Scrieti pretul produsului',
+                            validate: (String? s) => _validateIsNumber(s),
+                            controller: _priceController,
+                            keyboardType: TextInputType.none,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  MaterialButton(
-                    child: Text('Salveaza detalii'),
-                    color: Colors.green,
-                    onPressed: _createNewEntry,
-                  )
-                ],
+                    MaterialButton(
+                      child: Text('Salveaza detalii'),
+                      color: Colors.green,
+                      onPressed: _createNewEntry,
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
@@ -121,7 +129,7 @@ class _AddEntryPageState extends State<AddEntryPage> {
       final Store<AppState> store = StoreProvider.of<AppState>(context);
       store.dispatch(CreateNewEntryAction(
           _nameController.text, _barcodeController.text, _quantityController.text, _priceController.text));
-      Navigator.pushNamed(context, '/new_reception');
+      Navigator.pop(context);
     }
   }
 

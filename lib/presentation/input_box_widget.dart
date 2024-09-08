@@ -33,7 +33,7 @@ class InputBoxWidget extends StatelessWidget {
               child: Text(
                 softWrap: true,
                 title,
-                style: const TextStyle(fontSize: 10, color: Colors.green),
+                style: const TextStyle(fontSize: 12, color: Colors.green),
               ),
             ),
             LoadingContainer(builder: (BuildContext context, bool isLoading) {

@@ -7,10 +7,12 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(Movie.serializer)
+      ..add(Product.serializer)
+      ..add(ProductEntry.serializer)
+      ..add(Reception.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          const FullType(BuiltList, const [const FullType(ProductEntry)]),
+          () => new ListBuilder<ProductEntry>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

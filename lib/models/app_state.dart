@@ -19,6 +19,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   ProductEntry? get newProductEntry;
 
+  String? get feedbackMessage;
+
   bool get isLoading;
 
   String? get errMessage;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/container/loading_container.dart';
+import 'package:movie_db/container/feedback_container.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
 
@@ -33,8 +34,13 @@ class _HomePageState extends State<HomePage> {
   void _refresh() {
     final Store<AppState> store = StoreProvider.of<AppState>(context);
     if (!store.state.isLoading) {
-      store.dispatch(ReloadProductsAction());
+      store.dispatch(const ReloadProductsAction());
     }
+  }
+
+  void _showFeedback(String message) {
+    final Store<AppState> store = StoreProvider.of<AppState>(context);
+    store.dispatch(ShowFeedbackAction(context, message));
   }
 
   //
@@ -61,17 +67,35 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[OutlinedButton(onPressed: _createNewReception, child: const Text(CreateNewReception))],
-          ),
+        body: FeedbackContainer(
+          builder: (BuildContext context, String? feedback) {
+            if (feedback != null && feedback.isNotEmpty) {
+              _showFeedback(feedback);
+            }
+
+            return Center(
+              child: LoadingContainer(
+                builder: (BuildContext context, bool isLoading) {
+                  if (isLoading) {
+                    return const CircularProgressIndicator();
+                  }
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      OutlinedButton(
+                        onPressed: _createNewReception,
+                        child: const Text(CreateNewReception),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            );
+          },
         ));
   }
 
   void _createNewReception() {
-    final Store<AppState> store = StoreProvider.of<AppState>(context);
-    store.dispatch(const CreateReceptionAction());
-    Navigator.pushNamed(context, '/new_reception');
+    Navigator.pushNamed(context, Routes.receptionDetails);
   }
 }

@@ -11,11 +11,9 @@ abstract class Reception implements Built<Reception, ReceptionBuilder> {
 
   BuiltList<ProductEntry> get entries;
 
-  String get id;
-
   String get creatorName;
 
-  String get linkedInvoice;
+  String get invoiceNr;
 
   String get company;
 

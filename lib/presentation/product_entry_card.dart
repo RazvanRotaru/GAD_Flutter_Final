@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_db/models/index.dart';
 import 'package:movie_db/presentation/product_widget.dart';
 
-import '../models/index.dart';
 
 class ProductEntryCard extends StatelessWidget {
   const ProductEntryCard({super.key, required this.entry});
@@ -15,10 +15,10 @@ class ProductEntryCard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             ProductWidget(product: entry.product),
-            VerticalDivider(),
+            const VerticalDivider(thickness: 2.0,),
             Text(
               entry.quantity.toString(),
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             )
           ],
         ),

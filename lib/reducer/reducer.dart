@@ -18,6 +18,9 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, ReloadProductsActionSuccessful>(_replaceProducts),
   TypedReducer<AppState, SelectProductEntrySuccessful>(_selectProductEntry),
   TypedReducer<AppState, CreateNewEntryActionSuccessful>(_appendEntryToReception),
+  TypedReducer<AppState, FinalizeReceptionAction>(_finalizeReception),
+  TypedReducer<AppState, FinalizeReceptionActionSuccessful>(_finalizeReceptionSuccessful),
+  TypedReducer<AppState, ShowFeedbackActionSuccessful>(_clearReceptionResult),
   TypedReducer<AppState, ErrorAction>(_getError),
 ]);
 
@@ -30,7 +33,8 @@ AppState _getProducts(AppState state, GetProductsAction action) {
 AppState _getProductsSuccessful(AppState state, GetProductsActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
-      ..products.addAll(action.products)
+      ..products.replace(action.products)
+      ..feedbackMessage = '${action.products.length} produse actualizate'
       ..isLoading = false;
   });
 }
@@ -93,10 +97,9 @@ AppState _createReception(AppState state, CreateReceptionAction action) {
 AppState _createReceptionSuccessful(AppState state, CreateReceptionActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
-      ..ongoingReception.id = action.receptionId
-      ..ongoingReception.company = "TODO"
-      ..ongoingReception.creatorName = "TODO"
-      ..ongoingReception.linkedInvoice = "TODO"
+      ..ongoingReception.company = action.reception.company
+      ..ongoingReception.creatorName = action.reception.creatorName
+      ..ongoingReception.invoiceNr = action.reception.invoiceNr
       ..isLoading = false;
   });
 }
@@ -106,5 +109,26 @@ AppState _appendEntryToReception(AppState state, CreateNewEntryActionSuccessful 
     builder
       ..newProductEntry = null
       ..ongoingReception.entries.add(action.entry);
+  });
+}
+
+AppState _finalizeReception(AppState state, FinalizeReceptionAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.isLoading = true;
+  });
+}
+
+AppState _finalizeReceptionSuccessful(AppState state, FinalizeReceptionActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..ongoingReception = null
+      ..feedbackMessage = action.message
+      ..isLoading = false;
+  });
+}
+
+AppState _clearReceptionResult(AppState state, ShowFeedbackActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.feedbackMessage = null;
   });
 }

@@ -5,7 +5,7 @@ import 'package:movie_db/models/index.dart';
 
 part 'serializers.g.dart';
 
-@SerializersFor(<Type>[Movie])
+@SerializersFor(<Type>[Reception])
 Serializers serializers = (_$serializers.toBuilder() //
       ..addPlugin(StandardJsonPlugin()))
     .build();
