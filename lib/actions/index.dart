@@ -22,3 +22,4 @@ part 'show_reception_result.dart';
 part 'remove_entry_action.dart';
 part 'load_pending_receptions.dart';
 part 'send_pending_action.dart';
+part 'clear_current_entry_action.dart';

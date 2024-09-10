@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_db/models/index.dart';
-import 'package:movie_db/presentation/product_widget.dart';
+import 'package:movie_db/presentation/widgets/product_widget.dart';
 
 class ProductEntryCard extends StatelessWidget {
   const ProductEntryCard({super.key, required this.entry});

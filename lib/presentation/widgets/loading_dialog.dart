@@ -55,7 +55,7 @@ class _LoadingDialogState extends State<LoadingDialog> {
                           Align(
                             alignment: AlignmentDirectional.bottomCenter,
                             child: Padding(
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               child: Text(
                                 widget.message!,
                                 softWrap: true,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
-import 'package:movie_db/presentation/input_box_widget.dart';
-import 'package:movie_db/presentation/submittable_form.dart';
+import 'package:movie_db/presentation/widgets/custom_form.dart';
+import 'package:movie_db/presentation/widgets/submittable_form.dart';
 import 'package:redux/redux.dart';
 
 import '../container/new_entry_container.dart';
@@ -32,68 +32,80 @@ class _AddEntryPageState extends State<AddEntryPage> {
           if (barcode.isEmpty) {
             return;
           }
-
           setState(() {
             _barcodeController.text = barcode;
           });
           _onBarcodeSubmitted(barcode);
         },
-        child: NewEntryContainer(
-          builder: (BuildContext context, ProductEntry? entry) {
-            if (entry != null) {
-              _barcodeController.text = entry.product.barcode.toString();
-              _nameController.text = entry.product.name.toString();
-              _priceController.text = entry.product.price.toString();
-              _focusNode.requestFocus();
+        child: PopScope(
+          onPopInvokedWithResult: (bool didPop, Object? result) {
+            if (didPop)
+            {
+              final Store<AppState> store = StoreProvider.of<AppState>(context);
+              store.dispatch(const ClearCurrentEntryAction());
             }
-            _barcodeRegistered = entry != null;
-      
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SubmittableForm(
-                  // TODO: title: _nameController.text.isNotEmpty ? _nameController.text : DefaultNewProductName,
-                  title: 'Intrare noua',
-                  submitText: 'Salveaza detalii',
-                  onSubmit: _createNewEntry,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <InputBoxWidget>[
-                    InputBoxWidget(
-                      title: 'Denumire',
-                      hint: 'Scrieti denumirea produsului',
-                      validate: (String? s) => _validateNotEmpty(s),
-                      controller: _nameController,
-                      readOnly: _barcodeRegistered,
-                    ),
-                    InputBoxWidget(
-                      title: 'Cod de bare',
-                      hint: 'Scanati codul de bare al produsului',
-                      validate: (String? s) => _validateNotEmpty(s),
-                      onSubmit: _onBarcodeSubmitted,
-                      controller: _barcodeController,
-                      keyboardType: TextInputType.none,
-                    ),
-                    InputBoxWidget(
-                      title: 'Cantitate',
-                      hint: 'Scrieti cantitatea produsului',
-                      validate: (String? s) => _validateIsNumber(s),
-                      controller: _quantityController,
-                      keyboardType: TextInputType.none,
-                      focusNode: _focusNode,
-                    ),
-                    InputBoxWidget(
-                      title: 'Pret',
-                      hint: 'Scrieti pretul produsului',
-                      validate: (String? s) => _validateIsNumber(s),
-                      controller: _priceController,
-                      keyboardType: TextInputType.none,
-                      readOnly: _barcodeRegistered,
-                    ),
-                  ],
-                ),
-              ),
-            );
           },
+          child: NewEntryContainer(
+            builder: (BuildContext context, ProductEntry? entry) {
+              if (entry != null) {
+                _barcodeController.text = entry.product.barcode.toString();
+                _nameController.text = entry.product.name.toString();
+                _priceController.text = entry.product.price.toString();
+                _focusNode.requestFocus();
+              }
+              _barcodeRegistered = entry != null;
+
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
+                  child: SubmittableForm(
+                    // TODO: title: _nameController.text.isNotEmpty ? _nameController.text : DefaultNewProductName,
+                    title: 'Intrare noua',
+                    submitText: 'Salveaza detalii',
+                    onSubmit: _createNewEntry,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomFormField(
+                        title: 'Denumire',
+                        hintText: 'Scrieti denumirea produsului',
+                        validator: (String? s) => _validateNotEmpty(_nameController.text),
+                        textController: _nameController,
+                        readOnly: _barcodeRegistered,
+                        textInputAction: TextInputAction.next,
+                      ),
+                      CustomFormField(
+                        title: 'Cod de bare',
+                        hintText: 'Scanati codul de bare al produsului',
+                        validator: (String? s) => _validateNotEmpty(_barcodeController.text),
+                        onSubmitted: _onBarcodeSubmitted,
+                        textController: _barcodeController,
+                        keyboardType: TextInputType.none,
+                        textInputAction: TextInputAction.next,
+                      ),
+                      CustomFormField(
+                        title: 'Cantitate',
+                        hintText: 'Scrieti cantitatea produsului',
+                        validator: (String? s) => _validateIsNumber(_quantityController.text),
+                        textController: _quantityController,
+                        keyboardType: TextInputType.none,
+                        focusNode: _focusNode,
+                        textInputAction: TextInputAction.next,
+                      ),
+                      CustomFormField(
+                        title: 'Pret',
+                        hintText: 'Scrieti pretul produsului',
+                        validator: (String? s) => _validateIsNumber(_priceController.text),
+                        textController: _priceController,
+                        keyboardType: TextInputType.none,
+                        // readOnly: _barcodeRegistered,
+                        textInputAction: TextInputAction.done,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -130,9 +142,11 @@ class _AddEntryPageState extends State<AddEntryPage> {
   }
 
   void _onBarcodeSubmitted(String barcode) {
+    final Store<AppState> store = StoreProvider.of<AppState>(context);
     if (_validateIsNumber(barcode) == null) {
-      final Store<AppState> store = StoreProvider.of<AppState>(context);
       store.dispatch(GetProductByBarcodeAction(num.parse(barcode)));
+    } else {
+      store.dispatch(const ClearCurrentEntryAction());
     }
   }
 }

@@ -5,9 +5,8 @@ import 'package:movie_db/container/feedback_container.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/pending_receptions_container.dart';
 import 'package:movie_db/models/index.dart';
+import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
-
-import '../strings.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,12 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController scrollController = ScrollController();
   final double elementHeight = 100;
-
-  @override
-  void initState() {
-    super.initState();
-    // scrollController.addListener(_onScroll);
-  }
 
   @override
   void dispose() {
@@ -43,13 +36,6 @@ class _HomePageState extends State<HomePage> {
     final Store<AppState> store = StoreProvider.of<AppState>(context);
     store.dispatch(ShowFeedbackAction(context, message));
   }
-
-  //
-  // void _selectMovie(int id) {
-  //   final Store<AppState> store = StoreProvider.of<AppState>(context);
-  //   store.dispatch(SelectMovieAction(id: id));
-  //   Navigator.pushNamed(context, '/movie_details');
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,42 +58,45 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-        body: FeedbackContainer(
-          builder: (BuildContext context, String? feedback) {
-            if (feedback != null && feedback.isNotEmpty) {
-              _showFeedback(feedback);
-            }
+        body: PopScope(
+          canPop: false,
+          child: FeedbackContainer(
+            builder: (BuildContext context, String? feedback) {
+              if (feedback != null && feedback.isNotEmpty) {
+                _showFeedback(feedback);
+              }
 
-            return Center(
-              child: LoadingContainer(
-                builder: (BuildContext context, bool isLoading) {
-                  if (isLoading) {
-                    return const CircularProgressIndicator();
-                  }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      OutlinedButton(
-                        onPressed: _createNewReception,
-                        child: const Text(CreateNewReception),
-                      ),
-                      PendingReceptionsContainer(
-                        builder: (BuildContext context, List<String>? receptions) {
-                          if (receptions == null || receptions.isEmpty) {
-                            return const SizedBox(width: 0, height: 0,);
-                          }
-                          return OutlinedButton(
-                            onPressed: () => _sendPendingReceptions(receptions),
-                            child: Text('${receptions.length} receptii netrimise'),
-                          );
-                        },
-                      )
-                    ],
-                  );
-                },
-              ),
-            );
-          },
+              return Center(
+                child: LoadingContainer(
+                  builder: (BuildContext context, bool isLoading) {
+                    if (isLoading) {
+                      return const CircularProgressIndicator();
+                    }
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        OutlinedButton(
+                          onPressed: _createNewReception,
+                          child: const Text(CreateNewReception),
+                        ),
+                        PendingReceptionsContainer(
+                          builder: (BuildContext context, List<String>? receptions) {
+                            if (receptions == null || receptions.isEmpty) {
+                              return const SizedBox(width: 0, height: 0,);
+                            }
+                            return OutlinedButton(
+                              onPressed: () => _sendPendingReceptions(receptions),
+                              child: Text('${receptions.length} receptii netrimise'),
+                            );
+                          },
+                        )
+                      ],
+                    );
+                  },
+                ),
+              );
+            },
+          ),
         ));
   }
 

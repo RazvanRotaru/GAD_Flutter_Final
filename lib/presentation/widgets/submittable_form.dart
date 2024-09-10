@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_db/presentation/input_box_widget.dart';
+import 'package:movie_db/presentation/widgets/input_box_widget.dart';
 import 'package:movie_db/strings.dart';
 
 class SubmittableForm extends StatefulWidget {
@@ -16,7 +16,7 @@ class SubmittableForm extends StatefulWidget {
 
   final String title;
   final String? subtitle;
-  final List<InputBoxWidget> children;
+  final List<Widget> children;
   final double? width;
   final double? height;
   final String? submitText;
@@ -81,9 +81,15 @@ class _SubmittableFormState extends State<SubmittableForm> {
                 key: _formKey,
                 child: Expanded(
                   flex: 5,
-                  child: ListView(
-                    controller: ScrollController(),
-                    children: widget.children,
+                  child: FocusTraversalGroup(
+                    child: ListView(
+                      cacheExtent: 3,
+                      addAutomaticKeepAlives: true,
+                      // itemExtent: 3,
+
+                      controller: ScrollController(),
+                      children: widget.children,
+                    ),
                   ),
                 ),
               ),

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_listener/flutter_barcode_listener.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/container/loading_container.dart';
 import 'package:movie_db/container/new_reception_container.dart';
 import 'package:movie_db/container/product_entry_container.dart';
-import 'package:movie_db/debouncer.dart';
 import 'package:movie_db/models/index.dart';
-import 'package:movie_db/presentation/confirmation_button.dart';
-import 'package:movie_db/presentation/loading_dialog.dart';
-import 'package:movie_db/presentation/product_entry_card.dart';
+import 'package:movie_db/presentation/widgets/loading_dialog.dart';
+import 'package:movie_db/presentation/widgets/product_entry_card.dart';
 import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
 
@@ -84,35 +81,38 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
     return NewReceptionContainer(
       builder: (BuildContext context, Reception? reception) {
         return Scaffold(
-          body: PopScope(
-            canPop: false,
-            onPopInvokedWithResult: (bool didPop, Object? result) async {
-              if (didPop) {
-                return;
-              }
-              await _showBackDialog(); /*?? false;
-              if (context.mounted && shouldPop) {
-                Navigator.pop(context);
-              }*/
-            },
-            child: LoadingContainer(
-              builder: (BuildContext context, bool isLoading) {
-                return Scaffold(
-                  floatingActionButton: (reception?.entries.isNotEmpty ?? false)
-                      ? FloatingActionButton(
-                          onPressed: () => _withConfirmation(() => _finalizeReception(reception!), text: 'Vreti sa trimiteti receptia?'),
-                          child: const Icon(
-                            Icons.check,
-                          ),
-                        )
-                      : null,
-                  body: Stack(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
-                        child: ProductEntryContainer(
-                          builder: (BuildContext context, List<ProductEntry> entries) {
-                            return Column(
+          body: LoadingContainer(
+            builder: (BuildContext context, bool isLoading) {
+              return Scaffold(
+                floatingActionButton: (reception?.entries.isNotEmpty ?? false)
+                    ? FloatingActionButton(
+                        onPressed: () => _withConfirmation(() => _finalizeReception(reception!), text: 'Vreti sa trimiteti receptia?'),
+                        child: const Icon(
+                          Icons.check,
+                        ),
+                      )
+                    : null,
+                body: Stack(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
+                      child: ProductEntryContainer(
+                        builder: (BuildContext context, List<ProductEntry> entries) {
+                          return PopScope(
+                            canPop: false,
+                            onPopInvokedWithResult: (bool didPop, Object? result) async {
+                              if (didPop) {
+                                return;
+                              }
+
+                              if (entries.isEmpty) {
+                                Navigator.of(context).pop();
+                                return;
+                              }
+
+                              await _showBackDialog();
+                            },
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
@@ -133,19 +133,22 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
                                   onPressed: _addNewEntry,
                                 ),
                               ],
-                            );
-                          },
-                        ),
+                            ),
+                          );
+                        },
                       ),
-                      if (isLoading)
-                        const LoadingDialog(
+                    ),
+                    if (isLoading)
+                      const PopScope(
+                        canPop: false,
+                        child: LoadingDialog(
                           message: 'Asteptati.\nSe trimite receptia...',
                         ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                      ),
+                  ],
+                ),
+              );
+            },
           ),
         );
       },

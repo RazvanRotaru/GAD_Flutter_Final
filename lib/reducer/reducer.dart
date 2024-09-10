@@ -13,7 +13,9 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, GetProductsAction>(_getProducts),
   TypedReducer<AppState, GetProductsActionSuccessful>(_getProductsSuccessful),
   TypedReducer<AppState, GetProductByBarcodeAction>(_getProductByBarcode),
+  TypedReducer<AppState, ClearCurrentEntryAction>(_clearCurrentEntry),
   TypedReducer<AppState, GetProductByBarcodeActionSuccessful>(_getProductByBarcodeSuccessful),
+  TypedReducer<AppState, GetProductByBarcodeActionError>(_getProductByBarcodeError),
   TypedReducer<AppState, CreateReceptionAction>(_createReception),
   TypedReducer<AppState, CreateReceptionActionSuccessful>(_createReceptionSuccessful),
   TypedReducer<AppState, ReloadProductsAction>(_clearProducts),
@@ -55,7 +57,9 @@ AppState _clearProducts(AppState state, ReloadProductsAction action) {
 AppState _replaceProducts(AppState state, ReloadProductsActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
+      ..products.clear()
       ..products.addAll(action.products)
+      ..feedbackMessage = '${action.products.length} produse actualizate'
       ..isLoading = false;
   });
 }
@@ -74,6 +78,14 @@ AppState _getProductByBarcodeSuccessful(AppState state, GetProductByBarcodeActio
       ..newProductEntry.product.name = action.product.name
       ..newProductEntry.product.barcode = action.product.barcode
       ..newProductEntry.product.price = action.product.price
+      ..isLoading = false;
+  });
+}
+
+AppState _getProductByBarcodeError(AppState state, GetProductByBarcodeActionError action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..newProductEntry = null
       ..isLoading = false;
   });
 }
@@ -153,7 +165,14 @@ AppState _loadPendingReceptionsSuccessful(AppState state, LoadPendingReceptionsA
 
 AppState _sendPendingReceptionsSuccessful(AppState state, SendPendingActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
-    builder.pendingReceptions = null;
+    builder
+      ..pendingReceptions = null
+      ..feedbackMessage = 'Receptiile au fost trimise cu succes';
   });
+}
 
+AppState _clearCurrentEntry(AppState state, ClearCurrentEntryAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.newProductEntry = null;
+  });
 }

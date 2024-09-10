@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
-import 'package:movie_db/container/loading_container.dart';
-import 'package:movie_db/container/new_reception_container.dart';
 import 'package:movie_db/models/index.dart';
-import 'package:movie_db/presentation/input_box_widget.dart';
-import 'package:movie_db/presentation/submittable_form.dart';
+import 'package:movie_db/presentation/widgets/custom_form.dart';
+import 'package:movie_db/presentation/widgets/submittable_form.dart';
 import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
 
@@ -45,24 +43,27 @@ class _ReceptionDetailsPageState extends State<ReceptionDetailsPage> {
         child: SubmittableForm(
           title: 'Receptie noua',
           subtitle: 'Completati datele receptiei',
-          children: <InputBoxWidget>[
-            InputBoxWidget(
+          children: [
+            CustomFormField(
               title: 'Nume partener',
-              hint: 'Introdu numele partenerului',
-              validate: _validateNotEmpty,
-              controller: _companyController,
+              hintText: 'Introdu numele partenerului',
+              validator: (_) => _validateNotEmpty(_companyController.text),
+              textController: _companyController,
+              textInputAction: TextInputAction.next,
             ),
-            InputBoxWidget(
+            CustomFormField(
               title: 'Nume angajat',
-              hint: 'Introdu numele tau',
-              validate: _validateNotEmpty,
-              controller: _userController,
+              hintText: 'Introdu numele tau',
+              validator: (_) => _validateNotEmpty(_userController.text),
+              textController: _userController,
+              textInputAction: TextInputAction.next,
             ),
-            InputBoxWidget(
+            CustomFormField(
               title: 'Numar factura',
-              hint: 'Introdu numarul de factura',
-              validate: _validateNotEmpty,
-              controller: _invoiceController,
+              hintText: 'Introdu numarul de factura',
+              validator: (_) => _validateNotEmpty(_invoiceController.text),
+              textController: _invoiceController,
+              textInputAction: TextInputAction.done,
             ),
           ],
           submitText: 'Incepe receptia',

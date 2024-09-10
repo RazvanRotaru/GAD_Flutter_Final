@@ -6931,3 +6931,477 @@ abstract class SendPendingActionError
   _$$SendPendingActionErrorImplCopyWith<_$SendPendingActionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ClearCurrentEntryAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function()? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value) $default, {
+    required TResult Function(ClearCurrentEntryActionSuccessful value)
+        successful,
+    required TResult Function(ClearCurrentEntryActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult? Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult? Function(ClearCurrentEntryActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult Function(ClearCurrentEntryActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ClearCurrentEntryActionCopyWith<$Res> {
+  factory $ClearCurrentEntryActionCopyWith(ClearCurrentEntryAction value,
+          $Res Function(ClearCurrentEntryAction) then) =
+      _$ClearCurrentEntryActionCopyWithImpl<$Res, ClearCurrentEntryAction>;
+}
+
+/// @nodoc
+class _$ClearCurrentEntryActionCopyWithImpl<$Res,
+        $Val extends ClearCurrentEntryAction>
+    implements $ClearCurrentEntryActionCopyWith<$Res> {
+  _$ClearCurrentEntryActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ClearCurrentEntryActionStartImplCopyWith<$Res> {
+  factory _$$ClearCurrentEntryActionStartImplCopyWith(
+          _$ClearCurrentEntryActionStartImpl value,
+          $Res Function(_$ClearCurrentEntryActionStartImpl) then) =
+      __$$ClearCurrentEntryActionStartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearCurrentEntryActionStartImplCopyWithImpl<$Res>
+    extends _$ClearCurrentEntryActionCopyWithImpl<$Res,
+        _$ClearCurrentEntryActionStartImpl>
+    implements _$$ClearCurrentEntryActionStartImplCopyWith<$Res> {
+  __$$ClearCurrentEntryActionStartImplCopyWithImpl(
+      _$ClearCurrentEntryActionStartImpl _value,
+      $Res Function(_$ClearCurrentEntryActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearCurrentEntryActionStartImpl
+    implements ClearCurrentEntryActionStart {
+  const _$ClearCurrentEntryActionStartImpl();
+
+  @override
+  String toString() {
+    return 'ClearCurrentEntryAction()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearCurrentEntryActionStartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function()? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value) $default, {
+    required TResult Function(ClearCurrentEntryActionSuccessful value)
+        successful,
+    required TResult Function(ClearCurrentEntryActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult? Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult? Function(ClearCurrentEntryActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult Function(ClearCurrentEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearCurrentEntryActionStart implements ClearCurrentEntryAction {
+  const factory ClearCurrentEntryActionStart() =
+      _$ClearCurrentEntryActionStartImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearCurrentEntryActionSuccessfulImplCopyWith<$Res> {
+  factory _$$ClearCurrentEntryActionSuccessfulImplCopyWith(
+          _$ClearCurrentEntryActionSuccessfulImpl value,
+          $Res Function(_$ClearCurrentEntryActionSuccessfulImpl) then) =
+      __$$ClearCurrentEntryActionSuccessfulImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearCurrentEntryActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$ClearCurrentEntryActionCopyWithImpl<$Res,
+        _$ClearCurrentEntryActionSuccessfulImpl>
+    implements _$$ClearCurrentEntryActionSuccessfulImplCopyWith<$Res> {
+  __$$ClearCurrentEntryActionSuccessfulImplCopyWithImpl(
+      _$ClearCurrentEntryActionSuccessfulImpl _value,
+      $Res Function(_$ClearCurrentEntryActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearCurrentEntryActionSuccessfulImpl
+    implements ClearCurrentEntryActionSuccessful {
+  const _$ClearCurrentEntryActionSuccessfulImpl();
+
+  @override
+  String toString() {
+    return 'ClearCurrentEntryAction.successful()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearCurrentEntryActionSuccessfulImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function()? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value) $default, {
+    required TResult Function(ClearCurrentEntryActionSuccessful value)
+        successful,
+    required TResult Function(ClearCurrentEntryActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult? Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult? Function(ClearCurrentEntryActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult Function(ClearCurrentEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearCurrentEntryActionSuccessful
+    implements ClearCurrentEntryAction {
+  const factory ClearCurrentEntryActionSuccessful() =
+      _$ClearCurrentEntryActionSuccessfulImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearCurrentEntryActionErrorImplCopyWith<$Res> {
+  factory _$$ClearCurrentEntryActionErrorImplCopyWith(
+          _$ClearCurrentEntryActionErrorImpl value,
+          $Res Function(_$ClearCurrentEntryActionErrorImpl) then) =
+      __$$ClearCurrentEntryActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$ClearCurrentEntryActionErrorImplCopyWithImpl<$Res>
+    extends _$ClearCurrentEntryActionCopyWithImpl<$Res,
+        _$ClearCurrentEntryActionErrorImpl>
+    implements _$$ClearCurrentEntryActionErrorImplCopyWith<$Res> {
+  __$$ClearCurrentEntryActionErrorImplCopyWithImpl(
+      _$ClearCurrentEntryActionErrorImpl _value,
+      $Res Function(_$ClearCurrentEntryActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$ClearCurrentEntryActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ClearCurrentEntryActionErrorImpl
+    implements ClearCurrentEntryActionError {
+  const _$ClearCurrentEntryActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'ClearCurrentEntryAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearCurrentEntryActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ClearCurrentEntryActionErrorImplCopyWith<
+          _$ClearCurrentEntryActionErrorImpl>
+      get copyWith => __$$ClearCurrentEntryActionErrorImplCopyWithImpl<
+          _$ClearCurrentEntryActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function()? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value) $default, {
+    required TResult Function(ClearCurrentEntryActionSuccessful value)
+        successful,
+    required TResult Function(ClearCurrentEntryActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult? Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult? Function(ClearCurrentEntryActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ClearCurrentEntryActionStart value)? $default, {
+    TResult Function(ClearCurrentEntryActionSuccessful value)? successful,
+    TResult Function(ClearCurrentEntryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearCurrentEntryActionError
+    implements ClearCurrentEntryAction, ErrorAction {
+  const factory ClearCurrentEntryActionError(
+          {required final Object error, required final StackTrace stackTrace}) =
+      _$ClearCurrentEntryActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of ClearCurrentEntryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ClearCurrentEntryActionErrorImplCopyWith<
+          _$ClearCurrentEntryActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
