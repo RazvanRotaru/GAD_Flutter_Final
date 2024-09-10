@@ -1,7 +1,7 @@
 const String HomeTitle = 'Home';
 const String CreateNewReception = 'Receptie noua';
 const String DefaultEmailSubject = 'Receptie factura';
-const String DefaultEmailBody = '';
+const String DefaultEmailBody = 'Salut!\nAtasat gasesti datele receptiei';
 const String DefaultEmailToAddress = 'razvanrtr@Outlook.com';
 const String DefaultSubmitText = 'Submit';
 const String DefaultNewProductName = 'Produs nou';

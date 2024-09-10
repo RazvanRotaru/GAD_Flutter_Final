@@ -4,7 +4,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/presentation/input_box_widget.dart';
 import 'package:movie_db/presentation/submittable_form.dart';
-import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
 
 import '../container/new_entry_container.dart';
@@ -22,6 +21,8 @@ class _AddEntryPageState extends State<AddEntryPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _quantityController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+  bool _barcodeRegistered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class _AddEntryPageState extends State<AddEntryPage> {
           setState(() {
             _barcodeController.text = barcode;
           });
+          _onBarcodeSubmitted(barcode);
         },
         child: NewEntryContainer(
           builder: (BuildContext context, ProductEntry? entry) {
@@ -42,7 +44,9 @@ class _AddEntryPageState extends State<AddEntryPage> {
               _barcodeController.text = entry.product.barcode.toString();
               _nameController.text = entry.product.name.toString();
               _priceController.text = entry.product.price.toString();
+              _focusNode.requestFocus();
             }
+            _barcodeRegistered = entry != null;
       
             return Center(
               child: Padding(
@@ -59,6 +63,7 @@ class _AddEntryPageState extends State<AddEntryPage> {
                       hint: 'Scrieti denumirea produsului',
                       validate: (String? s) => _validateNotEmpty(s),
                       controller: _nameController,
+                      readOnly: _barcodeRegistered,
                     ),
                     InputBoxWidget(
                       title: 'Cod de bare',
@@ -74,6 +79,7 @@ class _AddEntryPageState extends State<AddEntryPage> {
                       validate: (String? s) => _validateIsNumber(s),
                       controller: _quantityController,
                       keyboardType: TextInputType.none,
+                      focusNode: _focusNode,
                     ),
                     InputBoxWidget(
                       title: 'Pret',
@@ -81,6 +87,7 @@ class _AddEntryPageState extends State<AddEntryPage> {
                       validate: (String? s) => _validateIsNumber(s),
                       controller: _priceController,
                       keyboardType: TextInputType.none,
+                      readOnly: _barcodeRegistered,
                     ),
                   ],
                 ),

@@ -7,6 +7,7 @@ import 'package:movie_db/data/reception_api.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:uuid/uuid.dart';
 
 class ProductEpics {
   ProductEpics({required ProductApi api}) : _productApi = api;
@@ -62,6 +63,7 @@ class ProductEpics {
         .asyncMap((CreateNewEntryActionStart action) {
           return ProductEntry((ProductEntryBuilder b) {
             b
+              ..id = const Uuid().v1()
               ..quantity = num.tryParse(action.quantity)
               ..product.price = num.tryParse(action.price)
               ..product.barcode = num.tryParse(action.barcode)

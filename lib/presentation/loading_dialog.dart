@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingDialog extends StatefulWidget {
-  const LoadingDialog({Key? key}) : super(key: key);
+  const LoadingDialog({Key? key, this.message}) : super(key: key);
+
+  final String? message;
 
   @override
   State<LoadingDialog> createState() => _LoadingDialogState();
@@ -42,10 +44,27 @@ class _LoadingDialogState extends State<LoadingDialog> {
                       ),
                     ],
                   ),
-                  child: const Center(
-                    child: SpinKitRipple(
-                      color: Colors.indigoAccent,
-                      size: 50,
+                  child: Center(
+                    child: Stack(
+                      children: <Widget>[
+                        const SpinKitRipple(
+                          color: Colors.indigoAccent,
+                          size: 50,
+                        ),
+                        if (widget.message?.isNotEmpty ?? false)
+                          Align(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text(
+                                widget.message!,
+                                softWrap: true,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          )
+                      ],
                     ),
                   ),
                 ),

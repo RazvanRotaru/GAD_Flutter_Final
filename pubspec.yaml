@@ -50,6 +50,8 @@ dependencies:
   redux_thunk: ^0.4.0
   flutter_spinkit: ^5.2.1
   flutter_redux_navigation: ^0.7.1
+  mailer: ^6.1.2
+  uuid: ^4.5.0
 
 dev_dependencies:
   flutter_test:

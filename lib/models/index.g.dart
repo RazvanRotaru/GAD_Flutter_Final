@@ -291,6 +291,8 @@ class _$ProductEntrySerializer implements StructuredSerializer<ProductEntry> {
       'product',
       serializers.serialize(object.product,
           specifiedType: const FullType(Product)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'quantity',
       serializers.serialize(object.quantity,
           specifiedType: const FullType(num)),
@@ -314,6 +316,10 @@ class _$ProductEntrySerializer implements StructuredSerializer<ProductEntry> {
         case 'product':
           result.product.replace(serializers.deserialize(value,
               specifiedType: const FullType(Product))! as Product);
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
         case 'quantity':
           result.quantity = serializers.deserialize(value,
@@ -449,6 +455,8 @@ class _$AppState extends AppState {
   @override
   final ProductEntry? newProductEntry;
   @override
+  final List<String>? pendingReceptions;
+  @override
   final String? feedbackMessage;
   @override
   final bool isLoading;
@@ -465,6 +473,7 @@ class _$AppState extends AppState {
       this.receptions,
       this.ongoingReception,
       this.newProductEntry,
+      this.pendingReceptions,
       this.feedbackMessage,
       required this.isLoading,
       this.errMessage,
@@ -489,6 +498,7 @@ class _$AppState extends AppState {
         receptions == other.receptions &&
         ongoingReception == other.ongoingReception &&
         newProductEntry == other.newProductEntry &&
+        pendingReceptions == other.pendingReceptions &&
         feedbackMessage == other.feedbackMessage &&
         isLoading == other.isLoading &&
         errMessage == other.errMessage &&
@@ -502,6 +512,7 @@ class _$AppState extends AppState {
     _$hash = $jc(_$hash, receptions.hashCode);
     _$hash = $jc(_$hash, ongoingReception.hashCode);
     _$hash = $jc(_$hash, newProductEntry.hashCode);
+    _$hash = $jc(_$hash, pendingReceptions.hashCode);
     _$hash = $jc(_$hash, feedbackMessage.hashCode);
     _$hash = $jc(_$hash, isLoading.hashCode);
     _$hash = $jc(_$hash, errMessage.hashCode);
@@ -517,6 +528,7 @@ class _$AppState extends AppState {
           ..add('receptions', receptions)
           ..add('ongoingReception', ongoingReception)
           ..add('newProductEntry', newProductEntry)
+          ..add('pendingReceptions', pendingReceptions)
           ..add('feedbackMessage', feedbackMessage)
           ..add('isLoading', isLoading)
           ..add('errMessage', errMessage)
@@ -551,6 +563,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set newProductEntry(ProductEntryBuilder? newProductEntry) =>
       _$this._newProductEntry = newProductEntry;
 
+  List<String>? _pendingReceptions;
+  List<String>? get pendingReceptions => _$this._pendingReceptions;
+  set pendingReceptions(List<String>? pendingReceptions) =>
+      _$this._pendingReceptions = pendingReceptions;
+
   String? _feedbackMessage;
   String? get feedbackMessage => _$this._feedbackMessage;
   set feedbackMessage(String? feedbackMessage) =>
@@ -578,6 +595,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _receptions = $v.receptions?.toBuilder();
       _ongoingReception = $v.ongoingReception?.toBuilder();
       _newProductEntry = $v.newProductEntry?.toBuilder();
+      _pendingReceptions = $v.pendingReceptions;
       _feedbackMessage = $v.feedbackMessage;
       _isLoading = $v.isLoading;
       _errMessage = $v.errMessage;
@@ -610,6 +628,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               receptions: _receptions?.build(),
               ongoingReception: _ongoingReception?.build(),
               newProductEntry: _newProductEntry?.build(),
+              pendingReceptions: pendingReceptions,
               feedbackMessage: feedbackMessage,
               isLoading: BuiltValueNullFieldError.checkNotNull(
                   isLoading, r'AppState', 'isLoading'),
@@ -1187,14 +1206,18 @@ class _$ProductEntry extends ProductEntry {
   @override
   final Product product;
   @override
+  final String id;
+  @override
   final num quantity;
 
   factory _$ProductEntry([void Function(ProductEntryBuilder)? updates]) =>
       (new ProductEntryBuilder()..update(updates))._build();
 
-  _$ProductEntry._({required this.product, required this.quantity})
+  _$ProductEntry._(
+      {required this.product, required this.id, required this.quantity})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(product, r'ProductEntry', 'product');
+    BuiltValueNullFieldError.checkNotNull(id, r'ProductEntry', 'id');
     BuiltValueNullFieldError.checkNotNull(
         quantity, r'ProductEntry', 'quantity');
   }
@@ -1211,6 +1234,7 @@ class _$ProductEntry extends ProductEntry {
     if (identical(other, this)) return true;
     return other is ProductEntry &&
         product == other.product &&
+        id == other.id &&
         quantity == other.quantity;
   }
 
@@ -1218,6 +1242,7 @@ class _$ProductEntry extends ProductEntry {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, product.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, quantity.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1227,6 +1252,7 @@ class _$ProductEntry extends ProductEntry {
   String toString() {
     return (newBuiltValueToStringHelper(r'ProductEntry')
           ..add('product', product)
+          ..add('id', id)
           ..add('quantity', quantity))
         .toString();
   }
@@ -1240,6 +1266,10 @@ class ProductEntryBuilder
   ProductBuilder get product => _$this._product ??= new ProductBuilder();
   set product(ProductBuilder? product) => _$this._product = product;
 
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
   num? _quantity;
   num? get quantity => _$this._quantity;
   set quantity(num? quantity) => _$this._quantity = quantity;
@@ -1250,6 +1280,7 @@ class ProductEntryBuilder
     final $v = _$v;
     if ($v != null) {
       _product = $v.product.toBuilder();
+      _id = $v.id;
       _quantity = $v.quantity;
       _$v = null;
     }
@@ -1276,6 +1307,8 @@ class ProductEntryBuilder
       _$result = _$v ??
           new _$ProductEntry._(
               product: product.build(),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'ProductEntry', 'id'),
               quantity: BuiltValueNullFieldError.checkNotNull(
                   quantity, r'ProductEntry', 'quantity'));
     } catch (_) {

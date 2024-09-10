@@ -62,7 +62,6 @@ class _ReceptionDetailsPageState extends State<ReceptionDetailsPage> {
               title: 'Numar factura',
               hint: 'Introdu numarul de factura',
               validate: _validateNotEmpty,
-              keyboardType: TextInputType.none,
               controller: _invoiceController,
             ),
           ],

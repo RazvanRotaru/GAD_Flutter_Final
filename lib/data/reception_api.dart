@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:built_value/json_object.dart';
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:intl/intl.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:movie_db/models/serializers.dart';
 import 'package:movie_db/strings.dart';
@@ -19,7 +21,7 @@ class ReceptionApi {
   ReceptionApi();
 
   Future<String> get _receptionsDir async {
-    final Directory directory = await getApplicationDocumentsDirectory();
+    final Directory directory = (await getExternalStorageDirectory())!;
     return '${directory.path}/receptions/';
   }
 
@@ -33,20 +35,39 @@ class ReceptionApi {
     return '$receptionDir/sent/';
   }
 
+  Future<Reception> _getPendingReception(String path) async {
+    final File dataFile = File('$path/data.json');
+    var fileData = await dataFile.readAsString();
+    final Map<String, dynamic> data = jsonDecode(fileData) as Map<String, dynamic>;
+    return Reception.fromJson(data);
+  }
+
+  Future<List<String>> getPendingReceptions() async {
+    final Directory dir = Directory(await _pendingReceptionsDir);
+    return dir.list().asyncMap((FileSystemEntity entry) async => entry.path).toList();
+  }
+
+  Future<void> sendPendingReceptions(List<String> paths) async {
+    for (var path in paths) {
+      var reception = await _getPendingReception(path);
+      await sendMail(reception, path);
+    }
+  }
+
   Future<String> finalizeReception(Reception reception) async {
     final String receptionFolder = await saveReception(reception);
-    return send(reception.invoiceNr, receptionFolder);
+    return sendMail(reception, receptionFolder);
   }
 
   Future<String> saveReception(Reception reception) async {
     final String receptionFolder = await createReceptionFolder(reception.invoiceNr);
-    final String jsonData = jsonEncode(serializers.serialize(reception));
-
+    final String jsonData = jsonEncode(reception.json);
+    //
     final File dataFile = File('$receptionFolder/data.json');
     if (!dataFile.existsSync()) {
       await dataFile.create(recursive: true);
     }
-
+    //
     await dataFile.writeAsString(jsonData);
 
     // await createExcelReception(reception, receptionFolder);
@@ -57,7 +78,7 @@ class ReceptionApi {
 
   Future<String> createReceptionFolder(String receptionId) async {
     final String date = DateFormat('yy/MM/dd').format(DateTime.now());
-    final String folderPath = '${await _pendingReceptionsDir}/$date/$receptionId';
+    final String folderPath = '${await _pendingReceptionsDir}/$receptionId';
 
     final Directory directory = Directory(folderPath);
     if (!directory.existsSync()) {
@@ -67,32 +88,61 @@ class ReceptionApi {
     return folderPath;
   }
 
-  Future<String> send(String receptionId, String receptionFolder) async {
+  Future<String> sendMail(Reception reception, String receptionFolder) async {
     final Directory dir = Directory(receptionFolder);
-    final List<String> receptionDataFiles = await dir.list().asyncMap((FileSystemEntity entry) => entry.path).toList();
 
-    final Email email = Email(
-      body: DefaultEmailBody,
-      subject: '$DefaultEmailSubject $receptionId',
-      recipients: <String>[DefaultEmailToAddress],
-      attachmentPaths: receptionDataFiles,
-      isHTML: false,
-    );
+    final List<String> receptionDataFiles = await dir
+        .list() //
+        .asyncMap((FileSystemEntity entry) => entry.path)
+        .where((String path) => path.contains('.pdf'))
+        .toList();
+
+    // final Email email = Email(
+    //   body: DefaultEmailBody,
+    //   subject: '$DefaultEmailSubject $receptionId',
+    //   recipients: <String>[DefaultEmailToAddress],
+    //   attachmentPaths: receptionDataFiles,
+    //   isHTML: false,
+    // );
+
+    // Note that using a username and password for gmail only works if
+    // you have two-factor authentication enabled and created an App password.
+    // Search for "gmail app password 2fa"
+    // The alternative is to use oauth.
+    const String username = 'romotors8@gmail.com';
+    const String password = 'xdng iirg xjlq nwpz';
+
+    final SmtpServer smtpServer = gmail(username, password);
 
     String platformResponse;
 
     try {
-      await FlutterEmailSender.send(email);
-      platformResponse = 'Receptia $receptionId a fost trimisa cu success';
+      // await FlutterEmailSender.send(email);
 
-      receptionDataFiles.forEach((String file) async {
+      final Message message = Message()
+        ..from = Address(username, reception.creatorName)
+        ..recipients.add(DefaultEmailToAddress)
+        ..attachments.addAll(receptionDataFiles.map((String file) => FileAttachment(File(file))))
+        ..subject = '$DefaultEmailSubject ${reception.invoiceNr}'
+        ..text = DefaultEmailBody;
+      final SendReport sendReport = await send(message, smtpServer);
+
+      platformResponse = 'Receptia ${reception.invoiceNr} a fost trimisa cu success';
+
+      // final String newDirName = dir.path.replaceFirst('pending', 'sent');
+      // await Directory(newDirName).create(recursive: true);
+      //
+      // await dir.rename(newDirName);
+      var files = dir.list().map((e) => e.path);
+      files.forEach((String file) async {
         final String newFile = file.replaceFirst('pending', 'sent');
         await File(newFile).create(recursive: true);
         await File(file).rename(newFile);
       });
+      dir.delete(recursive: true);
     } catch (error) {
       print(error);
-      platformResponse = error.toString();
+      platformResponse = 'S-a intampinat o eroare la trimiterea receptiei';
     }
 
     return platformResponse;
@@ -169,6 +219,7 @@ class ReceptionApi {
           await PdfGoogleFonts.robotoItalic(),
         ),
         build: (pw.Context context) => <pw.Widget>[
+          _tableHeader(context, reception),
           _contentTable(context, reception.entries.toList()),
         ],
       ),
@@ -225,7 +276,7 @@ class ReceptionApi {
     final pw.Table table = pw.Table(
       children: <pw.TableRow>[
         header,
-        ...entries.indexed.map<pw.TableRow>((e) {
+        ...entries.indexed.map<pw.TableRow>(((int, ProductEntry) e) {
           return _tableRow(e.$2, e.$1 % 2 == 0);
         }).toList(),
       ],
@@ -237,11 +288,9 @@ class ReceptionApi {
   pw.TableRow _tableRow(ProductEntry entry, bool isOdd) {
     return pw.TableRow(
       children: <pw.Widget>[
-        pw.Center(
-          child: pw.Text(
-            entry.product.name,
-            textAlign: pw.TextAlign.left,
-          ),
+        pw.Text(
+          entry.product.name,
+          textAlign: pw.TextAlign.left,
         ),
         pw.Container(
           height: 40,
@@ -252,17 +301,13 @@ class ReceptionApi {
             drawText: true,
           ),
         ),
-        pw.Center(
-          child: pw.Text(
-            entry.quantity.toString(),
-            textAlign: pw.TextAlign.right,
-          ),
+        pw.Text(
+          entry.quantity.toString(),
+          textAlign: pw.TextAlign.right,
         ),
-        pw.Center(
-          child: pw.Text(
-            entry.product.price.toString(),
-            textAlign: pw.TextAlign.right,
-          ),
+        pw.Text(
+          entry.product.price.toString(),
+          textAlign: pw.TextAlign.right,
         ),
       ],
       decoration: pw.BoxDecoration(
@@ -274,6 +319,52 @@ class ReceptionApi {
           ),
         ),
       ),
+    );
+  }
+
+  pw.Widget _tableHeader(pw.Context context, Reception reception) {
+    return pw.Column(
+      children: <pw.Widget>[
+        pw.Row(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: <pw.Widget>[
+            pw.Expanded(
+              child: pw.Column(
+                children: [
+                  pw.Container(
+                    decoration: const pw.BoxDecoration(
+                      borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
+                    ),
+                    padding: const pw.EdgeInsets.only(left: 40, top: 10, bottom: 10, right: 20),
+                    alignment: pw.Alignment.centerLeft,
+                    height: 50,
+                    child: pw.DefaultTextStyle(
+                      style: const pw.TextStyle(
+                        fontSize: 12,
+                      ),
+                      child: pw.GridView(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                        children: <pw.Widget>[
+                          pw.Text('Factura #'),
+                          pw.Text(reception.invoiceNr),
+                          pw.Text('Data: '),
+                          pw.Text(DateFormat('yy/MM/dd').format(DateTime.now())),
+                          pw.Text('Responsabil: '),
+                          pw.Text(reception.creatorName),
+                          pw.Text('Partener: '),
+                          pw.Text(reception.company),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ],
     );
   }
 

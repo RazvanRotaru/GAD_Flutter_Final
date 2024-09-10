@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:movie_db/actions/app_actions.dart';
 import 'package:movie_db/actions/index.dart';
 import 'package:movie_db/models/index.dart';
 import 'package:redux/redux.dart';
+import 'package:uuid/uuid.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   (AppState state, dynamic action) {
@@ -22,6 +24,9 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, FinalizeReceptionActionSuccessful>(_finalizeReceptionSuccessful),
   TypedReducer<AppState, ShowFeedbackActionSuccessful>(_clearReceptionResult),
   TypedReducer<AppState, ErrorAction>(_getError),
+  TypedReducer<AppState, RemoveEntryActionSuccessful>(_removeEntry),
+  TypedReducer<AppState, LoadPendingReceptionsActionSuccessful>(_loadPendingReceptionsSuccessful),
+  TypedReducer<AppState, SendPendingActionSuccessful>(_sendPendingReceptionsSuccessful),
 ]);
 
 AppState _getProducts(AppState state, GetProductsAction action) {
@@ -64,6 +69,7 @@ AppState _getProductByBarcode(AppState state, GetProductByBarcodeAction action) 
 AppState _getProductByBarcodeSuccessful(AppState state, GetProductByBarcodeActionSuccessful action) {
   return state.rebuild((AppStateBuilder builder) {
     builder
+      ..newProductEntry.id = const Uuid().v1()
       ..newProductEntry.quantity = state.newProductEntry?.quantity ?? 0
       ..newProductEntry.product.name = action.product.name
       ..newProductEntry.product.barcode = action.product.barcode
@@ -131,4 +137,23 @@ AppState _clearReceptionResult(AppState state, ShowFeedbackActionSuccessful acti
   return state.rebuild((AppStateBuilder builder) {
     builder.feedbackMessage = null;
   });
+}
+
+AppState _removeEntry(AppState state, RemoveEntryActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.ongoingReception.entries.remove(action.entry);
+  });
+}
+
+AppState _loadPendingReceptionsSuccessful(AppState state, LoadPendingReceptionsActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.pendingReceptions = action.receptions;
+  });
+}
+
+AppState _sendPendingReceptionsSuccessful(AppState state, SendPendingActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.pendingReceptions = null;
+  });
+
 }

@@ -7,6 +7,7 @@ import 'package:movie_db/container/new_reception_container.dart';
 import 'package:movie_db/container/product_entry_container.dart';
 import 'package:movie_db/debouncer.dart';
 import 'package:movie_db/models/index.dart';
+import 'package:movie_db/presentation/confirmation_button.dart';
 import 'package:movie_db/presentation/loading_dialog.dart';
 import 'package:movie_db/presentation/product_entry_card.dart';
 import 'package:movie_db/strings.dart';
@@ -20,22 +21,52 @@ class NewReceptionPage extends StatefulWidget {
 }
 
 class _NewReceptionPageState extends State<NewReceptionPage> {
-  final Debouncer _debouncer = Debouncer(milliseconds: 500);
+  Future<bool?> _withConfirmation(Function callback, {String? text}) {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Center(
+          child: Text(
+            text ?? 'Sunteti sigur?',
+          ),
+        ),
+        actions: <Widget>[
+          MaterialButton(
+            color: Colors.green,
+            colorBrightness: Brightness.dark,
+            child: const Text('Da'),
+            onPressed: () {
+              callback();
+              Navigator.pop(context);
+            },
+          ),
+          MaterialButton(
+            color: Colors.red,
+            colorBrightness: Brightness.dark,
+            child: const Text('Nu'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _selectEntry(String id) {
+    _withConfirmation(
+      () => _removeEntry(id),
+      text: 'Stergeti intrarea?',
+    );
+  }
+
+  Future<bool?> _showBackDialog() {
+    return _withConfirmation(() => Navigator.pop(context),
+        text: 'Vreti sa parasiti receptia?\nAtentie! Toate datele introduse se vor pierde');
+  }
 
   void _addNewEntry() {
     Navigator.pushNamed(context, Routes.addEntry);
-  }
-
-  void _onBarcodeScanned(String barcode) {
-    _debouncer.run(() {
-      if (barcode.isEmpty) {
-        return;
-      }
-      final Store<AppState> store = StoreProvider.of<AppState>(context);
-      print('barcode scanned: $barcode');
-      store.dispatch(GetProductByBarcodeAction(num.parse(barcode)));
-      Navigator.pushNamed(context, Routes.addEntry);
-    });
   }
 
   void _finalizeReception(Reception reception) {
@@ -43,60 +74,78 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
     store.dispatch(FinalizeReceptionAction(reception));
   }
 
+  void _removeEntry(String id) {
+    final Store<AppState> store = StoreProvider.of<AppState>(context);
+    store.dispatch(RemoveEntryAction(id));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return LoadingContainer(
-      builder: (BuildContext context, bool isLoading) {
+    return NewReceptionContainer(
+      builder: (BuildContext context, Reception? reception) {
         return Scaffold(
-          floatingActionButton: LoadingContainer(
-            builder: (BuildContext context, bool isLoading) {
-              return FloatingActionButton(
-                onPressed: _addNewEntry,
-                child: const Icon(Icons.add),
-              );
+          body: PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (bool didPop, Object? result) async {
+              if (didPop) {
+                return;
+              }
+              await _showBackDialog(); /*?? false;
+              if (context.mounted && shouldPop) {
+                Navigator.pop(context);
+              }*/
             },
-          ),
-          body: Stack(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: NewReceptionContainer(
-                  builder: (BuildContext context, Reception? reception) {
-                    return ProductEntryContainer(
-                      builder: (BuildContext context, List<ProductEntry> entries) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            BarcodeKeyboardListener(
-                              bufferDuration: const Duration(milliseconds: 200),
-                              onBarcodeScanned: _onBarcodeScanned,
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: entries.length,
-                                  itemBuilder: (BuildContext context, int index) {
-                                    return GestureDetector(
-                                      // TODO: onTap: () => _selectEntry(index),
-                                      child: ProductEntryCard(entry: entries[index]),
-                                    );
-                                  }),
-                            ),
-                            if (entries.isNotEmpty)
-                              MaterialButton(
-                                child: const Text('Finalizeaza receptioa'),
-                                color: Colors.green,
-                                onPressed: () => _finalizeReception(reception!),
-                              ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-              if (isLoading) const LoadingDialog(),
-            ],
+            child: LoadingContainer(
+              builder: (BuildContext context, bool isLoading) {
+                return Scaffold(
+                  floatingActionButton: (reception?.entries.isNotEmpty ?? false)
+                      ? FloatingActionButton(
+                          onPressed: () => _withConfirmation(() => _finalizeReception(reception!), text: 'Vreti sa trimiteti receptia?'),
+                          child: const Icon(
+                            Icons.check,
+                          ),
+                        )
+                      : null,
+                  body: Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
+                        child: ProductEntryContainer(
+                          builder: (BuildContext context, List<ProductEntry> entries) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: entries.length,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return GestureDetector(
+                                        onLongPress: () => _selectEntry(entries[index].id),
+                                        child: ProductEntryCard(entry: entries[index]),
+                                      );
+                                    }),
+                                // if (entries.isNotEmpty)
+                                MaterialButton(
+                                  child: const Text('Adauga intrare'),
+                                  color: Colors.green,
+                                  onPressed: _addNewEntry,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      if (isLoading)
+                        const LoadingDialog(
+                          message: 'Asteptati.\nSe trimite receptia...',
+                        ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         );
       },

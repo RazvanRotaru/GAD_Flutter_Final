@@ -19,3 +19,6 @@ part 'create_new_entry.dart';
 part 'save_reception.dart';
 part 'email_reception.dart';
 part 'show_reception_result.dart';
+part 'remove_entry_action.dart';
+part 'load_pending_receptions.dart';
+part 'send_pending_action.dart';

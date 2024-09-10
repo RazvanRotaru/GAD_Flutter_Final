@@ -18,6 +18,9 @@ class ReceptionEpics {
       TypedEpic<AppState, CreateReceptionActionStart>(_createReception),
       TypedEpic<AppState, FinalizeReceptionActionStart>(_finalizeReception),
       TypedEpic<AppState, ShowFeedbackActionStart>(_showReceptionResult),
+      TypedEpic<AppState, RemoveEntryActionStart>(_removeEntry),
+      TypedEpic<AppState, LoadPendingReceptionsActionStart>(_loadPendingReceptions),
+      TypedEpic<AppState, SendPendingActionStart>(_sendPendingReceptions),
     ]);
   }
 
@@ -63,6 +66,39 @@ class ReceptionEpics {
         return ShowFeedbackAction.error(error: error, stackTrace: stackTrace);
       },
     );
-    ;
+  }
+
+  Stream<AppAction> _removeEntry(Stream<RemoveEntryActionStart> actions, EpicStore<AppState> store) {
+    return actions //
+        .asyncMap((RemoveEntryActionStart action) => store.state.ongoingReception!.entries.firstWhere((ProductEntry e) => e.id == action.id))
+        .map((ProductEntry entry) => RemoveEntryAction.successful(entry: entry))
+        .onErrorReturnWith(
+          (Object error, StackTrace stackTrace) {
+        return RemoveEntryAction.error(error: error, stackTrace: stackTrace);
+      },
+    );
+
+  }
+
+  Stream<AppAction> _loadPendingReceptions(Stream<LoadPendingReceptionsActionStart> actions, EpicStore<AppState> store) {
+    return actions //
+        .asyncMap((LoadPendingReceptionsActionStart action) => _receptionApi.getPendingReceptions())
+        .map((List<String> receptions) => LoadPendingReceptionsAction.successful(receptions: receptions))
+        .onErrorReturnWith(
+          (Object error, StackTrace stackTrace) {
+        return LoadPendingReceptionsAction.error(error: error, stackTrace: stackTrace);
+      },
+    );
+  }
+
+  Stream<AppAction> _sendPendingReceptions(Stream<SendPendingActionStart> actions, EpicStore<AppState> store) {
+    return actions //
+        .asyncMap((SendPendingActionStart action) => _receptionApi.sendPendingReceptions(action.pendingReceptions))
+        .map((_) => const SendPendingAction.successful())
+        .onErrorReturnWith(
+          (Object error, StackTrace stackTrace) {
+        return SendPendingAction.error(error: error, stackTrace: stackTrace);
+      },
+    );
   }
 }

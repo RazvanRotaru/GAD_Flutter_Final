@@ -11,7 +11,7 @@ class ProductEntryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 250,
+        width: 300,
         height: 100,
         child: Card(
           child: Padding(
@@ -19,21 +19,27 @@ class ProductEntryCard extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  flex: 2,
-                  child: ProductWidget(product: entry.product),
+                  flex: 6,
+                  child: ProductWidget(
+                    product: entry.product,
+                  ),
                 ),
                 const VerticalDivider(
                   thickness: 2.0,
                 ),
                 Expanded(
-                  flex: 1,
-                  child: Text(
-                    entry.quantity.toString(),
-                    overflow: TextOverflow.fade,
-                    softWrap: true,
-                    style: const TextStyle(fontSize: 20),
+                  flex: 2,
+                  child: Center(
+                    child: Text(
+                      entry.quantity.toString(),
+                      overflow: TextOverflow.fade,
+                      softWrap: true,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),

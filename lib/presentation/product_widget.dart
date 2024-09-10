@@ -18,7 +18,7 @@ class ProductWidget extends StatelessWidget {
               child: Text(
                 product.name,
                 softWrap: true,
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
             Expanded(
@@ -33,7 +33,10 @@ class ProductWidget extends StatelessWidget {
                       child: Center(
                         child: Text(
                           product.barcode.toString(),
-                          style: const TextStyle(color: Colors.grey, fontSize: 8),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                     ),
@@ -41,13 +44,13 @@ class ProductWidget extends StatelessWidget {
                       thickness: 2,
                     ),
                     Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Center(
                         child: Text(
-                          product.price.toString(),
+                          '${product.price.toString()} RON',
                           style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
