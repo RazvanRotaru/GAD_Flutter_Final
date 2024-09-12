@@ -44,6 +44,10 @@ class ReceptionApi {
 
   Future<List<String>> getPendingReceptions() async {
     final Directory dir = Directory(await _pendingReceptionsDir);
+    if (!dir.existsSync())
+    {
+      await dir.create(recursive: true);
+    }
     return dir.list().asyncMap((FileSystemEntity entry) async => entry.path).toList();
   }
 
