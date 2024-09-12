@@ -7405,3 +7405,524 @@ abstract class ClearCurrentEntryActionError
           _$ClearCurrentEntryActionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ShowProductDetailsAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value) $default, {
+    required TResult Function(ShowProductDetailsActionSuccessful value)
+        successful,
+    required TResult Function(ShowProductDetailsActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ShowProductDetailsActionStart value)? $default, {
+    TResult? Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult? Function(ShowProductDetailsActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value)? $default, {
+    TResult Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult Function(ShowProductDetailsActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ShowProductDetailsActionCopyWith<$Res> {
+  factory $ShowProductDetailsActionCopyWith(ShowProductDetailsAction value,
+          $Res Function(ShowProductDetailsAction) then) =
+      _$ShowProductDetailsActionCopyWithImpl<$Res, ShowProductDetailsAction>;
+}
+
+/// @nodoc
+class _$ShowProductDetailsActionCopyWithImpl<$Res,
+        $Val extends ShowProductDetailsAction>
+    implements $ShowProductDetailsActionCopyWith<$Res> {
+  _$ShowProductDetailsActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ShowProductDetailsActionStartImplCopyWith<$Res> {
+  factory _$$ShowProductDetailsActionStartImplCopyWith(
+          _$ShowProductDetailsActionStartImpl value,
+          $Res Function(_$ShowProductDetailsActionStartImpl) then) =
+      __$$ShowProductDetailsActionStartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowProductDetailsActionStartImplCopyWithImpl<$Res>
+    extends _$ShowProductDetailsActionCopyWithImpl<$Res,
+        _$ShowProductDetailsActionStartImpl>
+    implements _$$ShowProductDetailsActionStartImplCopyWith<$Res> {
+  __$$ShowProductDetailsActionStartImplCopyWithImpl(
+      _$ShowProductDetailsActionStartImpl _value,
+      $Res Function(_$ShowProductDetailsActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ShowProductDetailsActionStartImpl
+    implements ShowProductDetailsActionStart {
+  const _$ShowProductDetailsActionStartImpl();
+
+  @override
+  String toString() {
+    return 'ShowProductDetailsAction()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowProductDetailsActionStartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value) $default, {
+    required TResult Function(ShowProductDetailsActionSuccessful value)
+        successful,
+    required TResult Function(ShowProductDetailsActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ShowProductDetailsActionStart value)? $default, {
+    TResult? Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult? Function(ShowProductDetailsActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value)? $default, {
+    TResult Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult Function(ShowProductDetailsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowProductDetailsActionStart
+    implements ShowProductDetailsAction {
+  const factory ShowProductDetailsActionStart() =
+      _$ShowProductDetailsActionStartImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowProductDetailsActionSuccessfulImplCopyWith<$Res> {
+  factory _$$ShowProductDetailsActionSuccessfulImplCopyWith(
+          _$ShowProductDetailsActionSuccessfulImpl value,
+          $Res Function(_$ShowProductDetailsActionSuccessfulImpl) then) =
+      __$$ShowProductDetailsActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products});
+}
+
+/// @nodoc
+class __$$ShowProductDetailsActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$ShowProductDetailsActionCopyWithImpl<$Res,
+        _$ShowProductDetailsActionSuccessfulImpl>
+    implements _$$ShowProductDetailsActionSuccessfulImplCopyWith<$Res> {
+  __$$ShowProductDetailsActionSuccessfulImplCopyWithImpl(
+      _$ShowProductDetailsActionSuccessfulImpl _value,
+      $Res Function(_$ShowProductDetailsActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+  }) {
+    return _then(_$ShowProductDetailsActionSuccessfulImpl(
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowProductDetailsActionSuccessfulImpl
+    implements ShowProductDetailsActionSuccessful {
+  const _$ShowProductDetailsActionSuccessfulImpl(
+      {required final List<Product> products})
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  String toString() {
+    return 'ShowProductDetailsAction.successful(products: $products)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowProductDetailsActionSuccessfulImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowProductDetailsActionSuccessfulImplCopyWith<
+          _$ShowProductDetailsActionSuccessfulImpl>
+      get copyWith => __$$ShowProductDetailsActionSuccessfulImplCopyWithImpl<
+          _$ShowProductDetailsActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(products);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value) $default, {
+    required TResult Function(ShowProductDetailsActionSuccessful value)
+        successful,
+    required TResult Function(ShowProductDetailsActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ShowProductDetailsActionStart value)? $default, {
+    TResult? Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult? Function(ShowProductDetailsActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value)? $default, {
+    TResult Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult Function(ShowProductDetailsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowProductDetailsActionSuccessful
+    implements ShowProductDetailsAction {
+  const factory ShowProductDetailsActionSuccessful(
+          {required final List<Product> products}) =
+      _$ShowProductDetailsActionSuccessfulImpl;
+
+  List<Product> get products;
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShowProductDetailsActionSuccessfulImplCopyWith<
+          _$ShowProductDetailsActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShowProductDetailsActionErrorImplCopyWith<$Res> {
+  factory _$$ShowProductDetailsActionErrorImplCopyWith(
+          _$ShowProductDetailsActionErrorImpl value,
+          $Res Function(_$ShowProductDetailsActionErrorImpl) then) =
+      __$$ShowProductDetailsActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$ShowProductDetailsActionErrorImplCopyWithImpl<$Res>
+    extends _$ShowProductDetailsActionCopyWithImpl<$Res,
+        _$ShowProductDetailsActionErrorImpl>
+    implements _$$ShowProductDetailsActionErrorImplCopyWith<$Res> {
+  __$$ShowProductDetailsActionErrorImplCopyWithImpl(
+      _$ShowProductDetailsActionErrorImpl _value,
+      $Res Function(_$ShowProductDetailsActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$ShowProductDetailsActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowProductDetailsActionErrorImpl
+    implements ShowProductDetailsActionError {
+  const _$ShowProductDetailsActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'ShowProductDetailsAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowProductDetailsActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowProductDetailsActionErrorImplCopyWith<
+          _$ShowProductDetailsActionErrorImpl>
+      get copyWith => __$$ShowProductDetailsActionErrorImplCopyWithImpl<
+          _$ShowProductDetailsActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(List<Product> products) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(List<Product> products)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(List<Product> products)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value) $default, {
+    required TResult Function(ShowProductDetailsActionSuccessful value)
+        successful,
+    required TResult Function(ShowProductDetailsActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ShowProductDetailsActionStart value)? $default, {
+    TResult? Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult? Function(ShowProductDetailsActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ShowProductDetailsActionStart value)? $default, {
+    TResult Function(ShowProductDetailsActionSuccessful value)? successful,
+    TResult Function(ShowProductDetailsActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowProductDetailsActionError
+    implements ShowProductDetailsAction, ErrorAction {
+  const factory ShowProductDetailsActionError(
+          {required final Object error, required final StackTrace stackTrace}) =
+      _$ShowProductDetailsActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of ShowProductDetailsAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShowProductDetailsActionErrorImplCopyWith<
+          _$ShowProductDetailsActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

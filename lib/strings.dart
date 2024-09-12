@@ -1,5 +1,6 @@
 const String HomeTitle = 'Home';
 const String CreateNewReception = 'Receptie noua';
+const String ProductDetails = 'Detalii produse';
 const String DefaultEmailSubject = 'Receptie factura';
 const String DefaultEmailBody = 'Salut!\nAtasat gasesti datele receptiei';
 const String DefaultEmailToAddress = 'razvanrtr@Outlook.com';
@@ -11,5 +12,6 @@ mixin Routes {
   static String home = '/home';
   static String newReception = '/new_reception';
   static String addEntry = '/add_entry';
+  static String productDetails = '/productDetails';
   static String receptionDetails = '/reception_details';
 }

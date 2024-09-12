@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     final Store<AppState> store = StoreProvider.of<AppState>(context);
     store.dispatch(const LoadPendingReceptionsAction());
 
@@ -50,7 +49,10 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: LoadingContainer(
           builder: (BuildContext context, bool isLoading) {
             if (isLoading) {
-              return const SizedBox(width: 0, height: 0,);
+              return const SizedBox(
+                width: 0,
+                height: 0,
+              );
             }
             return FloatingActionButton(
               onPressed: _refresh,
@@ -72,25 +74,48 @@ class _HomePageState extends State<HomePage> {
                     if (isLoading) {
                       return const CircularProgressIndicator();
                     }
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        OutlinedButton(
-                          onPressed: _createNewReception,
-                          child: const Text(CreateNewReception),
-                        ),
-                        PendingReceptionsContainer(
-                          builder: (BuildContext context, List<String>? receptions) {
-                            if (receptions == null || receptions.isEmpty) {
-                              return const SizedBox(width: 0, height: 0,);
-                            }
-                            return OutlinedButton(
-                              onPressed: () => _sendPendingReceptions(receptions),
-                              child: Text('${receptions.length} receptii netrimise'),
-                            );
-                          },
-                        )
-                      ],
+                    return SizedBox(
+                      height: 200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          OutlinedButton(
+                            onPressed: _createNewReception,
+                            child: const Text(CreateNewReception),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          OutlinedButton(
+                            onPressed: () => Navigator.of(context).pushNamed(Routes.productDetails),
+                            child: const Text(ProductDetails),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          PendingReceptionsContainer(
+                            builder: (BuildContext context, List<String>? receptions) {
+                              if (receptions == null || receptions.isEmpty) {
+                                return const SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                );
+                              }
+                              return OutlinedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                                    (Set<WidgetState> states) {
+                                      return Colors.red;
+                                    },
+                                  ),
+                                ),
+                                onPressed: () => _sendPendingReceptions(receptions),
+                                child: Text('${receptions.length} receptii netrimise'),
+                              );
+                            },
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),

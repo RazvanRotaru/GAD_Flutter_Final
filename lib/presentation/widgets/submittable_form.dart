@@ -83,10 +83,8 @@ class _SubmittableFormState extends State<SubmittableForm> {
                   flex: 5,
                   child: FocusTraversalGroup(
                     child: ListView(
-                      cacheExtent: 3,
+                      cacheExtent: 1,
                       addAutomaticKeepAlives: true,
-                      // itemExtent: 3,
-
                       controller: ScrollController(),
                       children: widget.children,
                     ),

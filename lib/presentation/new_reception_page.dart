@@ -84,7 +84,7 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
           body: LoadingContainer(
             builder: (BuildContext context, bool isLoading) {
               return Scaffold(
-                floatingActionButton: (reception?.entries.isNotEmpty ?? false)
+                floatingActionButton: !isLoading && (reception?.entries.isNotEmpty ?? false)
                     ? FloatingActionButton(
                         onPressed: () => _withConfirmation(() => _finalizeReception(reception!), text: 'Vreti sa trimiteti receptia?'),
                         child: const Icon(
@@ -109,8 +109,10 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
                                 Navigator.of(context).pop();
                                 return;
                               }
-
-                              await _showBackDialog();
+                              final bool shouldPop = await _showBackDialog() ?? false;
+                              if (context.mounted && shouldPop) {
+                                Navigator.pop(context, result);
+                              }
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,8 +143,10 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
                     if (isLoading)
                       const PopScope(
                         canPop: false,
-                        child: LoadingDialog(
-                          message: 'Asteptati.\nSe trimite receptia...',
+                        child: AbsorbPointer(
+                          child: LoadingDialog(
+                            message: 'Asteptati.\nSe trimite receptia...',
+                          ),
                         ),
                       ),
                   ],

@@ -5,7 +5,9 @@ import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
 import 'package:movie_db/epics/reception_epic.dart';
 import 'package:movie_db/presentation/add_entry_page.dart';
 import 'package:movie_db/presentation/home_page.dart';
+import 'package:movie_db/presentation/product_details_page.dart';
 import 'package:movie_db/presentation/reception_details_page.dart';
+import 'package:movie_db/strings.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
@@ -57,14 +59,17 @@ class MyApp extends StatelessWidget {
         home: const HomePage(),
         theme: ThemeData.dark(),
         routes: <String, WidgetBuilder>{
-          '/new_reception': (BuildContext context) {
+          Routes.newReception: (BuildContext context) {
             return const NewReceptionPage();
           },
-          '/add_entry': (BuildContext context) {
+          Routes.addEntry: (BuildContext context) {
             return const AddEntryPage();
           },
-          '/reception_details': (BuildContext context) {
+          Routes.receptionDetails: (BuildContext context) {
             return const ReceptionDetailsPage();
+          },
+          Routes.productDetails: (BuildContext context) {
+            return const ProductDetailsPage();
           }
         },
       ),
