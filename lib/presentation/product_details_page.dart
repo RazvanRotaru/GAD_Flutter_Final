@@ -134,15 +134,21 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             children: <Widget>[
                               Text(
                                 productEntry.product.name,
+                                softWrap: true,
+                                maxLines: 2,
                                 style: const TextStyle(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
                                 ),
                               ),
-                              Text('Pret ${productEntry.product.price?.toStringAsFixed(2) ?? 'N/A'} RON',
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                  ),),
+                              Text(
+                                'Pret ${productEntry.product.price?.toStringAsFixed(2) ?? 'N/A'} RON',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                ),
+                              ),
                             ],
                           ),
                         ),
