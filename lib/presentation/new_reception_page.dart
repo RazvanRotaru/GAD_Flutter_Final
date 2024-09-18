@@ -118,17 +118,18 @@ class _NewReceptionPageState extends State<NewReceptionPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: entries.length,
-                                    itemBuilder: (BuildContext context, int index) {
-                                      return GestureDetector(
-                                        onLongPress: () => _selectEntry(entries[index].id),
-                                        child: ProductEntryCard(entry: entries[index]),
-                                      );
-                                    }),
-                                // if (entries.isNotEmpty)
+                                Expanded(
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: entries.length,
+                                      itemBuilder: (BuildContext context, int index) {
+                                        return GestureDetector(
+                                          onLongPress: () => _selectEntry(entries[index].id),
+                                          child: ProductEntryCard(entry: entries[index]),
+                                        );
+                                      }),
+                                ),
                                 MaterialButton(
                                   child: const Text('Adauga intrare'),
                                   color: Colors.green,
