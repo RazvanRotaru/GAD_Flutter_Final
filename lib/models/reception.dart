@@ -13,9 +13,13 @@ abstract class Reception implements Built<Reception, ReceptionBuilder> {
 
   String get creatorName;
 
+  String get documentType;
+
   String get invoiceNr;
 
-  String get company;
+  String? get location;
+
+  String? get company;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 

@@ -1,6 +1,7 @@
 const String HomeTitle = 'Home';
 const String CreateNewReception = 'Receptie noua';
 const String ProductDetails = 'Detalii produse';
+const String NewInventory = 'Inventar nou';
 const String DefaultEmailSubject = 'Receptie factura';
 const String DefaultEmailBody = 'Salut!\nAtasat gasesti datele receptiei';
 const String DefaultEmailToAddress = 'romotors2004@yahoo.com';
@@ -14,4 +15,6 @@ mixin Routes {
   static String addEntry = '/add_entry';
   static String productDetails = '/productDetails';
   static String receptionDetails = '/reception_details';
+  static String inventoryDetails = '/inventory_details';
+  static String newInventory = '/new_inventory';
 }

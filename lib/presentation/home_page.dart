@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                       return const CircularProgressIndicator();
                     }
                     return SizedBox(
-                      height: 200,
+                      height: 250,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -89,6 +89,13 @@ class _HomePageState extends State<HomePage> {
                           OutlinedButton(
                             onPressed: () => Navigator.of(context).pushNamed(Routes.productDetails),
                             child: const Text(ProductDetails),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          OutlinedButton(
+                            onPressed: () => Navigator.of(context).pushNamed(Routes.inventoryDetails),
+                            child: const Text(NewInventory),
                           ),
                           const SizedBox(
                             height: 15,
@@ -110,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 onPressed: () => _sendPendingReceptions(receptions),
-                                child: Text('${receptions.length} receptii netrimise'),
+                                child: Text('${receptions.length} documente netrimise'),
                               );
                             },
                           )

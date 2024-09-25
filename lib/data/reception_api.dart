@@ -4,13 +4,11 @@ import 'dart:io';
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:intl/intl.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 import 'package:movie_db/models/index.dart';
-import 'package:movie_db/models/serializers.dart';
 import 'package:movie_db/strings.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -44,8 +42,7 @@ class ReceptionApi {
 
   Future<List<String>> getPendingReceptions() async {
     final Directory dir = Directory(await _pendingReceptionsDir);
-    if (!dir.existsSync())
-    {
+    if (!dir.existsSync()) {
       await dir.create(recursive: true);
     }
     return dir.list().asyncMap((FileSystemEntity entry) async => entry.path).toList();
@@ -78,6 +75,28 @@ class ReceptionApi {
     await createPdf(reception, receptionFolder);
 
     return receptionFolder;
+  }
+
+  Future<String> saveInventory(Reception reception) async {
+    final String receptionFolder = await createReceptionFolder(reception.invoiceNr);
+    final String jsonData = jsonEncode(reception.json);
+    //
+    final File dataFile = File('$receptionFolder/data.json');
+    if (!dataFile.existsSync()) {
+      await dataFile.create(recursive: true);
+    }
+    //
+    await dataFile.writeAsString(jsonData);
+
+    // await createExcelReception(reception, receptionFolder);
+    await createInventoryPdf(reception, receptionFolder);
+
+    return receptionFolder;
+  }
+
+  Future<String> finalizeInventory(Reception reception) async {
+    final String receptionFolder = await saveInventory(reception);
+    return sendMail(reception, receptionFolder);
   }
 
   Future<String> createReceptionFolder(String receptionId) async {
@@ -127,11 +146,11 @@ class ReceptionApi {
         ..from = Address(username, reception.creatorName)
         ..recipients.add(DefaultEmailToAddress)
         ..attachments.addAll(receptionDataFiles.map((String file) => FileAttachment(File(file))))
-        ..subject = '$DefaultEmailSubject ${reception.invoiceNr}'
+        ..subject = '${reception.documentType} ${reception.invoiceNr}'
         ..text = DefaultEmailBody;
       final SendReport sendReport = await send(message, smtpServer);
 
-      platformResponse = 'Receptia ${reception.invoiceNr} a fost trimisa cu success';
+      platformResponse = '${reception.documentType} ${reception.invoiceNr} a fost trimisa cu success';
 
       // final String newDirName = dir.path.replaceFirst('pending', 'sent');
       // await Directory(newDirName).create(recursive: true);
@@ -171,7 +190,7 @@ class ReceptionApi {
     var invoiceNrIndex = 'B2';
     var userIndex = 'C2';
 
-    sheet.cell(CellIndex.indexByString(companyNameIndex)).value = TextCellValue(reception.company);
+    sheet.cell(CellIndex.indexByString(companyNameIndex)).value = TextCellValue(reception.company!);
     sheet.cell(CellIndex.indexByString(invoiceNrIndex)).value = TextCellValue(reception.invoiceNr);
     sheet.cell(CellIndex.indexByString(userIndex)).value = TextCellValue(reception.creatorName);
 
@@ -210,6 +229,37 @@ class ReceptionApi {
     return filePath;
   }
 
+  Future<String> createInventoryPdf(Reception reception, String directory) async {
+    final pw.Document doc = pw.Document();
+
+    doc.addPage(
+      pw.MultiPage(
+        maxPages: 100,
+        pageTheme: _buildTheme(
+          PdfPageFormat.a4,
+          await PdfGoogleFonts.robotoRegular(),
+          await PdfGoogleFonts.robotoBold(),
+          await PdfGoogleFonts.robotoItalic(),
+        ),
+        build: (pw.Context context) => <pw.Widget>[
+          _inventoryHeader(context, reception),
+          _contentTable(
+            context,
+            reception.entries.toList(),
+            _inventoryTableHeader,
+            (int index, ProductEntry entry) => _inventoryTableRow(entry),
+          ),
+        ],
+      ),
+    );
+
+    var path = '$directory/inventar.pdf';
+    final File file = await File(path).create(recursive: true);
+    await file.writeAsBytes(await doc.save());
+
+    return path;
+  }
+
   Future<String> createPdf(Reception reception, String directory) async {
     final pw.Document doc = pw.Document();
 
@@ -224,7 +274,12 @@ class ReceptionApi {
         ),
         build: (pw.Context context) => <pw.Widget>[
           _tableHeader(context, reception),
-          _contentTable(context, reception.entries.toList()),
+          _contentTable(
+            context,
+            reception.entries.toList(),
+            _receptionTableHeader,
+            (int index, ProductEntry entry) => _tableRow(entry, index.isEven),
+          ),
         ],
       ),
     );
@@ -251,37 +306,25 @@ class ReceptionApi {
     );
   }
 
-  pw.Table _contentTable(pw.Context context, List<ProductEntry> entries) {
-    var header = pw.TableRow(
+  pw.Table _contentTable(
+    pw.Context context,
+    List<ProductEntry> entries,
+    List<pw.Widget> header,
+    pw.TableRow Function(int, ProductEntry) rowBuilder,
+  ) {
+    final pw.TableRow tableHeader = pw.TableRow(
       decoration: const pw.BoxDecoration(
         borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
         color: PdfColors.green,
       ),
-      children: [
-        pw.Text(
-          'Denumire',
-          textAlign: pw.TextAlign.left,
-        ),
-        pw.Text(
-          'Cod Bare',
-          textAlign: pw.TextAlign.left,
-        ),
-        pw.Text(
-          'Cant',
-          textAlign: pw.TextAlign.right,
-        ),
-        pw.Text(
-          'Pret',
-          textAlign: pw.TextAlign.right,
-        ),
-      ],
+      children: header,
     );
 
     final pw.Table table = pw.Table(
       children: <pw.TableRow>[
-        header,
+        tableHeader,
         ...entries.indexed.map<pw.TableRow>(((int, ProductEntry) e) {
-          return _tableRow(e.$2, e.$1 % 2 == 0);
+          return rowBuilder(e.$1, e.$2);
         }).toList(),
       ],
     );
@@ -289,7 +332,49 @@ class ReceptionApi {
     return table;
   }
 
-  pw.TableRow _tableRow(ProductEntry entry, bool isOdd) {
+  List<pw.Widget> get _receptionTableHeader {
+    return <pw.Widget>[
+      pw.Text(
+        'Denumire',
+        textAlign: pw.TextAlign.left,
+      ),
+      pw.Text(
+        'Cod Bare',
+        textAlign: pw.TextAlign.left,
+      ),
+      pw.Text(
+        'Cant',
+        textAlign: pw.TextAlign.right,
+      ),
+      pw.Text(
+        'Pret',
+        textAlign: pw.TextAlign.right,
+      ),
+    ];
+  }
+
+  List<pw.Widget> get _inventoryTableHeader {
+    return <pw.Widget>[
+      pw.Text(
+        'Denumire',
+        textAlign: pw.TextAlign.left,
+      ),
+      pw.Text(
+        'Cantitate',
+        textAlign: pw.TextAlign.left,
+      ),
+      pw.Text(
+        'Pret',
+        textAlign: pw.TextAlign.left,
+      ),
+      pw.Text(
+        'Val. Total',
+        textAlign: pw.TextAlign.right,
+      )
+    ];
+  }
+
+  pw.TableRow _tableRow(ProductEntry entry, bool isEven) {
     return pw.TableRow(
       children: <pw.Widget>[
         pw.Text(
@@ -298,7 +383,7 @@ class ReceptionApi {
         ),
         pw.Container(
           height: 40,
-          width: 60,
+          width: 80,
           child: pw.BarcodeWidget(
             barcode: pw.Barcode.code128(),
             data: entry.product.barcode.toString(),
@@ -315,7 +400,7 @@ class ReceptionApi {
         ),
       ],
       decoration: pw.BoxDecoration(
-        color: isOdd ? PdfColors.white : PdfColors.grey,
+        color: isEven ? PdfColors.white : PdfColors.grey,
         border: const pw.Border(
           bottom: pw.BorderSide(
             color: PdfColors.black,
@@ -326,49 +411,121 @@ class ReceptionApi {
     );
   }
 
-  pw.Widget _tableHeader(pw.Context context, Reception reception) {
-    return pw.Column(
+  pw.TableRow _inventoryTableRow(ProductEntry entry) {
+    return pw.TableRow(
       children: <pw.Widget>[
-        pw.Row(
-          crossAxisAlignment: pw.CrossAxisAlignment.start,
-          children: <pw.Widget>[
-            pw.Expanded(
-              child: pw.Column(
-                children: [
-                  pw.Container(
-                    decoration: const pw.BoxDecoration(
-                      borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
-                    ),
-                    padding: const pw.EdgeInsets.only(left: 40, top: 10, bottom: 10, right: 20),
-                    alignment: pw.Alignment.centerLeft,
-                    height: 50,
-                    child: pw.DefaultTextStyle(
-                      style: const pw.TextStyle(
-                        fontSize: 12,
-                      ),
-                      child: pw.GridView(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 8.0,
-                        crossAxisSpacing: 8.0,
-                        children: <pw.Widget>[
-                          pw.Text('Factura #'),
-                          pw.Text(reception.invoiceNr),
-                          pw.Text('Data: '),
-                          pw.Text(DateFormat('yy/MM/dd').format(DateTime.now())),
-                          pw.Text('Responsabil: '),
-                          pw.Text(reception.creatorName),
-                          pw.Text('Partener: '),
-                          pw.Text(reception.company),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+        pw.Text(
+          entry.product.name,
+          textAlign: pw.TextAlign.left,
+        ),
+        pw.Text(
+          entry.quantity.toString(),
+          textAlign: pw.TextAlign.left,
+        ),
+        pw.Text(
+          entry.product.price.toString(),
+          textAlign: pw.TextAlign.left,
+        ),
+        pw.Text(
+          '${((entry.product.price ?? 0) * entry.quantity).toStringAsFixed(2)} RON',
+          textAlign: pw.TextAlign.right,
         ),
       ],
+      decoration: const pw.BoxDecoration(
+        border: pw.Border(
+          bottom: pw.BorderSide(
+            color: PdfColors.black,
+            width: .5,
+          ),
+        ),
+      ),
+    );
+  }
+
+  pw.Widget _inventoryHeader(pw.Context context, Reception reception) {
+    double total = 0;
+    for (final ProductEntry entry in reception.entries) {
+      total += entry.quantity * (entry.product.price ?? 0);
+    }
+
+    return pw.Container(
+      decoration: const pw.BoxDecoration(
+        borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
+      ),
+      padding: const pw.EdgeInsets.only(left: 40, top: 10, bottom: 10, right: 20),
+      alignment: pw.Alignment.centerLeft,
+      height: 80,
+      child: pw.DefaultTextStyle(
+        style: const pw.TextStyle(
+          fontSize: 12,
+        ),
+        child: pw.Row(
+          children: <pw.Widget>[
+            pw.Expanded(
+              flex: 1,
+              child: pw.GridView(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8.0,
+                crossAxisSpacing: 8.0,
+                children: <pw.Widget>[
+                  pw.Text('Data'),
+                  pw.Text(DateFormat('yy/MM/dd').format(DateTime.now())),
+                  pw.Text('Responsabil'),
+                  pw.Text(reception.creatorName),
+                  pw.Text('Locatie'),
+                  pw.Text(reception.location!),
+                ],
+              ),
+            ),
+            pw.Expanded(
+              flex: 2,
+              child: pw.Column(
+                children: [
+                  pw.Text('Total', style: const pw.TextStyle(fontSize: 24)),
+                  pw.FittedBox(
+                    fit: pw.BoxFit.cover,
+                    child: pw.Text(
+                      '${total.toStringAsFixed(2)} RON',
+                      style: const pw.TextStyle(fontSize: 18),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  pw.Widget _tableHeader(pw.Context context, Reception reception) {
+    return pw.Container(
+      decoration: const pw.BoxDecoration(
+        borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
+      ),
+      padding: const pw.EdgeInsets.only(left: 40, top: 10, bottom: 10, right: 20),
+      alignment: pw.Alignment.centerLeft,
+      height: 50,
+      child: pw.DefaultTextStyle(
+        style: const pw.TextStyle(
+          fontSize: 12,
+        ),
+        child: pw.GridView(
+          crossAxisCount: 2,
+          mainAxisSpacing: 8.0,
+          crossAxisSpacing: 8.0,
+          children: <pw.Widget>[
+            pw.Text('Factura #'),
+            pw.Text(reception.invoiceNr),
+            pw.Text('Data: '),
+            pw.Text(DateFormat('yy/MM/dd').format(DateTime.now())),
+            pw.Text('Responsabil: '),
+            pw.Text(reception.creatorName),
+            pw.Text('Partener: '),
+            pw.Text(reception.company!),
+          ],
+        ),
+      ),
     );
   }
 

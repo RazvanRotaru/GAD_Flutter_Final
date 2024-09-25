@@ -5,6 +5,8 @@ import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
 import 'package:movie_db/epics/reception_epic.dart';
 import 'package:movie_db/presentation/add_entry_page.dart';
 import 'package:movie_db/presentation/home_page.dart';
+import 'package:movie_db/presentation/inventory_details_page.dart';
+import 'package:movie_db/presentation/inventory_page.dart';
 import 'package:movie_db/presentation/product_details_page.dart';
 import 'package:movie_db/presentation/reception_details_page.dart';
 import 'package:movie_db/strings.dart';
@@ -68,8 +70,14 @@ class MyApp extends StatelessWidget {
           Routes.receptionDetails: (BuildContext context) {
             return const ReceptionDetailsPage();
           },
+          Routes.inventoryDetails: (BuildContext context) {
+            return const InventoryDetailsPage();
+          },
           Routes.productDetails: (BuildContext context) {
             return const ProductDetailsPage();
+          },
+          Routes.newInventory: (BuildContext context) {
+            return const InventoryPage();
           }
         },
       ),

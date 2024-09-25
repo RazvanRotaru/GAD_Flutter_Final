@@ -7926,3 +7926,1125 @@ abstract class ShowProductDetailsActionError
           _$ShowProductDetailsActionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$FinalizeInventoryAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Reception reception) $default, {
+    required TResult Function(String message) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Reception reception)? $default, {
+    TResult? Function(String message)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Reception reception)? $default, {
+    TResult Function(String message)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value) $default, {
+    required TResult Function(FinalizeInventoryActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeInventoryActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeInventoryActionStart value)? $default, {
+    TResult? Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult? Function(FinalizeInventoryActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value)? $default, {
+    TResult Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult Function(FinalizeInventoryActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FinalizeInventoryActionCopyWith<$Res> {
+  factory $FinalizeInventoryActionCopyWith(FinalizeInventoryAction value,
+          $Res Function(FinalizeInventoryAction) then) =
+      _$FinalizeInventoryActionCopyWithImpl<$Res, FinalizeInventoryAction>;
+}
+
+/// @nodoc
+class _$FinalizeInventoryActionCopyWithImpl<$Res,
+        $Val extends FinalizeInventoryAction>
+    implements $FinalizeInventoryActionCopyWith<$Res> {
+  _$FinalizeInventoryActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$FinalizeInventoryActionStartImplCopyWith<$Res> {
+  factory _$$FinalizeInventoryActionStartImplCopyWith(
+          _$FinalizeInventoryActionStartImpl value,
+          $Res Function(_$FinalizeInventoryActionStartImpl) then) =
+      __$$FinalizeInventoryActionStartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Reception reception});
+}
+
+/// @nodoc
+class __$$FinalizeInventoryActionStartImplCopyWithImpl<$Res>
+    extends _$FinalizeInventoryActionCopyWithImpl<$Res,
+        _$FinalizeInventoryActionStartImpl>
+    implements _$$FinalizeInventoryActionStartImplCopyWith<$Res> {
+  __$$FinalizeInventoryActionStartImplCopyWithImpl(
+      _$FinalizeInventoryActionStartImpl _value,
+      $Res Function(_$FinalizeInventoryActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reception = null,
+  }) {
+    return _then(_$FinalizeInventoryActionStartImpl(
+      reception: null == reception
+          ? _value.reception
+          : reception // ignore: cast_nullable_to_non_nullable
+              as Reception,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FinalizeInventoryActionStartImpl
+    implements FinalizeInventoryActionStart {
+  const _$FinalizeInventoryActionStartImpl({required this.reception});
+
+  @override
+  final Reception reception;
+
+  @override
+  String toString() {
+    return 'FinalizeInventoryAction(reception: $reception)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeInventoryActionStartImpl &&
+            (identical(other.reception, reception) ||
+                other.reception == reception));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reception);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinalizeInventoryActionStartImplCopyWith<
+          _$FinalizeInventoryActionStartImpl>
+      get copyWith => __$$FinalizeInventoryActionStartImplCopyWithImpl<
+          _$FinalizeInventoryActionStartImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Reception reception) $default, {
+    required TResult Function(String message) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default(reception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Reception reception)? $default, {
+    TResult? Function(String message)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call(reception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Reception reception)? $default, {
+    TResult Function(String message)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(reception);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value) $default, {
+    required TResult Function(FinalizeInventoryActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeInventoryActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeInventoryActionStart value)? $default, {
+    TResult? Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult? Function(FinalizeInventoryActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value)? $default, {
+    TResult Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult Function(FinalizeInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeInventoryActionStart implements FinalizeInventoryAction {
+  const factory FinalizeInventoryActionStart(
+          {required final Reception reception}) =
+      _$FinalizeInventoryActionStartImpl;
+
+  Reception get reception;
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinalizeInventoryActionStartImplCopyWith<
+          _$FinalizeInventoryActionStartImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FinalizeInventoryActionSuccessfulImplCopyWith<$Res> {
+  factory _$$FinalizeInventoryActionSuccessfulImplCopyWith(
+          _$FinalizeInventoryActionSuccessfulImpl value,
+          $Res Function(_$FinalizeInventoryActionSuccessfulImpl) then) =
+      __$$FinalizeInventoryActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$FinalizeInventoryActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$FinalizeInventoryActionCopyWithImpl<$Res,
+        _$FinalizeInventoryActionSuccessfulImpl>
+    implements _$$FinalizeInventoryActionSuccessfulImplCopyWith<$Res> {
+  __$$FinalizeInventoryActionSuccessfulImplCopyWithImpl(
+      _$FinalizeInventoryActionSuccessfulImpl _value,
+      $Res Function(_$FinalizeInventoryActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$FinalizeInventoryActionSuccessfulImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FinalizeInventoryActionSuccessfulImpl
+    implements FinalizeInventoryActionSuccessful {
+  const _$FinalizeInventoryActionSuccessfulImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'FinalizeInventoryAction.successful(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeInventoryActionSuccessfulImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinalizeInventoryActionSuccessfulImplCopyWith<
+          _$FinalizeInventoryActionSuccessfulImpl>
+      get copyWith => __$$FinalizeInventoryActionSuccessfulImplCopyWithImpl<
+          _$FinalizeInventoryActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Reception reception) $default, {
+    required TResult Function(String message) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Reception reception)? $default, {
+    TResult? Function(String message)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Reception reception)? $default, {
+    TResult Function(String message)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value) $default, {
+    required TResult Function(FinalizeInventoryActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeInventoryActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeInventoryActionStart value)? $default, {
+    TResult? Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult? Function(FinalizeInventoryActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value)? $default, {
+    TResult Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult Function(FinalizeInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeInventoryActionSuccessful
+    implements FinalizeInventoryAction {
+  const factory FinalizeInventoryActionSuccessful(
+          {required final String message}) =
+      _$FinalizeInventoryActionSuccessfulImpl;
+
+  String get message;
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinalizeInventoryActionSuccessfulImplCopyWith<
+          _$FinalizeInventoryActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FinalizeInventoryActionErrorImplCopyWith<$Res> {
+  factory _$$FinalizeInventoryActionErrorImplCopyWith(
+          _$FinalizeInventoryActionErrorImpl value,
+          $Res Function(_$FinalizeInventoryActionErrorImpl) then) =
+      __$$FinalizeInventoryActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$FinalizeInventoryActionErrorImplCopyWithImpl<$Res>
+    extends _$FinalizeInventoryActionCopyWithImpl<$Res,
+        _$FinalizeInventoryActionErrorImpl>
+    implements _$$FinalizeInventoryActionErrorImplCopyWith<$Res> {
+  __$$FinalizeInventoryActionErrorImplCopyWithImpl(
+      _$FinalizeInventoryActionErrorImpl _value,
+      $Res Function(_$FinalizeInventoryActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$FinalizeInventoryActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FinalizeInventoryActionErrorImpl
+    implements FinalizeInventoryActionError {
+  const _$FinalizeInventoryActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'FinalizeInventoryAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinalizeInventoryActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinalizeInventoryActionErrorImplCopyWith<
+          _$FinalizeInventoryActionErrorImpl>
+      get copyWith => __$$FinalizeInventoryActionErrorImplCopyWithImpl<
+          _$FinalizeInventoryActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Reception reception) $default, {
+    required TResult Function(String message) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Reception reception)? $default, {
+    TResult? Function(String message)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Reception reception)? $default, {
+    TResult Function(String message)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value) $default, {
+    required TResult Function(FinalizeInventoryActionSuccessful value)
+        successful,
+    required TResult Function(FinalizeInventoryActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(FinalizeInventoryActionStart value)? $default, {
+    TResult? Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult? Function(FinalizeInventoryActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(FinalizeInventoryActionStart value)? $default, {
+    TResult Function(FinalizeInventoryActionSuccessful value)? successful,
+    TResult Function(FinalizeInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FinalizeInventoryActionError
+    implements FinalizeInventoryAction, ErrorAction {
+  const factory FinalizeInventoryActionError(
+          {required final Object error, required final StackTrace stackTrace}) =
+      _$FinalizeInventoryActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of FinalizeInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinalizeInventoryActionErrorImplCopyWith<
+          _$FinalizeInventoryActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CreateInventoryAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id) $default, {
+    required TResult Function(Reception document) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String creatorName, String location, String id)?
+        $default, {
+    TResult? Function(Reception document)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id)?
+        $default, {
+    TResult Function(Reception document)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value) $default, {
+    required TResult Function(CreateInventoryActionSuccessful value) successful,
+    required TResult Function(CreateInventoryActionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateInventoryActionStart value)? $default, {
+    TResult? Function(CreateInventoryActionSuccessful value)? successful,
+    TResult? Function(CreateInventoryActionError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value)? $default, {
+    TResult Function(CreateInventoryActionSuccessful value)? successful,
+    TResult Function(CreateInventoryActionError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CreateInventoryActionCopyWith<$Res> {
+  factory $CreateInventoryActionCopyWith(CreateInventoryAction value,
+          $Res Function(CreateInventoryAction) then) =
+      _$CreateInventoryActionCopyWithImpl<$Res, CreateInventoryAction>;
+}
+
+/// @nodoc
+class _$CreateInventoryActionCopyWithImpl<$Res,
+        $Val extends CreateInventoryAction>
+    implements $CreateInventoryActionCopyWith<$Res> {
+  _$CreateInventoryActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$CreateInventoryActionStartImplCopyWith<$Res> {
+  factory _$$CreateInventoryActionStartImplCopyWith(
+          _$CreateInventoryActionStartImpl value,
+          $Res Function(_$CreateInventoryActionStartImpl) then) =
+      __$$CreateInventoryActionStartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String creatorName, String location, String id});
+}
+
+/// @nodoc
+class __$$CreateInventoryActionStartImplCopyWithImpl<$Res>
+    extends _$CreateInventoryActionCopyWithImpl<$Res,
+        _$CreateInventoryActionStartImpl>
+    implements _$$CreateInventoryActionStartImplCopyWith<$Res> {
+  __$$CreateInventoryActionStartImplCopyWithImpl(
+      _$CreateInventoryActionStartImpl _value,
+      $Res Function(_$CreateInventoryActionStartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? creatorName = null,
+    Object? location = null,
+    Object? id = null,
+  }) {
+    return _then(_$CreateInventoryActionStartImpl(
+      creatorName: null == creatorName
+          ? _value.creatorName
+          : creatorName // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateInventoryActionStartImpl implements CreateInventoryActionStart {
+  const _$CreateInventoryActionStartImpl(
+      {required this.creatorName, required this.location, required this.id});
+
+  @override
+  final String creatorName;
+  @override
+  final String location;
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'CreateInventoryAction(creatorName: $creatorName, location: $location, id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateInventoryActionStartImpl &&
+            (identical(other.creatorName, creatorName) ||
+                other.creatorName == creatorName) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, creatorName, location, id);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateInventoryActionStartImplCopyWith<_$CreateInventoryActionStartImpl>
+      get copyWith => __$$CreateInventoryActionStartImplCopyWithImpl<
+          _$CreateInventoryActionStartImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id) $default, {
+    required TResult Function(Reception document) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return $default(creatorName, location, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String creatorName, String location, String id)?
+        $default, {
+    TResult? Function(Reception document)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return $default?.call(creatorName, location, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id)?
+        $default, {
+    TResult Function(Reception document)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(creatorName, location, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value) $default, {
+    required TResult Function(CreateInventoryActionSuccessful value) successful,
+    required TResult Function(CreateInventoryActionError value) error,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateInventoryActionStart value)? $default, {
+    TResult? Function(CreateInventoryActionSuccessful value)? successful,
+    TResult? Function(CreateInventoryActionError value)? error,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value)? $default, {
+    TResult Function(CreateInventoryActionSuccessful value)? successful,
+    TResult Function(CreateInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateInventoryActionStart implements CreateInventoryAction {
+  const factory CreateInventoryActionStart(
+      {required final String creatorName,
+      required final String location,
+      required final String id}) = _$CreateInventoryActionStartImpl;
+
+  String get creatorName;
+  String get location;
+  String get id;
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateInventoryActionStartImplCopyWith<_$CreateInventoryActionStartImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateInventoryActionSuccessfulImplCopyWith<$Res> {
+  factory _$$CreateInventoryActionSuccessfulImplCopyWith(
+          _$CreateInventoryActionSuccessfulImpl value,
+          $Res Function(_$CreateInventoryActionSuccessfulImpl) then) =
+      __$$CreateInventoryActionSuccessfulImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Reception document});
+}
+
+/// @nodoc
+class __$$CreateInventoryActionSuccessfulImplCopyWithImpl<$Res>
+    extends _$CreateInventoryActionCopyWithImpl<$Res,
+        _$CreateInventoryActionSuccessfulImpl>
+    implements _$$CreateInventoryActionSuccessfulImplCopyWith<$Res> {
+  __$$CreateInventoryActionSuccessfulImplCopyWithImpl(
+      _$CreateInventoryActionSuccessfulImpl _value,
+      $Res Function(_$CreateInventoryActionSuccessfulImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? document = null,
+  }) {
+    return _then(_$CreateInventoryActionSuccessfulImpl(
+      document: null == document
+          ? _value.document
+          : document // ignore: cast_nullable_to_non_nullable
+              as Reception,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateInventoryActionSuccessfulImpl
+    implements CreateInventoryActionSuccessful {
+  const _$CreateInventoryActionSuccessfulImpl({required this.document});
+
+  @override
+  final Reception document;
+
+  @override
+  String toString() {
+    return 'CreateInventoryAction.successful(document: $document)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateInventoryActionSuccessfulImpl &&
+            (identical(other.document, document) ||
+                other.document == document));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, document);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateInventoryActionSuccessfulImplCopyWith<
+          _$CreateInventoryActionSuccessfulImpl>
+      get copyWith => __$$CreateInventoryActionSuccessfulImplCopyWithImpl<
+          _$CreateInventoryActionSuccessfulImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id) $default, {
+    required TResult Function(Reception document) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return successful(document);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String creatorName, String location, String id)?
+        $default, {
+    TResult? Function(Reception document)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return successful?.call(document);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id)?
+        $default, {
+    TResult Function(Reception document)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(document);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value) $default, {
+    required TResult Function(CreateInventoryActionSuccessful value) successful,
+    required TResult Function(CreateInventoryActionError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateInventoryActionStart value)? $default, {
+    TResult? Function(CreateInventoryActionSuccessful value)? successful,
+    TResult? Function(CreateInventoryActionError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value)? $default, {
+    TResult Function(CreateInventoryActionSuccessful value)? successful,
+    TResult Function(CreateInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateInventoryActionSuccessful
+    implements CreateInventoryAction {
+  const factory CreateInventoryActionSuccessful(
+          {required final Reception document}) =
+      _$CreateInventoryActionSuccessfulImpl;
+
+  Reception get document;
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateInventoryActionSuccessfulImplCopyWith<
+          _$CreateInventoryActionSuccessfulImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateInventoryActionErrorImplCopyWith<$Res> {
+  factory _$$CreateInventoryActionErrorImplCopyWith(
+          _$CreateInventoryActionErrorImpl value,
+          $Res Function(_$CreateInventoryActionErrorImpl) then) =
+      __$$CreateInventoryActionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object error, StackTrace stackTrace});
+}
+
+/// @nodoc
+class __$$CreateInventoryActionErrorImplCopyWithImpl<$Res>
+    extends _$CreateInventoryActionCopyWithImpl<$Res,
+        _$CreateInventoryActionErrorImpl>
+    implements _$$CreateInventoryActionErrorImplCopyWith<$Res> {
+  __$$CreateInventoryActionErrorImplCopyWithImpl(
+      _$CreateInventoryActionErrorImpl _value,
+      $Res Function(_$CreateInventoryActionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+  }) {
+    return _then(_$CreateInventoryActionErrorImpl(
+      error: null == error ? _value.error : error,
+      stackTrace: null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateInventoryActionErrorImpl implements CreateInventoryActionError {
+  const _$CreateInventoryActionErrorImpl(
+      {required this.error, required this.stackTrace});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'CreateInventoryAction.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateInventoryActionErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateInventoryActionErrorImplCopyWith<_$CreateInventoryActionErrorImpl>
+      get copyWith => __$$CreateInventoryActionErrorImplCopyWithImpl<
+          _$CreateInventoryActionErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id) $default, {
+    required TResult Function(Reception document) successful,
+    required TResult Function(Object error, StackTrace stackTrace) error,
+  }) {
+    return error(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String creatorName, String location, String id)?
+        $default, {
+    TResult? Function(Reception document)? successful,
+    TResult? Function(Object error, StackTrace stackTrace)? error,
+  }) {
+    return error?.call(this.error, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String creatorName, String location, String id)?
+        $default, {
+    TResult Function(Reception document)? successful,
+    TResult Function(Object error, StackTrace stackTrace)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value) $default, {
+    required TResult Function(CreateInventoryActionSuccessful value) successful,
+    required TResult Function(CreateInventoryActionError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(CreateInventoryActionStart value)? $default, {
+    TResult? Function(CreateInventoryActionSuccessful value)? successful,
+    TResult? Function(CreateInventoryActionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CreateInventoryActionStart value)? $default, {
+    TResult Function(CreateInventoryActionSuccessful value)? successful,
+    TResult Function(CreateInventoryActionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateInventoryActionError
+    implements CreateInventoryAction, ErrorAction {
+  const factory CreateInventoryActionError(
+      {required final Object error,
+      required final StackTrace stackTrace}) = _$CreateInventoryActionErrorImpl;
+
+  Object get error;
+  StackTrace get stackTrace;
+
+  /// Create a copy of CreateInventoryAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateInventoryActionErrorImplCopyWith<_$CreateInventoryActionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

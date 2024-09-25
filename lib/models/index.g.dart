@@ -349,14 +349,28 @@ class _$ReceptionSerializer implements StructuredSerializer<Reception> {
       'creatorName',
       serializers.serialize(object.creatorName,
           specifiedType: const FullType(String)),
+      'documentType',
+      serializers.serialize(object.documentType,
+          specifiedType: const FullType(String)),
       'invoiceNr',
       serializers.serialize(object.invoiceNr,
           specifiedType: const FullType(String)),
-      'company',
-      serializers.serialize(object.company,
-          specifiedType: const FullType(String)),
     ];
-
+    Object? value;
+    value = object.location;
+    if (value != null) {
+      result
+        ..add('location')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.company;
+    if (value != null) {
+      result
+        ..add('company')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -381,13 +395,21 @@ class _$ReceptionSerializer implements StructuredSerializer<Reception> {
           result.creatorName = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'documentType':
+          result.documentType = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'invoiceNr':
           result.invoiceNr = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'location':
+          result.location = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'company':
           result.company = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -1333,9 +1355,13 @@ class _$Reception extends Reception {
   @override
   final String creatorName;
   @override
+  final String documentType;
+  @override
   final String invoiceNr;
   @override
-  final String company;
+  final String? location;
+  @override
+  final String? company;
 
   factory _$Reception([void Function(ReceptionBuilder)? updates]) =>
       (new ReceptionBuilder()..update(updates))._build();
@@ -1343,14 +1369,17 @@ class _$Reception extends Reception {
   _$Reception._(
       {required this.entries,
       required this.creatorName,
+      required this.documentType,
       required this.invoiceNr,
-      required this.company})
+      this.location,
+      this.company})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(entries, r'Reception', 'entries');
     BuiltValueNullFieldError.checkNotNull(
         creatorName, r'Reception', 'creatorName');
+    BuiltValueNullFieldError.checkNotNull(
+        documentType, r'Reception', 'documentType');
     BuiltValueNullFieldError.checkNotNull(invoiceNr, r'Reception', 'invoiceNr');
-    BuiltValueNullFieldError.checkNotNull(company, r'Reception', 'company');
   }
 
   @override
@@ -1366,7 +1395,9 @@ class _$Reception extends Reception {
     return other is Reception &&
         entries == other.entries &&
         creatorName == other.creatorName &&
+        documentType == other.documentType &&
         invoiceNr == other.invoiceNr &&
+        location == other.location &&
         company == other.company;
   }
 
@@ -1375,7 +1406,9 @@ class _$Reception extends Reception {
     var _$hash = 0;
     _$hash = $jc(_$hash, entries.hashCode);
     _$hash = $jc(_$hash, creatorName.hashCode);
+    _$hash = $jc(_$hash, documentType.hashCode);
     _$hash = $jc(_$hash, invoiceNr.hashCode);
+    _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, company.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1386,7 +1419,9 @@ class _$Reception extends Reception {
     return (newBuiltValueToStringHelper(r'Reception')
           ..add('entries', entries)
           ..add('creatorName', creatorName)
+          ..add('documentType', documentType)
           ..add('invoiceNr', invoiceNr)
+          ..add('location', location)
           ..add('company', company))
         .toString();
   }
@@ -1404,9 +1439,17 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
   String? get creatorName => _$this._creatorName;
   set creatorName(String? creatorName) => _$this._creatorName = creatorName;
 
+  String? _documentType;
+  String? get documentType => _$this._documentType;
+  set documentType(String? documentType) => _$this._documentType = documentType;
+
   String? _invoiceNr;
   String? get invoiceNr => _$this._invoiceNr;
   set invoiceNr(String? invoiceNr) => _$this._invoiceNr = invoiceNr;
+
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
   String? _company;
   String? get company => _$this._company;
@@ -1419,7 +1462,9 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
     if ($v != null) {
       _entries = $v.entries.toBuilder();
       _creatorName = $v.creatorName;
+      _documentType = $v.documentType;
       _invoiceNr = $v.invoiceNr;
+      _location = $v.location;
       _company = $v.company;
       _$v = null;
     }
@@ -1448,10 +1493,12 @@ class ReceptionBuilder implements Builder<Reception, ReceptionBuilder> {
               entries: entries.build(),
               creatorName: BuiltValueNullFieldError.checkNotNull(
                   creatorName, r'Reception', 'creatorName'),
+              documentType: BuiltValueNullFieldError.checkNotNull(
+                  documentType, r'Reception', 'documentType'),
               invoiceNr: BuiltValueNullFieldError.checkNotNull(
                   invoiceNr, r'Reception', 'invoiceNr'),
-              company: BuiltValueNullFieldError.checkNotNull(
-                  company, r'Reception', 'company'));
+              location: location,
+              company: company);
     } catch (_) {
       late String _$failedField;
       try {

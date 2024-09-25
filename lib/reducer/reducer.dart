@@ -29,6 +29,10 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, RemoveEntryActionSuccessful>(_removeEntry),
   TypedReducer<AppState, LoadPendingReceptionsActionSuccessful>(_loadPendingReceptionsSuccessful),
   TypedReducer<AppState, SendPendingActionSuccessful>(_sendPendingReceptionsSuccessful),
+  TypedReducer<AppState, FinalizeInventoryAction>(_finalizeInventory),
+  TypedReducer<AppState, FinalizeInventoryActionSuccessful>(_finalizeInventorySuccessful),
+  TypedReducer<AppState, CreateInventoryAction>(_createInventory),
+  TypedReducer<AppState, CreateInventoryActionSuccessful>(_createInventorySuccessful),
 ]);
 
 AppState _getProducts(AppState state, GetProductsAction action) {
@@ -118,6 +122,7 @@ AppState _createReceptionSuccessful(AppState state, CreateReceptionActionSuccess
       ..ongoingReception.company = action.reception.company
       ..ongoingReception.creatorName = action.reception.creatorName
       ..ongoingReception.invoiceNr = action.reception.invoiceNr
+      ..ongoingReception.documentType = action.reception.documentType
       ..isLoading = false;
   });
 }
@@ -175,4 +180,39 @@ AppState _clearCurrentEntry(AppState state, ClearCurrentEntryAction action) {
   return state.rebuild((AppStateBuilder builder) {
     builder.newProductEntry = null;
   });
+}
+
+AppState _finalizeInventorySuccessful(AppState state, FinalizeInventoryActionSuccessful action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..ongoingReception = null
+      ..feedbackMessage = action.message
+      ..isLoading = false;
+  });
+}
+
+AppState _createInventory(AppState state, CreateInventoryAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder
+      ..ongoingReception = null
+      ..isLoading = true;
+  });
+}
+
+AppState _createInventorySuccessful(AppState state, CreateInventoryActionSuccessful action) {
+    return state.rebuild((AppStateBuilder builder) {
+      builder
+        ..ongoingReception.location = action.document.location
+        ..ongoingReception.creatorName = action.document.creatorName
+        ..ongoingReception.invoiceNr = action.document.invoiceNr
+        ..ongoingReception.documentType = action.document.documentType
+        ..isLoading = false;
+    });
+}
+
+AppState _finalizeInventory(AppState state, FinalizeInventoryAction action) {
+  return state.rebuild((AppStateBuilder builder) {
+    builder.isLoading = true;
+  });
+
 }

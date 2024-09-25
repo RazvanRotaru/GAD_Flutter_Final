@@ -24,3 +24,5 @@ part 'load_pending_receptions.dart';
 part 'send_pending_action.dart';
 part 'clear_current_entry_action.dart';
 part 'show_product_details.dart';
+part 'finalize_inventory_action.dart';
+part 'create_inventory_action.dart';
