@@ -88,7 +88,7 @@ class ReceptionApi {
     //
     await dataFile.writeAsString(jsonData);
 
-    // await createExcelReception(reception, receptionFolder);
+    await createInventoryExcel(reception, receptionFolder);
     await createInventoryPdf(reception, receptionFolder);
 
     return receptionFolder;
@@ -117,7 +117,7 @@ class ReceptionApi {
     final List<String> receptionDataFiles = await dir
         .list() //
         .asyncMap((FileSystemEntity entry) => entry.path)
-        .where((String path) => path.contains('.pdf'))
+        .where((String path) => path.contains('.pdf') || path.contains('.xlsx'))
         .toList();
 
     // final Email email = Email(
@@ -221,6 +221,63 @@ class ReceptionApi {
     var fileBytes = excel.save();
 
     var filePath = '$directory/data_intrare.xlsx';
+
+    File(filePath)
+      ..createSync(recursive: true)
+      ..writeAsBytesSync(fileBytes!);
+
+    return filePath;
+  }
+
+  Future<String> createInventoryExcel(Reception reception, String directory) async {
+    var data = await rootBundle.load('data/layout.xlsx');
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+
+    var sheet = excel['Sheet1'];
+
+    // var companyNameIndex = 'B1';
+    var invoiceNrIndex = 'B2';
+    var userIndex = 'C2';
+
+    // sheet.cell(CellIndex.indexByString(companyNameIndex)).value = TextCellValue(reception.company!);
+    sheet.cell(CellIndex.indexByString(invoiceNrIndex)).value = TextCellValue(reception.invoiceNr);
+    sheet.cell(CellIndex.indexByString(userIndex)).value = TextCellValue(reception.creatorName);
+
+    var insertRowIndex = 3;
+
+    for (var entry in reception.entries) {
+      // if (insertRowIndex >= sheet.maxRows) {
+        sheet.appendRow(
+          [
+            TextCellValue(entry.product.name),
+            IntCellValue(entry.product.barcode!.toInt()),
+            IntCellValue(entry.quantity.toInt()),
+            DoubleCellValue(entry.product.price!.toDouble())
+          ],
+        );
+      // }
+
+      // var row = sheet.row(insertRowIndex);
+
+      // denumire produs
+      // cod bare
+      // pret vanzare
+      // cantitate
+
+      // if (insertRowIndex.isEven) {
+      //   var celStyle = CellStyle(backgroundColorHex: ExcelColor.grey);
+      //   row[0]?.cellStyle = celStyle;
+      //   row[1]?.cellStyle = celStyle;
+      //   row[2]?.cellStyle = celStyle;
+      //   row[3]?.cellStyle = celStyle;
+      // }
+      // insertRowIndex++;
+    }
+
+    var fileBytes = excel.save();
+
+    var filePath = '$directory/inventar.xlsx';
 
     File(filePath)
       ..createSync(recursive: true)
