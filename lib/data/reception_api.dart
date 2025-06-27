@@ -160,7 +160,7 @@ class ReceptionApi {
       files.forEach((String file) async {
         final String newFile = file.replaceFirst('pending', 'sent');
         await File(newFile).create(recursive: true);
-        await File(file).rename(newFile);
+        await File(file).copy(newFile);
       });
       dir.delete(recursive: true);
     } catch (error) {
